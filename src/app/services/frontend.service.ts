@@ -12,6 +12,11 @@ export class FrontendService {
   constructor(private http:HttpClient) { }
 
   registerUser(userData:Object):Observable<any>{
-    return this.http.post(`${this.apiUrl}/user/register`,userData)
+    console.log("Service"+userData)
+    return this.http.post(`${this.apiUrl}/user/signup`,userData)
+  }
+
+  loginUser(userData:Object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/user/login`,userData)
   }
 }

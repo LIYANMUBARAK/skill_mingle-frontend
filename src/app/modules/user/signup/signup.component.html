@@ -3,41 +3,71 @@
       <div class="max-w-3xl mx-auto">
         <h2 class="font-heading mb-4 text-6xl text-white tracking-tighter">Create a free account</h2>
         <p class="mb-16 text-xl text-white tracking-tight">Use and re-use tons of responsive sections too a main create the perfect layout. Sections are ready.</p>
-        <form class="flex flex-wrap -m-3" action="#" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form class="flex flex-wrap -m-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="name" type="text" placeholder="Full Name">
+              <input formControlName="name" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="name" type="text" placeholder="Full Name">
             </label>
+            <div *ngIf="registerForm.controls['name'].errors">
+              <p *ngIf="submit&&registerForm.controls['name'].hasError('required')" class="text-red-500">Name Required
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="userName" type="text" placeholder="User Name">
+              <input formControlName="userName" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="userName" type="text" placeholder="User Name">
             </label>
+            <div *ngIf="registerForm.controls['userName'].errors">
+              <p *ngIf="submit&&registerForm.controls['userName'].hasError('required')" class="text-red-500">User Name Required
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="email" type="email" placeholder="Email Address">
+              <input formControlName="email" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="email" type="email" placeholder="Email Address">
             </label>
+            <div *ngIf="registerForm.controls['email'].errors">
+              <p *ngIf="submit&&registerForm.controls['email'].hasError('required')" class="text-red-500">Email Required
+              <p>
+              <p *ngIf="registerForm.controls['email'].hasError('pattern')" class="text-red-500">Invalid Email Format
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="mobileNumber" type="number" placeholder="Mobile Number">
+              <input [(ngModel)]="phoneNumber" min="10" max="15" name="phoneNumber" formControlName="mobileNumber" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="mobileNumber" type="text" placeholder="Mobile Number">
             </label>
+            <div *ngIf="registerForm.controls['mobileNumber'].errors">
+              <p *ngIf="submit&&registerForm.controls.mobileNumber.hasError('required')" class="text-red-500">Mobile Number Required
+                <p>
+              </div>
+            </div>
+          <div class="w-full md:w-1/2 p-3">
+            <label class="block">
+              <input formControlName="password" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="password" type="password" placeholder="Password">
+            </label>
+            <div *ngIf="registerForm.controls['password'].errors">
+              <p *ngIf="submit&&registerForm.controls['password'].hasError('required')" class="text-red-500">Password Required
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="password" type="password" placeholder="Password">
+              <input formControlName="cpassword" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="cpassword" type="password" placeholder="Confirm Password">
             </label>
+            <div *ngIf="registerForm.controls['cpassword'].errors">
+              <p *ngIf="submit&&registerForm.controls['cpassword'].hasError('required')" class="text-red-500">Confirm the password
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="cpassword" type="password" placeholder="Confirm Password">
+              <input formControlName="country" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="country" type="text" placeholder="Country">
             </label>
-          </div>
-          <div class="w-full md:w-1/2 p-3">
-            <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="country" type="text" placeholder="Country">
-            </label>
+            <div *ngIf="registerForm.controls['country'].errors">
+              <p *ngIf="submit&&registerForm.controls['country'].hasError('required')" class="text-red-500">Country Required
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
@@ -48,11 +78,19 @@
                
               </select> 
             </label>
+            <div *ngIf="registerForm.controls['gender'].errors">
+              <p *ngIf="submit&&registerForm.controls['gender'].hasError('required')" class="text-red-500">Gender Required
+              <p>
+            </div>
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="state" type="text" placeholder="State">
+              <input formControlName="city" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="state" type="text" placeholder="City">
             </label>
+            <div *ngIf="registerForm.controls['city'].errors">
+              <p *ngIf="submit&&registerForm.controls['city'].hasError('required')" class="text-red-500">City Required
+              <p>
+            </div>
           </div>
          
 
@@ -69,18 +107,19 @@
               </div>
               <label class="select-none text-gray-400 tracking-tight" for="signUpCheckbox1-1">
                 <span>I agree to the</span>
-                <a class="text-white hover:text-gray-200" href="#">Terms &amp; Conditions &amp; Privacy Policy</a>
+                <a class="text-white hover:text-gray-200" >Terms &amp; Conditions &amp; Privacy Policy</a>
               </label>
             </div>
           </div>
           <div class="w-full p-3">
-            <a class="inline-block mb-7 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" href="#">Create Free Account</a>
+            <button class="inline-block mb-7 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200"  type="submit">Create Free Account</button>
             <span class="font-medium text-white tracking-tight">
               <span>Already have an account?</span>
-              <a class="text-red-500 hover:text-red-700 transition duration-200" href="#">Sign In</a>
+             <a routerLink="/login" class="text-red-500 hover:text-red-700 transition duration-200">Sign In</a>
             </span>
           </div>
         </form>
       </div>
     </div>
+    <div id="sign-in-button"></div>
   </section>
