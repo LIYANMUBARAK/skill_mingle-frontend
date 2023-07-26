@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder,ReactiveFormsModule,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { patterns } from 'src/app/helpers/regexPatterns';
 import { FrontendService } from 'src/app/services/frontend.service';
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   onClick(){
     this.submit= true
     this.verifyLogin()
+    console.log(this.loginForm.value)
   }
 
   verifyLogin(){

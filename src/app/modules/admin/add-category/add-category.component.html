@@ -1,0 +1,37 @@
+<div class="absolute w-full bg-blue-500 dark:hidden min-h-75"></div>
+<!-- sidenav  -->
+<app-sidebar></app-sidebar>
+
+<!-- end sidenav -->
+
+<main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
+  <!-- Navbar -->
+  <app-navbar></app-navbar>
+
+  <!-- end Navbar -->
+
+  <!-- cards -->
+<div class="flex flex-wrap mt-6 -mx-3 justify-center items-center">
+  <div class="w-full max-w-full px-3 mt-0 lg:w-7/12 lg:flex-none">
+    <div class="border-black/12.5 dark:bg-slate-850 dark:shadow-dark-xl shadow-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border rounded-b-2xl">
+      <div class="bg-gray-950 border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid p-6 pt-4 pb-0 ">
+        <!-- Your content goes here -->
+        <h3 class="capitalize dark:text-white text-center">Add Category</h3>
+        <form [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()">
+          <div class="mb-6 mt-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category name</label>
+            <input formControlName="categoryName"  type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter the name of the Category" required>
+          </div>
+
+          <div class="flex items-start mb-6">
+            <div class="flex items-center h-5">
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <button type="submit" class="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
