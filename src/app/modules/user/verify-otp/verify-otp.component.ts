@@ -6,8 +6,8 @@ import "firebase/firestore"
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {Router} from '@angular/router'
-
-
+import { ActivatedRoute } from '@angular/router';
+import { FrontendService } from 'src/app/services/frontend.service';
 
 
 @Component({
@@ -17,15 +17,18 @@ import {Router} from '@angular/router'
 })
 export class VerifyOTPComponent implements OnInit{
 
-  constructor(private router:Router){}
+  constructor(private router:Router,private route:ActivatedRoute,private service:FrontendService){}
 
   otp!:string
   verify:any
-
+  phoneNumber:any
+  
 
   ngOnInit(): void {
     this.verify = JSON.parse(localStorage.getItem('verificationId')||'{}')
     console.log(this.verify)
+    this.phoneNumber=this.route.snapshot.paramMap.get('phoneNumber')
+    console.log(this.phoneNumber)
   }
 
   config = {
@@ -45,10 +48,25 @@ export class VerifyOTPComponent implements OnInit{
       console.log(this.otp)
   }
 
+  createToken(){
+   
+  }
+
   handleClick(){
     var credentials = firebase.auth.PhoneAuthProvider.credential(this.verify,this.otp)
     firebase.auth().signInWithCredential(credentials).then((response)=>{
-     this.router.navigate(['/dashboard'])
+      this.service.getUser(this.phoneNumber).subscribe((response)=>{
+        if(response.userExistError)
+        {
+          console.log(response.userExistError)
+        }
+        else if(response.token){
+          console.log(response)
+          localStorage.setItem('userToken',response.token)
+          localStorage.setItem('userId',response.id)
+          this.router.navigate(['/dashboard'])
+        }
+      })
     }).catch((error)=>{
       alert(error.message);
      })

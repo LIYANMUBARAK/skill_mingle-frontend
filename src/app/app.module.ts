@@ -20,6 +20,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { NgOtpInputModule } from  'ng-otp-input';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,8 +48,9 @@ import { NgOtpInputModule } from  'ng-otp-input';
     AngularFireAuthModule,
     AngularFireModule,
     FormsModule,
-    NgOtpInputModule
-  ],
+    NgOtpInputModule,
+  
+],
   providers: [],
   bootstrap: [AppComponent],
   schemas :[CUSTOM_ELEMENTS_SCHEMA]

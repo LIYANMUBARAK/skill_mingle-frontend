@@ -61,16 +61,16 @@ submit:boolean=false
   email:['',[Validators.email,Validators.required]],
   password:['',[Validators.required,Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$")]],
   cpassword:['',[Validators.required]],
-  mobileNumber:[Validators.required,Validators.pattern('^[0-9]{10}$')],
-  gender:[Validators.required],
-  country:[Validators.required],
-  city:[Validators.required],
+  mobileNumber:['',Validators.required,Validators.pattern('^[0-9]{10}$')],
+  gender:['',Validators.required],
+  country:['',Validators.required],
+  city:['',Validators.required],
 
   })
 
     onSubmit(){
       this.submit=true
-      console.log(this.registerForm.value)
+      
       const {name,userName,email,password,cpassword,mobileNumber,gender,country,city}=this.registerForm.value
       if(password==cpassword){
       this.registerUser()
@@ -97,7 +97,7 @@ submit:boolean=false
       firebase.auth().signInWithPhoneNumber(this.phoneNumber,this.reCaptchaVerifier).then((confirmationResult)=>{
         
         localStorage.setItem('verificationId',JSON.stringify(confirmationResult.verificationId))
-        this.router.navigate(['/verifyOTP'])
+        this.router.navigate([`/verifyOTP?id=${this.phoneNumber}`])
       }).catch((error)=>{
         alert(error.message)
         setTimeout(()=>{

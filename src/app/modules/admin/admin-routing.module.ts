@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesAndSubcategoriesComponent } from './categories-and-subcategories/categories-and-subcategories.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 
 const routes: Routes = [
 {
@@ -21,6 +22,10 @@ const routes: Routes = [
 {
   path:'addCategory',
   component:AddCategoryComponent
+},
+{
+  path:'addSubcategory',
+  component:AddSubcategoryComponent
 }
 ];
 

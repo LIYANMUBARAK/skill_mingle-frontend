@@ -10,7 +10,8 @@ import { CategoriesAndSubcategoriesComponent } from './categories-and-subcategor
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
+import { MatExpansionModule} from '@angular/material/expansion'
 
 @NgModule({
   declarations: [
@@ -19,13 +20,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     CategoriesAndSubcategoriesComponent,
     AddCategoryComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddSubcategoryComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
+
   ]
 })
 export class AdminModule { }

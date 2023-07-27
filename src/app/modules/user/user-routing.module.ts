@@ -4,6 +4,7 @@ import { SignupComponent } from './signup/signup.component';
 import { VerifyOTPComponent } from './verify-otp/verify-otp.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     component:SignupComponent
   },
   {
-    path:'verifyOTP',
+    path:'verifyOTP/:phoneNumber',
     component:VerifyOTPComponent
   },
   {
@@ -19,8 +20,16 @@ const routes: Routes = [
     component:DashboardComponent
   },
   {
+    path:'',
+    component:DashboardComponent
+  },
+  {
     path:'login',
     component:LoginComponent
+  },
+  {
+    path:'loginWithOTP',
+    component:LoginWithOTPComponent
   }
 ];
 

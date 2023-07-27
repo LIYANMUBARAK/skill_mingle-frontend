@@ -12,11 +12,33 @@ export class FrontendService {
   constructor(private http:HttpClient) { }
 
   registerUser(userData:Object):Observable<any>{
-    console.log("Service"+userData)
+  
     return this.http.post(`${this.apiUrl}/user/signup`,userData)
   }
 
   loginUser(userData:Object):Observable<any>{
     return this.http.post(`${this.apiUrl}/user/login`,userData)
+  }
+
+  getUser(phoneNumber:any):Observable<any>{
+   
+    return this.http.get(`${this.apiUrl}/user/getUser/${phoneNumber}`)
+  }
+
+  loginAdmin(adminData:Object):Observable<any>{
+   
+    return this.http.post(`${this.apiUrl}/admin/verifyLogin`,adminData)
+  }
+
+  addCategory(categoryData:Object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/admin/addCategory`,categoryData)
+  }
+
+  loadCategoriesAndSubcategories():Observable<any>{
+    return this.http.get(`${this.apiUrl}/admin/loadCategoriesAndSubcategories`)
+  }
+
+  addSubcategory(subcategoryData:Object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/admin/addSubcategory`,subcategoryData)
   }
 }

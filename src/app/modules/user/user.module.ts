@@ -9,6 +9,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { VerifyOTPComponent } from './verify-otp/verify-otp.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LoginComponent } from './login/login.component';
     SignupComponent,
     VerifyOTPComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    LoginWithOTPComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,27 @@
+<div class="bg-black min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+      <h2 class="font-heading mb-4 text-6xl text-black tracking-tighter">Login</h2>
+      <form [formGroup]="loginWithOTPForm" class=" flex-wrap -m-3" (ngSubmit)="onSubmit()">
+        <div class="w-full  p-3">
+          <label for="mobileNumber" class="block text-gray-700 text-sm font-bold mb-2">Mobile Number:</label>
+          <input [(ngModel)]="phoneNumber" formControlName="mobileNumber" min="10" max="15" type="mobileNumber" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number"
+            class="w-full px-4 py-2 text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200">
+            <div *ngIf="loginWithOTPForm.controls['mobileNumber'].errors">
+                <p *ngIf="submit&&loginWithOTPForm.controls.mobileNumber.hasError('required')" class="text-red-500">Mobile Number Required
+                  <p>
+                </div>
+          </div>
+       
+        <div class="w-full p-3">
+          <button type="submit"
+            class="inline-block mb-7 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200">Send OTP</button>
+          <div  >  <a routerLink="/login" class=" hover:text-red-700 transition duration-200">Login with Email</a></div>
+            <span class="font-medium text-gray-600 tracking-tight">
+            Don't have an account? <a routerLink="/signup" class="text-red-500 hover:text-red-700 transition duration-200">Sign Up</a>
+            
+          </span>
+        </div>
+      </form>
+    </div>
+    </div>
+    <div id="sign-in-button"></div>
