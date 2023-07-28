@@ -10,6 +10,7 @@ import { VerifyOTPComponent } from './verify-otp/verify-otp.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component
     VerifyOTPComponent,
     DashboardComponent,
     LoginComponent,
-    LoginWithOTPComponent
+    LoginWithOTPComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

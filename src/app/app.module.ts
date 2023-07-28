@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { UserModule } from './modules/user/user.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 //Firebase and environment modules
@@ -20,7 +20,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { NgOtpInputModule } from  'ng-otp-input';
 
 
-
+import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,11 @@ import { NgOtpInputModule } from  'ng-otp-input';
     NgOtpInputModule,
   
 ],
-  providers: [],
+  providers: [  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   schemas :[CUSTOM_ELEMENTS_SCHEMA]
   

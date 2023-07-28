@@ -11,7 +11,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
-import { MatExpansionModule} from '@angular/material/expansion'
+import { MatExpansionModule} from '@angular/material/expansion';
+import { EditCategoryComponent } from './edit-category/edit-category.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatExpansionModule} from '@angular/material/expansion'
     AddCategoryComponent,
     SidebarComponent,
     NavbarComponent,
-    AddSubcategoryComponent
+    AddSubcategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     CommonModule,

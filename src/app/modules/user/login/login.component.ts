@@ -11,7 +11,6 @@ import { FrontendService } from 'src/app/services/frontend.service';
 })
 export class LoginComponent implements OnInit{
 
-
   passwordError:Boolean=false
   emailError:Boolean=false
 

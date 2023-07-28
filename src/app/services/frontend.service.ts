@@ -41,4 +41,8 @@ export class FrontendService {
   addSubcategory(subcategoryData:Object):Observable<any>{
     return this.http.post(`${this.apiUrl}/admin/addSubcategory`,subcategoryData)
   }
+
+  editCategory(categoryData:Object):Observable<any>{
+    return this.http.patch(`${this.apiUrl}/admin/editCategory`,categoryData)
+  }
 }

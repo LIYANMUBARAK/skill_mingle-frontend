@@ -28,14 +28,24 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
     })
   }
 
-  onClick(id:string){
+  addSubcategory(id:string,categoryName:string){
     
     const data={id:id}
-    console.log(data)
+    
     const navigationExtras : NavigationExtras = {
       state:data,
     }
     this.router.navigate(['/admin/addSubcategory'],navigationExtras)
+    
+  }
+
+  editCategory(id:string,categoryName:string){
+    const data={id:id,categoryName}
+    
+    const navigationExtras : NavigationExtras = {
+      state:data,
+    }
+    this.router.navigate(['/admin/editCategory'],navigationExtras)
     
   }
 
