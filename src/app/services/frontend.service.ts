@@ -25,6 +25,8 @@ export class FrontendService {
     return this.http.get(`${this.apiUrl}/user/getUser/${phoneNumber}`)
   }
 
+
+
   loginAdmin(adminData:Object):Observable<any>{
    
     return this.http.post(`${this.apiUrl}/admin/verifyLogin`,adminData)
@@ -38,11 +40,20 @@ export class FrontendService {
     return this.http.get(`${this.apiUrl}/admin/loadCategoriesAndSubcategories`)
   }
 
+  loadCategoriesAndSubcategoriesForUser():Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/loadCategoriesAndSubcategories`)
+  }
+
   addSubcategory(subcategoryData:Object):Observable<any>{
     return this.http.post(`${this.apiUrl}/admin/addSubcategory`,subcategoryData)
   }
 
   editCategory(categoryData:Object):Observable<any>{
     return this.http.patch(`${this.apiUrl}/admin/editCategory`,categoryData)
+  }
+
+  getUserUsingId(id:any):Observable<any>{
+    
+    return this.http.get(`${this.apiUrl}/user/getUserUsingId/${id}`)
   }
 }

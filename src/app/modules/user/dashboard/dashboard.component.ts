@@ -8,6 +8,8 @@ import { FrontendService } from 'src/app/services/frontend.service';
 })
 export class DashboardComponent implements OnInit{
 
+  
+
   categories!:any
   subcategories!:object
 
@@ -15,14 +17,17 @@ export class DashboardComponent implements OnInit{
 
 
   ngOnInit(){
+    
     this.loadCategoriesAndSubcategories()
   }
 
   loadCategoriesAndSubcategories(){
-    this.service.loadCategoriesAndSubcategories().subscribe((response)=>{
+    this.service.loadCategoriesAndSubcategoriesForUser().subscribe((response)=>{
+      console.log(response)
       this.categories=response.categories
       this.subcategories=response.subcategories
     })
   }
 
+  
 }
