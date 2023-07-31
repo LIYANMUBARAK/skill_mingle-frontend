@@ -256,22 +256,12 @@ progress {
 Correct the cursor style of increment and decrement buttons in Safari.
 */
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: auto;
-}
+
 
 /*
 1. Correct the odd appearance in Chrome and Safari.
 2. Correct the outline style in Safari.
-*/
-
-[type='search'] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
-}
+*
 
 /*
 Remove the inner padding in Chrome and Safari on macOS.
@@ -284,13 +274,7 @@ Remove the inner padding in Chrome and Safari on macOS.
 /*
 1. Correct the inability to style clickable types in iOS and Safari.
 2. Change font properties to `inherit` in Safari.
-*/
 
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
 }
 
 /*
@@ -370,18 +354,12 @@ textarea::placeholder {
 Set the default cursor for buttons.
 */
 
-button,
-[role="button"] {
-  cursor: pointer;
-}
+
 
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
 
-:disabled {
-  cursor: default;
-}
 
 /*
 1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
@@ -389,19 +367,6 @@ Make sure disabled buttons don't get the pointer cursor.
    This can trigger a poorly considered lint error in some tools but is included by design.
 */
 
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
-}
 
 /*
 Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
@@ -1486,9 +1451,7 @@ h6 {
   flex-basis: 33.333333%;
 }
 
-.border-collapse {
-  border-collapse: collapse;
-}
+
 
 .origin-top {
   transform-origin: top;

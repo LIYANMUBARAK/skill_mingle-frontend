@@ -5,14 +5,16 @@ import { VerifyOTPComponent } from './verify-otp/verify-otp.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component';
+import { UserAuthGuard } from './guards/user-auth.guard';
+import { UserLoginAuthGuard } from './guards/user-login-auth.guard';
 
 const routes: Routes = [
   {
-    path:'signup',
+    path:'signup',canActivate:[UserLoginAuthGuard],
     component:SignupComponent
   },
   {
-    path:'verifyOTP/:phoneNumber',
+    path:'verifyOTP/:phoneNumber',canActivate:[UserLoginAuthGuard],
     component:VerifyOTPComponent
   },
   {
@@ -24,11 +26,11 @@ const routes: Routes = [
     component:DashboardComponent
   },
   {
-    path:'login',
+    path:'login',canActivate:[UserLoginAuthGuard],
     component:LoginComponent
   },
   {
-    path:'loginWithOTP',
+    path:'loginWithOTP',canActivate:[UserLoginAuthGuard],
     component:LoginWithOTPComponent
   }
 ];

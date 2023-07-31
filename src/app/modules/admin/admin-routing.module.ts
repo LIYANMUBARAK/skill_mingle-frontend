@@ -6,31 +6,42 @@ import { CategoriesAndSubcategoriesComponent } from './categories-and-subcategor
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
+import { AdminLoginAuthGuard } from './guards/admin-login-auth.guard';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
 {
-  path:'login',
+  path:'login',canActivate:[AdminLoginAuthGuard],
   component:LoginComponent
 },
 {
-  path:'dashboard',
+  path:'dashboard',canActivate:[AdminAuthGuard],
   component:DashboardComponent
 },
 {
-  path:'categoriesAndSubcategories',
+  path:'', redirectTo:'dashboard',pathMatch:'full',
+
+},
+{
+  path:'categoriesAndSubcategories',canActivate:[AdminAuthGuard],
   component:CategoriesAndSubcategoriesComponent
 },
 {
-  path:'addCategory',
+  path:'addCategory',canActivate:[AdminAuthGuard],
   component:AddCategoryComponent
 },
 {
-  path:'addSubcategory',
+  path:'addSubcategory',canActivate:[AdminAuthGuard],
   component:AddSubcategoryComponent
 },
 {
-  path:'editCategory',
+  path:'editCategory',canActivate:[AdminAuthGuard],
   component:EditCategoryComponent
+},
+{
+  path:'users',canActivate:[AdminAuthGuard],
+  component:UsersComponent
 }
 ];
 

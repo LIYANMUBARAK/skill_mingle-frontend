@@ -12,7 +12,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 import { MatExpansionModule} from '@angular/material/expansion';
-import { EditCategoryComponent } from './edit-category/edit-category.component'
+import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { UsersComponent } from './users/users.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component'
     SidebarComponent,
     NavbarComponent,
     AddSubcategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

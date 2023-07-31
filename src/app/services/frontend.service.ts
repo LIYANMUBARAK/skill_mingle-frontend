@@ -52,8 +52,26 @@ export class FrontendService {
     return this.http.patch(`${this.apiUrl}/admin/editCategory`,categoryData)
   }
 
+  deleteCategory(categoryData:string):Observable<any>{
+    return this.http.delete(`${this.apiUrl}/admin/deleteCategory?id=${categoryData}`)
+  }
+
   getUserUsingId(id:any):Observable<any>{
     
     return this.http.get(`${this.apiUrl}/user/getUserUsingId/${id}`)
+  }
+
+  getAllUsers():Observable<any>{
+    return this.http.get(`${this.apiUrl}/admin/getAllUsers`)
+  }
+
+  blockUser(id:Object):Observable<any>{
+    console.log(id)
+    return this.http.patch(`${this.apiUrl}/admin/blockUser`,id)
+  }
+  
+  unblockUser(id:Object):Observable<any>{
+    console.log(id)
+    return this.http.patch(`${this.apiUrl}/admin/unblockUser`,id)
   }
 }

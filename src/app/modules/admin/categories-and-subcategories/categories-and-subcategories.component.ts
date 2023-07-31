@@ -49,6 +49,15 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
     
   }
 
+  deleteCategory(id:string){
+    const categoryData=id
+    console.log(categoryData)
+    this.service.deleteCategory(categoryData).subscribe((response)=>{
+      this.loadCategoriesAndSubcategories() 
+    })
+    
+  }
+
   getSubcategoriesForCategory(categoryId: string) {
     console.log(categoryId)
     const abc =  this.subcategories.filter((subcategory:any) => subcategory.categoryId === categoryId);
