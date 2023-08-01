@@ -26,9 +26,9 @@ export class VerifyOTPComponent implements OnInit{
 
   ngOnInit(): void {
     this.verify = JSON.parse(localStorage.getItem('verificationId')||'{}')
-    console.log(this.verify)
+   
     this.phoneNumber=this.route.snapshot.paramMap.get('phoneNumber')
-    console.log(this.phoneNumber)
+   
   }
 
   config = {
@@ -45,12 +45,10 @@ export class VerifyOTPComponent implements OnInit{
 
   onOtpChange(otpCode:any){
       this.otp=otpCode;
-      console.log(this.otp)
+     
   }
 
-  createToken(){
-   
-  }
+
 
   handleClick(){
     var credentials = firebase.auth.PhoneAuthProvider.credential(this.verify,this.otp)
@@ -61,6 +59,7 @@ export class VerifyOTPComponent implements OnInit{
           console.log(response.userExistError)
         }
         else if(response.token){
+          
           console.log(response)
           localStorage.setItem('userToken',response.token)
           localStorage.setItem('userId',response.id)

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
 
   passwordError:Boolean=false
   emailError:Boolean=false
+  isBlockedError:Boolean=false
 
   submit:boolean=false
   
@@ -42,11 +43,18 @@ export class LoginComponent implements OnInit{
       }
       else if(response.emailError){
       this.emailError=true
-       console.log(response.emailError)
+      setTimeout(()=>{
+        this.emailError=false
+      },3000)
       }
       else if(response.passwordError){
         this.passwordError=true
-        console.log(response.passwordError)
+        setTimeout(()=>{
+          this.passwordError=false
+        },3000)
+      }
+      else if(response.isBlockedError){
+        this.isBlockedError=true
       }
       else{
         console.log("error")

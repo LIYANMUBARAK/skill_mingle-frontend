@@ -13,6 +13,8 @@
           </div>
        
         <div class="w-full p-3">
+          <h5 *ngIf="isBlockedError"  class="text-red-600 font-bold text-center">USER IS BLOCKED BY THE ADMIN</h5>
+
           <button type="submit"
             class="inline-block mb-7 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200">Send OTP</button>
           <div  >  <a routerLink="/login" class=" hover:text-red-700 transition duration-200">Login with Email</a></div>

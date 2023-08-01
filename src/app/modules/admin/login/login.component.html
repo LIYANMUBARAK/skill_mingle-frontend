@@ -21,13 +21,22 @@
                   <input formControlName="email" type="email"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email" />
+                  <div *ngIf="loginForm.controls['email'].errors">
+                    <p *ngIf="submit&&loginForm.controls['email'].hasError('required')" class="text-red-500">Email is required</p>
+                    <p *ngIf="loginForm.hasError('email')" class="text-red-500">Invalid format</p>
+                  </div>
+                  <p *ngIf="emailError"  class="text-red-500">Email is incorrect</p>
               </div>
               <div class="relative w-full mb-3">
                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                   for="grid-password">Password</label>
                   <input formControlName="password" type="password"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password" />
-              </div>
+                  <div *ngIf="loginForm.controls['password'].errors">
+                    <p *ngIf="submit&&loginForm.controls['password'].hasError('required')" class="text-red-500">Password Required</p>
+                  </div>
+                </div>
+                <p *ngIf="passwordError"  class="text-red-500">Password is incorrect</p>
               <div>
 
 

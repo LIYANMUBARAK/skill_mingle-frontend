@@ -12,7 +12,7 @@ export class AdminLoginAuthGuard implements CanActivate {
   canActivate(): boolean {
     const isAuthenticated = localStorage.getItem('adminToken')
     if (isAuthenticated) {
-      this.router.navigate(['/dashboard'])
+      this.router.navigate(['/admin/dashboard'])
       return false
     }
     else {

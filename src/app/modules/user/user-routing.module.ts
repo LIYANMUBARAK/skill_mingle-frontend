@@ -18,7 +18,7 @@ const routes: Routes = [
     component:VerifyOTPComponent
   },
   {
-    path:'dashboard',
+    path:'dashboard',canActivate:[UserAuthGuard],
     component:DashboardComponent
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:'loginWithOTP',canActivate:[UserLoginAuthGuard],
+    path:'loginWithOTP',
     component:LoginWithOTPComponent
   }
 ];

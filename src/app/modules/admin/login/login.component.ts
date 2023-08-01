@@ -36,11 +36,17 @@ export class LoginComponent implements OnInit {
       if(response.emailError)
       {
         this.emailError=true
-        console.log(this.emailError)
+        setTimeout(()=>{
+          this.emailError=false
+        },3000)
       }
       else if(response.passwordError){
-        this.passwordError=false
-        console.log(this.passwordError)
+       
+        this.passwordError=true
+        setTimeout(()=>{
+          this.passwordError=false
+        },3000)
+       
       }
       else if(response.token){
         localStorage.setItem('adminToken',response.token)

@@ -44,7 +44,7 @@ export class LoginWithOTPComponent implements OnInit{
   reCaptchaVerifier :any;
   numberWithCountryCode:any
   submit:boolean=false
-
+  isBlockedError:Boolean=false
 
 
 
@@ -69,7 +69,12 @@ export class LoginWithOTPComponent implements OnInit{
         console.log(response.userExistError)
       }
       else{
+        if(response.user.isBlocked===true){
+          this.isBlockedError=true
+        }
+        else{
         this.getOTP()
+        }
       }
     })
   }
