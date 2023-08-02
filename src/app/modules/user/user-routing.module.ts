@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { UserLoginAuthGuard } from './guards/user-login-auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FreelanceOverviewComponent } from './freelance-overview/freelance-overview.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path:'loginWithOTP',
     component:LoginWithOTPComponent
+  },
+  {
+    path:'userProfile',canActivate:[UserAuthGuard],
+    component:UserProfileComponent
+  },
+  {
+    path:'freelanceOverview',canActivate:[UserAuthGuard],
+    component:FreelanceOverviewComponent
   }
 ];
 

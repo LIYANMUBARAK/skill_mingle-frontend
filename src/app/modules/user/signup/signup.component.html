@@ -35,7 +35,7 @@
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <input [(ngModel)]="phoneNumber" min="10" max="15" name="phoneNumber" formControlName="mobileNumber" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="mobileNumber" type="text" placeholder="Mobile Number">
+              <input  min="10" max="15" name="phoneNumber" formControlName="mobileNumber" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" id="mobileNumber" type="text" placeholder="Mobile Number">
             </label>
             <div *ngIf="registerForm.controls['mobileNumber'].errors">
               <p *ngIf="submit&&registerForm.controls.mobileNumber.hasError('required')" class="text-red-500">Mobile Number Required
@@ -71,7 +71,7 @@
           </div>
           <div class="w-full md:w-1/2 p-3">
             <label class="block">
-              <select class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" name="gender" id="gender">
+              <select formControlName="gender" class="p-4 w-full text-gray-700 tracking-tight bg-white placeholder-gray-700 outline-none border border-gray-600 rounded-lg focus:border-indigo-500 transition duration-200" name="gender" id="gender">
                 <option hidden value="">-Select Gender-</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>

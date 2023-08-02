@@ -1,13 +1,13 @@
-import { Component} from '@angular/core';
-import { FrontendService } from 'src/app/services/frontend.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FrontendService } from 'src/app/services/frontend.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-freelancer-navbar',
+  templateUrl: './freelancer-navbar.component.html',
+  styleUrls: ['./freelancer-navbar.component.css']
 })
-export class NavbarComponent {
+export class FreelancerNavbarComponent {
 
   userToken!:any
   userId!:any
@@ -53,5 +53,3 @@ dropDown(){
 
 
 }
-
-

@@ -70,9 +70,11 @@ submit:boolean=false
 
     onSubmit(){
       this.submit=true
-      
+      console.log(this.registerForm.value)
       const {name,userName,email,password,cpassword,mobileNumber,gender,country,city}=this.registerForm.value
+      
       if(password==cpassword){
+        this.phoneNumber=mobileNumber
       this.registerUser()
       }
       else{
@@ -86,7 +88,7 @@ submit:boolean=false
           this.getOTP()
         }
         else{
-        
+          console.log(response)
           console.log("error")
         }
       })
@@ -94,10 +96,10 @@ submit:boolean=false
 
     getOTP(){
       this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button',{size:'invisible'})
-      firebase.auth().signInWithPhoneNumber(this.phoneNumber,this.reCaptchaVerifier).then((confirmationResult)=>{
+      firebase.auth().signInWithPhoneNumber(`+91${this.phoneNumber}`,this.reCaptchaVerifier).then((confirmationResult)=>{
         
         localStorage.setItem('verificationId',JSON.stringify(confirmationResult.verificationId))
-        this.router.navigate([`/verifyOTP?id=${this.phoneNumber}`])
+        this.router.navigate(['/verifyOTP',this.phoneNumber])
       }).catch((error)=>{
         alert(error.message)
         setTimeout(()=>{

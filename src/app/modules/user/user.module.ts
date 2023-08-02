@@ -11,6 +11,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LoginWithOTPComponent } from './login-with-otp/login-with-otp.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FreelanceOverviewComponent } from './freelance-overview/freelance-overview.component';
+import { FreelancerNavbarComponent } from './freelancer-navbar/freelancer-navbar.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     DashboardComponent,
     LoginComponent,
     LoginWithOTPComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserProfileComponent,
+    FreelanceOverviewComponent,
+    FreelancerNavbarComponent
   ],
   imports: [
     CommonModule,
