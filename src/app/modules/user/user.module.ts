@@ -14,6 +14,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FreelanceOverviewComponent } from './freelance-overview/freelance-overview.component';
 import { FreelancerNavbarComponent } from './freelancer-navbar/freelancer-navbar.component';
+import { FreelanceOverviewDosComponent } from './freelance-overview-dos/freelance-overview-dos.component';
+import { FreelanceOverviewDontsComponent } from './freelance-overview-donts/freelance-overview-donts.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { FreelancerNavbarComponent } from './freelancer-navbar/freelancer-navbar
     NavbarComponent,
     UserProfileComponent,
     FreelanceOverviewComponent,
-    FreelancerNavbarComponent
+    FreelancerNavbarComponent,
+    FreelanceOverviewDosComponent,
+    FreelanceOverviewDontsComponent
   ],
   imports: [
     CommonModule,

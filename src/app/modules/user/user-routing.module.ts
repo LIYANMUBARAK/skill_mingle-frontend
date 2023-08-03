@@ -9,6 +9,8 @@ import { UserAuthGuard } from './guards/user-auth.guard';
 import { UserLoginAuthGuard } from './guards/user-login-auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FreelanceOverviewComponent } from './freelance-overview/freelance-overview.component';
+import { FreelanceOverviewDosComponent } from './freelance-overview-dos/freelance-overview-dos.component';
+import { FreelanceOverviewDontsComponent } from './freelance-overview-donts/freelance-overview-donts.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path:'freelanceOverview',canActivate:[UserAuthGuard],
     component:FreelanceOverviewComponent
+  },
+  {
+    path:'freelanceOverview/do',canActivate:[UserAuthGuard],
+    component:FreelanceOverviewDosComponent
+  },
+  {
+    path:'freelanceOverview/dont',canActivate:[UserAuthGuard],
+    component:FreelanceOverviewDontsComponent
   }
 ];
 
