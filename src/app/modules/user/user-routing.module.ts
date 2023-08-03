@@ -11,6 +11,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FreelanceOverviewComponent } from './freelance-overview/freelance-overview.component';
 import { FreelanceOverviewDosComponent } from './freelance-overview-dos/freelance-overview-dos.component';
 import { FreelanceOverviewDontsComponent } from './freelance-overview-donts/freelance-overview-donts.component';
+import { FreelancerSignupComponent } from './freelancer-signup/freelancer-signup.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path:'freelanceOverview/dont',canActivate:[UserAuthGuard],
     component:FreelanceOverviewDontsComponent
+  },
+  {
+    path:'freelancerSignup',canActivate:[UserAuthGuard],
+    component:FreelancerSignupComponent
   }
 ];
 
