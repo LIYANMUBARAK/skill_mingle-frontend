@@ -17,7 +17,7 @@ import { FreelancerNavbarComponent } from './freelancer-navbar/freelancer-navbar
 import { FreelanceOverviewDosComponent } from './freelance-overview-dos/freelance-overview-dos.component';
 import { FreelanceOverviewDontsComponent } from './freelance-overview-donts/freelance-overview-donts.component';
 import { FreelancerSignupComponent } from './freelancer-signup/freelancer-signup.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { FreelancerSignupComponent } from './freelancer-signup/freelancer-signup
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    FontAwesomeModule
   ]
 })
 export class UserModule { }

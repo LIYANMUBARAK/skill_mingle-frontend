@@ -22,6 +22,8 @@ import { NgOtpInputModule } from  'ng-otp-input';
 
 import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,7 @@ import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
     AngularFireModule,
     FormsModule,
     NgOtpInputModule,
-  
+    FontAwesomeModule
 ],
   providers: [  {
     provide: HTTP_INTERCEPTORS,
