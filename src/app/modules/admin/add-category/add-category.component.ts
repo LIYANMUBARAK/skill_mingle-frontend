@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class AddCategoryComponent implements OnInit{
 
 
+  categoryExistError:boolean=false
+
   constructor(private fb:FormBuilder,private service:FrontendService,private router:Router){}
 
   ngOnInit(): void {}
@@ -25,6 +27,7 @@ onSubmit(){
   this.service.addCategory(this.addCategoryForm.value).subscribe((response)=>{
     if(response.categoryExistError){
       console.log(response.categoryExistError)
+      this.categoryExistError=true
     }
     else if(response.cateogrySave){
       console.log("Category Saved")

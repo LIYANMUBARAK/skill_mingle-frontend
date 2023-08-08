@@ -45,7 +45,7 @@ export class LoginWithOTPComponent implements OnInit{
   numberWithCountryCode:any
   submit:boolean=false
   isBlockedError:Boolean=false
-
+  userExistError:Boolean=false
 
 
   constructor(private fb:FormBuilder,
@@ -66,7 +66,10 @@ export class LoginWithOTPComponent implements OnInit{
     this.service.getUser(this.phoneNumber).subscribe((response)=>{
       if(response.userExistError)
       {
-        console.log(response.userExistError)
+          this.userExistError=true
+          setTimeout(()=>{
+            this.userExistError=false
+          },3000)
       }
       else{
         if(response.user.isBlocked===true){

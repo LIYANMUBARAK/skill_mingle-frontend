@@ -1,11 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { FrontendService } from 'src/app/services/frontend.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-categories-and-subcategories',
   templateUrl: './categories-and-subcategories.component.html',
-  styleUrls: ['./categories-and-subcategories.component.css']
+  styleUrls: ['./categories-and-subcategories.component.css'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        height: '200px',
+        opacity: 1,
+        backgroundColor: 'yellow'
+      })),
+      state('closed', style({
+        height: '100px',
+        opacity: 0.8,
+        backgroundColor: 'blue'
+      })),
+      transition('open => closed', [
+        animate('1s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ]),
+  ],
 })
 export class CategoriesAndSubcategoriesComponent implements OnInit {
 
@@ -38,6 +67,10 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
     this.router.navigate(['/admin/addSubcategory'],navigationExtras)
     
   }
+
+
+
+
 
   editCategory(id:string,categoryName:string){
     const data={id:id,categoryName}
