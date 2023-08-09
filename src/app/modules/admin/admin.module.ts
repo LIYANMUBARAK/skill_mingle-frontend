@@ -13,7 +13,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
-import { UsersComponent } from './users/users.component'
+import { UsersComponent } from './users/users.component';
+import { FreelancersComponent } from './freelancers/freelancers.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UsersComponent } from './users/users.component'
     NavbarComponent,
     AddSubcategoryComponent,
     EditCategoryComponent,
-    UsersComponent
+    UsersComponent,
+    FreelancersComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,7 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminLoginAuthGuard } from './guards/admin-login-auth.guard';
 import { UsersComponent } from './users/users.component';
+import { FreelancersComponent } from './freelancers/freelancers.component';
 
 const routes: Routes = [
 {
@@ -42,6 +43,10 @@ const routes: Routes = [
 {
   path:'users',canActivate:[AdminAuthGuard],
   component:UsersComponent
+},
+{
+  path:'freelancers',canActivate:[AdminAuthGuard],
+  component:FreelancersComponent
 }
 ];
 

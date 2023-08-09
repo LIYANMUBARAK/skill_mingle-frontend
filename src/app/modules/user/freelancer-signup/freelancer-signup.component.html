@@ -11,7 +11,7 @@
     <h1 class="heading mb-8">PLEASE FILL THE FORM</h1>
 </div>
 <div class="flex justify-center">
-    <form [formGroup]="freelancerForm" class="w-full max-w-4xl">
+    <form [formGroup]="freelancerForm" (ngSubmit)='onSubmit()'  class="w-full max-w-4xl">
 
 
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-8 gap-4 mb-6">
@@ -24,7 +24,7 @@
 
             <div class="col-span-1 md:col-span-2">
                 <div>
-                    <select (change)="onSelect($event.target)"
+                    <select (change)="onSkillLevelSelect($event.target)"
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-state">
                         <option selected hidden>Level</option>
@@ -38,41 +38,40 @@
                 <button type="button" (click)="skillAdd()"
                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
             </div>
-           
+
         </div>
-        <div formArrayName="skills" class="my-5 flex flex-row grid grid-cols-2 ">
-            <ng-container *ngFor="let skill of skills.controls; let i = index"m>
-                <div  [formGroupName]="i" class="mb-8">
-                    <span class="bg-gray-100 text-gray-800 text-md font-medium mr-2 rounded-full dark:bg-gray-700 dark:text-gray-300 p-4">{{getSkillAndValue(i)}} <fa-icon [icon]="faXmarkCircle" (click)="deleteSkill(i)"></fa-icon></span>
-                
+        <div formArrayName="skills" class="my-5 flex flex-row grid grid-cols-4 ">
+            <ng-container *ngFor="let skill of skills.controls; let i = index" m>
+                <div [formGroupName]="i" class="mb-8">
+                    <span
+                        class="bg-gray-100 text-gray-800 text-md font-medium mr-2 rounded-full dark:bg-gray-700 dark:text-gray-300 p-4">{{getSkillAndValue(i)}}
+                        <fa-icon [icon]="faXmarkCircle" (click)="deleteSkill(i)"></fa-icon></span>
+
                 </div>
 
-        </ng-container>
+            </ng-container>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-8 gap-4 mb-6 ">
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 col-span-1">
                 Languages:
             </label>
             <div class=" md:col-span-4">
-                <select
+                <select (change)="onLanguageSelect($event.target)"
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 "
                     id="grid-state">
-                    <option selected hidden>Job</option>
-                    <option>Digital Marketing</option>
-                    <option>Graphics & Design</option>
-                    <option>Writing & Translation</option>
-                    <option>Business</option>
-                    <option>Programming & Tech</option>
-                    <option>Music & Audio</option>
-                    <option>Video & Animation</option>
-                    <option>Data</option>
-                    <option>Photography</option>
-                    <option>Lifestyle</option>
+                    <option selected hidden value="null">Languages</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Urdu">Urdu</option>
+
                 </select>
             </div>
             <div class="col-span-1 md:col-span-2">
                 <div class="">
-                    <select
+                    <select (change)="onLanguageLevelSelect($event.target)"
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-state">
                         <option selected hidden>Level</option>
@@ -83,9 +82,20 @@
                 </div>
             </div>
             <div class="col-span-1 md:col-span-1">
-                <button type="button"
+                <button type="button" (click)="languageAdd()"
                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
             </div>
+        </div>
+        <div formArrayName="languages" class="my-5 flex flex-row grid grid-cols-4 ">
+            <ng-container *ngFor="let language of languages.controls; let i = index" m>
+                <div [formGroupName]="i" class="mb-8">
+                    <span
+                        class="bg-gray-100 text-gray-800 text-md font-medium mr-2 rounded-full dark:bg-gray-700 dark:text-gray-300 p-4">{{getLanguageAndLevel(i)}}
+                        <fa-icon [icon]="faXmarkCircle" (click)="deleteLanguage(i)"></fa-icon></span>
+
+                </div>
+
+            </ng-container>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 mb-6">
             <label class="uppercase tracking-wide text-gray-700 text-xs font-bold mt-3">
@@ -93,7 +103,7 @@
             </label>
 
             <div class=" md:col-span-4">
-                <select
+                <select formControlName="occupation"
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 "
                     id="grid-state">
                     <option selected hidden>Job</option>
@@ -110,31 +120,7 @@
                 </select>
             </div>
 
-            <div class=" mt-3 sm:mt-0 sm:ml-3 md:col-span-1">
-                <select
-                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-state">
-                    <option selected hidden>From</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
-                </select>
-            </div>
 
-            <div class=" mt-3 sm:mt-0 sm:ml-3">
-                <select
-                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-state">
-                    <option selected hidden>To</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
-                </select>
-            </div>
-            <div class="col-span-1 md:col-span-1">
-                <button type="button"
-                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-3 sm:mt-0 sm:ml-3 mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
-            </div>
         </div>
 
 
@@ -144,102 +130,116 @@
             </label>
 
             <div class=" ml-4 md:col-span-3">
-                <select
+                <select (change)="onEducationSelect($event.target)"
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-3"
                     id="grid-state">
-                    <option selected hidden>Country</option>
-                    <option>Digital Marketing</option>
-                    <option>Graphics & Design</option>
-                    <option>Writing & Translation</option>
-                    <option>Business</option>
-                    <option>Programming & Tech</option>
-                    <option>Music & Audio</option>
-                    <option>Video & Animation</option>
-                    <option>Data</option>
-                    <option>Photography</option>
-                    <option>Lifestyle</option>
+                    <option selected hidden>Degree</option>
+                    <option value="BA">BA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BCA">BCA</option>
+                    <option value="B.Com">B.Com</option>
+                    <option value="Btech">Btech</option>
+                    <option value="MA">MA</option>
+                    <option value="MBA">MBA</option>
+                    <option value="MTech">MTech</option>
+                    <option value="Phd">Phd</option>
+                    <option value="Dont have a degree.">Dont have a degree.</option>
                 </select>
             </div>
-            <div class="w-full md:col-span-4 px-3 ">
 
-                <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-last-name" type="text" placeholder="College Name">
+            <div class="col-span-1 md:col-span-1">
+                <button type="button" (click)="educationAdd()"
+                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
             </div>
-            <div class="  md:col-span-2 mr-7">
-                <select
-                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-3"
-                    id="grid-state">
-                    <option selected hidden>Title</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
-                </select>
 
-            </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div class=" md:col-4 px-3 ml-7">
+        <div formArrayName="education" class="my-5 flex flex-row grid grid-cols-4 ">
+            <ng-container *ngFor="let education of education.controls; let i = index" m>
+                <div [formGroupName]="i" class="mb-8">
+                    <span
+                        class="bg-gray-100 text-gray-800 text-md font-medium mr-2 rounded-full dark:bg-gray-700 dark:text-gray-300 p-4">{{getEducation(i)}}
+                        <fa-icon [icon]="faXmarkCircle" (click)="deleteEducation(i)"></fa-icon></span>
 
-                <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-last-name" type="text" placeholder="Major">
-            </div>
-            <div class=" ml-4 mt-4  ">
-                <select
-                    class="block appearance-none w-1/8 bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-3"
-                    id="grid-state">
-                    <option selected hidden>From</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
-                </select>
+                </div>
 
-            </div>
-            <div class=" ml-4 mt-4">
-                <select
-                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-3"
-                    id="grid-state">
-                    <option selected hidden>To</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
-                </select>
-
-            </div>
+            </ng-container>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 gap-4 mb-6">
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 ml-3 col-span-1">
                 Certification:
             </label>
-            <input
+            <input (keyup)="onTypeCertificationName($event.target)"
                 class=" col-span-1 md:col-span-3 appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 ml-8 leading-tight focus:outline-none focus:bg-white"
                 id="grid-first-name" type="text" placeholder="Certification Name">
-            <input
+            <input (keyup)="onTypeCertifiedFrom($event.target)"
                 class="col-span-1 md:col-span-3  appearance-none  block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 ml-4 leading-tight focus:outline-none focus:bg-white"
                 id="grid-first-name" type="text" placeholder="Certified From">
             <div class=" ml-4 col-span-1 md:col-span-2">
-                <select
+                <select (change)="onCertifiedYearSelect($event.target)"
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500  -ml-3"
                     id="grid-state">
                     <option selected hidden>Year</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
+                    <option value="1990">1990</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                    <option value="1993">1993</option>
+                    <option value="1994">1994</option>
+                    <option value="1995">1995</option>
+                    <option value="1996">1996</option>
+                    <option value="1997">1997</option>
+                    <option value="1998">1998</option>
+                    <option value="1999">1999</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+
                 </select>
 
             </div>
             <div class="col-span-1 md:col-span-1 -ml-3">
-                <button type="button"
+                <button type="button" (click)="certificationAdd()"
                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
             </div>
+
+        </div>
+        <div formArrayName="certification"  class="my-5 flex flex-row grid grid-cols-4 ">
+            <ng-container *ngFor="let certification of certification.controls; let i = index" m>
+                <div [formGroupName]="i" class="mb-8">
+                    <span
+                        class="bg-gray-100 text-gray-800 text-md font-medium mr-2 rounded-full dark:bg-gray-700 dark:text-gray-300 p-4">{{getCertification(i)}}
+                        <fa-icon [icon]="faXmarkCircle" (click)="deleteCertification(i)"></fa-icon></span>
+
+                </div>
+
+            </ng-container>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-10 gap-4 mb-6">
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 ml-3">
                 Description:
             </label>
-            <textarea
+            <textarea formControlName="description"
                 class="md:col-span-8 appearance-none max-w-4xl row block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 ml-8 leading-tight focus:outline-none focus:bg-white"
                 id="grid-first-name" rows="5" cols="70" placeholder="Enter the description">
                 </textarea>
@@ -248,33 +248,36 @@
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 ml-3">
                 Personal Website:
             </label>
-            <input
+            <input formControlName="personalWebsite"
                 class="appearance-none  block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-4"
-                id="grid-last-name" type="text" >
+                id="grid-last-name" type="text">
         </div>
         <div class="flex flex-wrap -mx-3 mb-6 ml-9">
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 ml-3">
                 Instagram:
             </label>
-            <input
+            <input formControlName="instagram"
                 class="appearance-none block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-4"
-                id="grid-last-name" type="text" placeholder="Major">
+                id="grid-last-name" type="text">
         </div>
         <div class="flex flex-wrap -mx-3 mb-6 ml-10">
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 ml-3">
                 Facebook:
             </label>
-            <input
+            <input formControlName="facebook"
                 class="appearance-none block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-4"
-                id="grid-last-name" type="text" placeholder="Major">
+                id="grid-last-name" type="text">
         </div>
         <div class="flex flex-wrap -mx-3 mb-6 ml-12">
             <label class=" uppercase tracking-wide text-gray-700 text-xs font-bold mt-3 ml-3">
                 Twitter:
             </label>
-            <input
+            <input formControlName="twitter"
                 class="appearance-none block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ml-4"
-                id="grid-last-name" type="text" placeholder="Major">
+                id="grid-last-name" type="text">
+        </div>
+        <div class="flex justify-center">
+            <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
         </div>
     </form>
 </div>

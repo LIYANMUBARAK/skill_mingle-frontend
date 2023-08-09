@@ -74,4 +74,13 @@ export class FrontendService {
     console.log(id)
     return this.http.patch(`${this.apiUrl}/admin/unblockUser`,id)
   }
+
+  freelancerApply(freelancerData:Object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/user/freelancerApply`,freelancerData)
+  }
+
+  getAllFreelancers():Observable<any>{
+   
+    return this.http.get(`${this.apiUrl}/admin/getAllFreelancers`)
+  }
 }
