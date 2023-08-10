@@ -83,4 +83,20 @@ export class FrontendService {
    
     return this.http.get(`${this.apiUrl}/admin/getAllFreelancers`)
   }
+
+  freelancerApprove(id:Object):Observable<any>{
+   
+    return this.http.patch(`${this.apiUrl}/admin/freelancerApprove`,id)
+  }
+
+  freelancerReject(id:Object):Observable<any>{
+    
+    console.log(id)
+    return this.http.patch(`${this.apiUrl}/admin/freelancerReject`,id)
+  }
+
+ 
+  
 }
+
+

@@ -29,7 +29,7 @@ export class FreelancerNavbarComponent {
 getUser(){
   this.service.getUserUsingId(this.userId).subscribe((response)=>{
     if(response.user){
-      console.log(response.user)
+      
       this.user=response.user
     }
     else if(response.userExistError){

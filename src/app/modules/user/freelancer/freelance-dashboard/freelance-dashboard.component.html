@@ -1,0 +1,71 @@
+<app-freelancer-navbar></app-freelancer-navbar>
+<!-- 
+<div class="grid grid-cols-3 gap-4">
+    <div class="row-span-2 flex justify-center items-center"></div>
+    <div class="...">
+        <h1> Welcome Freelancer</h1>
+    </div>
+    <div class="row-span-2 flex justify-center items-center"></div>
+    <div class="row-span-2">04</div>
+    <div class="row-span-3">05</div>
+    <div class="row-span-2  flex justify-center items-center"></div>
+    <div class="...">07</div>
+</div> -->
+<div class="grid grid-cols-12">
+    <div class="col-span-3 m-10">
+        <a href="#"
+            class="flex flex-col items-center bg-white border border-gray-200 lg shadow hover:bg-gray-100 border-gray-700  hover:bg-stone-100 md:flex-row md:max-w-sm  ">
+            <div class="flex flex-col justify-between p-4 leading-normal  items-center">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-black-900 justify-center">$100</h5>
+                <p class="mb-3 font-normal text-gray-700 text-gray-400">Earned in this month</p>
+            </div>
+        </a>
+        <a href="#"
+            class="flex flex-col items-center bg-white border border-gray-200 lg shadow hover:bg-gray-100 border-gray-700  hover:bg-stone-100 md:flex-row md:max-w-sm mt-10">
+            <div class="flex flex-col justify-between p-4 leading-normal  items-center">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-black-900 justify-center">Inbox</h5>
+                <p class="mb-3 font-normal text-gray-700 text-gray-400">View & manage your earnings.</p>
+            </div>
+        </a>
+    </div>
+    <div class="col-span-9 ml-10 mt-10">
+        <div class="col-span-9">
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl  ">Welcome back, <span class="text-blue-600 dark:text-blue-500">{{userData.name}}</span> </h1></div>
+        <div class="grid grid-cols-12   mt-10">
+          
+            <!--  -->
+            <div class="col-span-4">
+                <a href="#" routerLink="/gigManagement"
+                    class="flex flex-col items-center bg-white border border-gray-200 lg shadow hover:bg-gray-100 border-gray-700  hover:bg-stone-100 md:flex-row md:max-w-sm ">
+                    <div class="flex flex-col justify-between p-4 leading-normal  items-center">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black-900 justify-center">GIGS</h5>
+                        <p class="mb-3 font-normal text-gray-700 text-gray-400">Create,edit & delete gigs.</p>
+                    </div>
+                </a>
+            </div>
+            <!--  -->
+            <div class="col-span-4"> <a href="#"
+                    class="flex flex-col items-center bg-white border border-gray-200 lg shadow hover:bg-gray-100 border-gray-700  hover:bg-stone-100 md:flex-row md:max-w-sm ">
+                    <div class="flex flex-col justify-between p-4 leading-normal  items-center">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black-900 justify-center">ORDERS</h5>
+                        <p class="mb-3 font-normal text-gray-700 text-gray-400">View active,completed & cancelled
+                            orders.
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-span-4">
+                <a href="#"
+                    class="flex flex-col items-center bg-white border border-gray-200 lg shadow hover:bg-gray-100 border-gray-700  hover:bg-stone-100 md:flex-row md:max-w-sm ">
+                    <div class="flex flex-col justify-between p-4 leading-normal  items-center">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black-900 justify-center">Earnings</h5>
+                        <p class="mb-3 font-normal text-gray-700 text-gray-400">View & manage your earnings.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
