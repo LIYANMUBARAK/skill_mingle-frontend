@@ -1,0 +1,296 @@
+<!-- navbar starting -->
+<app-freelancer-navbar></app-freelancer-navbar>
+<!-- navbar starting -->
+
+
+<div class="px-60">
+
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+
+            <form [formGroup]="firstFormGroup">
+                <div class="flex justify-center">
+                    <div>
+                        <div>
+                            <ng-template matStepLabel>Title</ng-template>
+                            <mat-form-field>
+                                <mat-label>Title</mat-label>
+                                <input matInput placeholder="Last name, First name" formControlName="firstCtrl"
+                                    required>
+
+
+                            </mat-form-field>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Select Category</mat-label>
+                                    <mat-select formControlName="selectCtrl" required>
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option2">Option 2</mat-option>
+                                        <mat-option value="option3">Option 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Select Sub-Category</mat-label>
+                                    <mat-select formControlName="selectCtrl" required>
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option2">Option 2</mat-option>
+                                        <mat-option value="option3">Option 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Pricing">
+            <form [formGroup]="secondFormGroup">
+                <mat-form-field>
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+
+                </mat-form-field>
+                <div>
+                    <section class="bg-white">
+                        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+                            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+                                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
+                                    Price your Gig.</h2>
+                                <p class="mb-5 font-light text-gray-500 sm:text-xl "></p>
+                            </div>
+                            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+                                <!-- Pricing Card -->
+                                <div
+                                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow  xl:p-8 ">
+                                    <h3 class="mb-4 text-2xl font-semibold">Basic</h3>
+                                    <p class="font-light text-gray-500 sm:text-lg ">Best option
+                                        for personal use & for your next project.</p>
+                                    <div class="flex justify-center items-center my-8">
+                                        <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
+                                            class="w-24 "><input class="mb-2  " matInput placeholder="price" formControlName="secondCtrl"
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- List -->
+                                    <ul role="list" class="mb-8 space-y-4 text-left">
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Name</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Delivery Time</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Revisions</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                    
+
+                                    </ul>
+
+                                </div>
+                                <!-- Pricing Card -->
+                                <div
+                                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow  xl:p-8 ">
+                                    <h3 class="mb-4 text-2xl font-semibold">Standard</h3>
+                                    <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Relevant for
+                                        multiple users, extended & premium support.</p>
+                                    <div class="flex justify-center items-center my-8">
+                                        <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
+                                            class="w-24"><input class="mb-2" matInput formControlName="secondCtrl"
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- List -->
+                                    <ul role="list" class="mb-8 space-y-4 text-left">
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Name</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Delivery Time</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Revisions</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                       
+
+                                    </ul>
+
+                                    <a href="#"
+                                        class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">Get
+                                        started</a>
+                                </div>
+                                <!-- Pricing Card -->
+                                <div
+                                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow  xl:p-8 ">
+                                    <h3 class="mb-4 text-2xl font-semibold">Premium</h3>
+                                    <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best for large
+                                        scale uses and extended redistribution rights.</p>
+                                    <div class="flex justify-center items-center my-8">
+                                        <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
+                                            class="w-24"><input class="mb-2" matInput formControlName="secondCtrl"
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- List -->
+                                    <ul role="list" class="mb-8 space-y-4 text-left">
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Name</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Delivery Time</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                        <li class="flex items-center space-x-3">
+                                            <!-- Icon -->
+                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path></path>
+                                            </svg>
+                                            <span> <mat-form-field>
+                                                    <mat-label>Revisions</mat-label>
+                                                    <input matInput formControlName="secondCtrl"
+                                                        placeholder="Ex. 1 Main St, New York, NY" required>
+
+                                                </mat-form-field></span>
+                                        </li>
+                                       
+                                   
+
+                                    </ul>
+
+                                    <a href="#"
+                                        class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">Get
+                                        started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="flex justify-end ">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" label="Description">
+            <form [formGroup]="thirdFormGroup">
+                <div>
+                    <div class=" items-center justify-center grid grid-cols-12">
+                        <div class="col-span-3 text-center">
+                            <h1>Description</h1>
+                        </div>
+                        <div class="col-span-8">
+                            <mat-form-field class="full-width w-full">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="textareaCtrl" rows="20"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                        <button mat-button>Submit</button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+
+</div>

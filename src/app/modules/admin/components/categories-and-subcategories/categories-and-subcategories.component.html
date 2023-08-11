@@ -24,7 +24,7 @@
             class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
             <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent flex justify-between items-center">
               <div class="flex-grow text-center">
-                <h6 class="dark:text-white">CATEGORIES AND SUBCATEGORIES</h6>
+                <h6 class="dark:text-white">CATEGORIES</h6>
               </div>
               <div>
                 <button routerLink="/admin/addCategory" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
@@ -91,7 +91,30 @@
       <!--  -->
 
 <div>
-      <div  id="accordion-collapse" data-accordion="collapse">
+
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td  mat-cell *matCellDef="let subCategory">{{subCategory.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Category Name">
+      <th mat-header-cell *matHeaderCellDef>Category Name</th>
+      <td  mat-cell *matCellDef="let subCategory">{{subCategory.categoryId.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td  mat-cell *matCellDef="let subCategory"><button (click)="editSubCategory(subCategory._id)">Edit</button></td>
+    </ng-container>
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td  mat-cell *matCellDef="let subCategory"><button (click)="deleteSubCategory(subCategory._id)">Delete</button></td>
+    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row;columns:displayedColumns"> </tr>
+  </table>
+
+</div>
+      <!-- <div  id="accordion-collapse" data-accordion="collapse">
         <h2 id="accordion-collapse-heading-1">
           <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
             <span>avcd</span>
@@ -108,11 +131,11 @@
         </div>
        
         
-      </div>
+      </div> -->
       
 
       <!--  -->
-    </div>
+  
  
       <!--  -->
    

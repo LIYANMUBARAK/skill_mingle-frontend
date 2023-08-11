@@ -14,6 +14,7 @@ import { FreelanceOverviewDontsComponent } from './freelancer/freelance-overview
 import { FreelancerSignupComponent } from './freelancer/freelancer-signup/freelancer-signup.component';
 import { FreelanceDashboardComponent } from './freelancer/freelance-dashboard/freelance-dashboard.component';
 import { FreelancerGigsComponent } from './freelancer/freelancer-gigs/freelancer-gigs.component';
+import { CreateGigComponent } from './freelancer/create-gig/create-gig.component';
 
 const routes: Routes = [
   {
@@ -68,7 +69,10 @@ const routes: Routes = [
     path:'gigManagement',canActivate:[UserAuthGuard],
     component:FreelancerGigsComponent
   },
-
+  {
+    path:'createGig',canActivate:[UserAuthGuard],
+    component:CreateGigComponent
+  }
 ];
 
 @NgModule({

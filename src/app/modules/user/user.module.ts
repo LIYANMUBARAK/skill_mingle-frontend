@@ -20,6 +20,14 @@ import { FreelancerSignupComponent } from './freelancer/freelancer-signup/freela
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FreelanceDashboardComponent } from './freelancer/freelance-dashboard/freelance-dashboard.component';
 import { FreelancerGigsComponent } from './freelancer/freelancer-gigs/freelancer-gigs.component';
+import { CreateGigComponent } from './freelancer/create-gig/create-gig.component';
+import {FormBuilder, Validators} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -38,6 +46,7 @@ import { FreelancerGigsComponent } from './freelancer/freelancer-gigs/freelancer
     FreelancerSignupComponent,
     FreelanceDashboardComponent,
     FreelancerGigsComponent,
+    CreateGigComponent,
 
   ],
   imports: [
@@ -46,7 +55,15 @@ import { FreelancerGigsComponent } from './freelancer/freelancer-gigs/freelancer
     FormsModule,
     ReactiveFormsModule,
     NgOtpInputModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatButtonModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
   ]
 })
 export class UserModule { }

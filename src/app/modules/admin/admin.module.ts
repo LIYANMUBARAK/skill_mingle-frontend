@@ -4,17 +4,23 @@ import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoriesAndSubcategoriesComponent } from './categories-and-subcategories/categories-and-subcategories.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AddSubcategoryComponent } from './add-subcategory/add-subcategory.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CategoriesAndSubcategoriesComponent } from './components/categories-and-subcategories/categories-and-subcategories.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AddSubcategoryComponent } from './components/add-subcategory/add-subcategory.component';
 import { MatExpansionModule} from '@angular/material/expansion';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
-import { UsersComponent } from './users/users.component';
-import { FreelancersComponent } from './freelancers/freelancers.component'
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { UsersComponent } from './components/users/users.component';
+import { FreelancersComponent } from './components/freelancers/freelancers.component'
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatSortModule } from '@angular/material/sort';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { FreelancersComponent } from './freelancers/freelancers.component'
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 
   ]
 })

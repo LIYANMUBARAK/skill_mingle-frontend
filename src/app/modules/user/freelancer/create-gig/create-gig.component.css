@@ -1,0 +1,11 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
+  .custom-input {
+    font-size: 16px; /* Adjust the font size value as needed */
+}

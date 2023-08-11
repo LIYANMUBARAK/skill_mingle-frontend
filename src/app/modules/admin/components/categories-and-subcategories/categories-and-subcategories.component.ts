@@ -9,6 +9,8 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { MatTableDataSource } from '@angular/material/table';
+import { Customer } from '../../interfaces/customer.interfaces';
 
 @Component({
   selector: 'app-categories-and-subcategories',
@@ -41,18 +43,35 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
   categories:any
   subcategories:any
 
+  testDatabase:any=[{name:"liyan",phone:"999999",email:"test@test.com",status:"active"}]
+  dataSource:any
+  displayedColumns:string[]=["Name","Category Name","Edit","Delete"]
+
+
+
+
+editSubCategory(id:any){
+
+}
+deleteSubCategory(id:any){
+
+}
   constructor(private service:FrontendService,private router:Router){}
 
   ngOnInit(): void {
    this.loadCategoriesAndSubcategories() 
+   
   }
+
+
 
   loadCategoriesAndSubcategories(){ 
     this.service.loadCategoriesAndSubcategories().subscribe((response)=>{
       if(response.categories&&response.subcategories){
-        console.log(response.categories)
+        
         this.categories=response.categories
         this.subcategories = response.subcategories
+        this.dataSource = new MatTableDataSource<any>(this.subcategories)
       }
     })
   }
@@ -68,11 +87,7 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
     
   }
 
-
-
-
-
-  editCategory(id:string,categoryName:string){
+   editCategory(id:string,categoryName:string){
     const data={id:id,categoryName}
     
     const navigationExtras : NavigationExtras = {
