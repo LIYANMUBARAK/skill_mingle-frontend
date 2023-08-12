@@ -14,6 +14,7 @@ export class AddSubcategoryComponent implements OnInit {
   isDisabled:boolean=false
   submit:Boolean=false
  category:any
+ subcategoryExistError:boolean=false
 
 ngOnInit(): void {
   this.route.paramMap.subscribe(()=>{
@@ -43,6 +44,9 @@ ngOnInit(): void {
      if(response.subcategorySave===true)
      {
       this.router.navigate(['/admin/categoriesAndSubcategories'])
+     }
+     else if(response.subcategoryExistError){
+      this.subcategoryExistError=true
      }
     })
   }

@@ -29,74 +29,45 @@
              
             </div>
             <div class="flex-auto px-0 pt-0 pb-2">
-              <div class="p-0 overflow-x-auto">
-                <table class="items-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
-                  <thead class="align-bottom">
-                    <tr>
-                      <th
-                        class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-collapse border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                        Name</th>
-                      <th
-                        class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-collapse border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                        User Name</th>
-                      <th
-                        class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-collapse border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                        Email</th>
-                        
-                    </tr>
-                  </thead>
-                  <tbody>
+           
 
+              <!--  -->
+              <div>
 
-                    <tr *ngFor="let user of users">
-                      <!-- First TD -->
-                      <td
-                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                        <div class="flex items-center justify-center px-2 py-1">
-                          <div class="flex flex-col justify-center">
-                            <h6 class="mb-0 text-sm leading-normal dark:text-white">{{user.name}}</h6>
-                          </div>
-                        </div>
-                      </td>
-
-                      <!-- Second TD -->
-                      <td
-                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                        <div class="flex items-center justify-center px-2 py-1">
-                          <div class="flex flex-col justify-center">
-                            <h6 class="mb-0 text-sm leading-normal dark:text-white">{{user.userName}}</h6>
-                          </div>
-                        </div>
-                      </td>
-
-                      <!-- Third TD -->
-                      <td
-                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                        <div class="flex items-center justify-center px-2 py-1">
-                          <div class="flex flex-col justify-center">
-                            <h6 class="mb-0 text-sm leading-normal dark:text-white">{{user.email}}</h6>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td
-                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                        <div class="flex items-center justify-center px-2 py-1">
-                          <div class="flex flex-col justify-center">
-                            <button *ngIf="user.isBlocked===true" (click)="unblockUser(user._id)"  type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Blocked</button>                         
-                            <button *ngIf="user.isBlocked===false" (click)="blockUser(user._id)" type="button" class="text-red-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">Unblocked</button>                         
-                            
-                          </div>
-                        </div>
-                      </td>
-
-
-                    </tr>
-                  </tbody>
+                <table matSort mat-table [dataSource]="dataSource">
+                  <ng-container matColumnDef="Name">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let user">{{user.name}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="User Name">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>Username</th>
+                    <td mat-cell *matCellDef="let user">{{user.userName}}</td>
+                  </ng-container>
+                 
+                  <ng-container matColumnDef="Email">
+                  
+        
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>Email</th>
+                    <td mat-cell *matCellDef="let user">{{user.email}}</td>
+                  </ng-container>
+                       
+                  <ng-container matColumnDef="blockAndUnblock">
+                    <th mat-header-cell *matHeaderCellDef></th>
+        
+                    <td mat-cell *matCellDef="let user">  <button *ngIf="user.isBlocked===true" (click)="unblockUser(user._id)"  type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Blocked</button>                         
+                      <button *ngIf="user.isBlocked===false" (click)="blockUser(user._id)" type="button" class="text-red-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-900">Unblocked</button>                         
+                      
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row;columns:displayedColumns"> </tr>
                 </table>
-
-
+                <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+        
               </div>
+        
+
+              <!--  -->
             </div>
           </div>
         </div>

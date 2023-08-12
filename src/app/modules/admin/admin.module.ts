@@ -19,7 +19,8 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator'; 
 import { MatSortModule } from '@angular/material/sort';
-
+import { SubcategoryEditModalComponent } from './components/subcategory-edit-modal/subcategory-edit-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatSortModule } from '@angular/material/sort';
     AddSubcategoryComponent,
     EditCategoryComponent,
     UsersComponent,
-    FreelancersComponent
+    FreelancersComponent,
+    SubcategoryEditModalComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatExpansionModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
 
   ]
 })

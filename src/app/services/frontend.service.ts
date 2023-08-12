@@ -95,7 +95,16 @@ export class FrontendService {
     return this.http.patch(`${this.apiUrl}/admin/freelancerReject`,id)
   }
 
+  getSubCategoryUsingId(id:string):Observable<any>{
+
+    console.log(id)
+    return this.http.get(`${this.apiUrl}/admin/getSubcategory/${id}`)
+  }
  
+  deleteSubCategoryUsingId(id:string):Observable<any>{
+    console.log(id)
+    return this.http.get(`${this.apiUrl}/admin/deleteSubcategory/${id}`)
+  }
   
 }
 

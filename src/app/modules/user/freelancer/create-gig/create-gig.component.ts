@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-create-gig',
   templateUrl: './create-gig.component.html',
   styleUrls: ['./create-gig.component.css'],
-  
+
 
 })
 export class CreateGigComponent {
@@ -18,8 +18,11 @@ export class CreateGigComponent {
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
+    fileControl: [null] //
   });
   isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) { }
+
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { FrontendService } from 'src/app/services/frontend.service';
 import {
@@ -11,6 +11,10 @@ import {
 } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
 import { Customer } from '../../interfaces/customer.interfaces';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { SubcategoryEditModalComponent } from '../subcategory-edit-modal/subcategory-edit-modal.component';
 
 @Component({
   selector: 'app-categories-and-subcategories',
@@ -42,21 +46,35 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
 
   categories:any
   subcategories:any
+  subcategoryData:any
 
-  testDatabase:any=[{name:"liyan",phone:"999999",email:"test@test.com",status:"active"}]
   dataSource:any
-  displayedColumns:string[]=["Name","Category Name","Edit","Delete"]
+  displayedColumns:string[]=["Name","Category Name","editAndDelete"]
+
+@ViewChild(MatPaginator) paginator!:MatPaginator
+@ViewChild(MatSort) sort!:MatSort
 
 
 
+editSubcategory(id:string){
+  this.service.getSubCategoryUsingId(id).subscribe((response)=>{
+    console.log(response.subcategoryData)
+    this.subcategoryData=response.subcategoryData
+  })
+  const dialogRef = this.dialog.open(SubcategoryEditModalComponent, {
+    data: this.subcategoryData // Pass the data to the modal
+  });
+}
 
-editSubCategory(id:any){
+deleteSubcategory(id:any){
+  this.service.deleteSubCategoryUsingId(id).subscribe((response)=>{
+    console.log(response)
+    this.loadCategoriesAndSubcategories() 
+  })
 
 }
-deleteSubCategory(id:any){
 
-}
-  constructor(private service:FrontendService,private router:Router){}
+  constructor(private service:FrontendService,private router:Router,private dialog:MatDialog){}
 
   ngOnInit(): void {
    this.loadCategoriesAndSubcategories() 
@@ -72,6 +90,8 @@ deleteSubCategory(id:any){
         this.categories=response.categories
         this.subcategories = response.subcategories
         this.dataSource = new MatTableDataSource<any>(this.subcategories)
+        this.dataSource.paginator=this.paginator
+        this.dataSource.sort=this.sort
       }
     })
   }

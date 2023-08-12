@@ -1,3 +1,4 @@
+
 <div class="absolute w-full bg-blue-500 dark:hidden min-h-75"></div>
 <!-- sidenav  -->
 <app-sidebar></app-sidebar>
@@ -15,24 +16,27 @@
     <div class="w-full max-w-full px-3 mt-0 lg:w-7/12 lg:flex-none">
 
       <!-- Your content goes here -->
-     
+
 
 
       <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
           <div
             class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-            <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent flex justify-between items-center">
+            <div
+              class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent flex justify-between items-center">
               <div class="flex-grow text-center">
                 <h6 class="dark:text-white">CATEGORIES</h6>
               </div>
               <div>
-                <button routerLink="/admin/addCategory" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-gray-900">
+                <button routerLink="/admin/addCategory"
+                  class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                  <span
+                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-gray-900">
                     Add Category
                   </span>
                 </button>
-             
+
               </div>
             </div>
             <div class="flex-auto px-0 pt-0 pb-2">
@@ -50,7 +54,7 @@
                   </thead>
                   <tbody>
 
-                    
+
                     <tr *ngFor="let category of categories">
                       <td
                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
@@ -75,13 +79,13 @@
                       </td>
                       <td
                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                       <a href="javascript:;"  class="fa fa-trash-o" (click)="deleteCategory(category._id)"></a>
+                        <a href="javascript:;" class="fa fa-trash-o" (click)="deleteCategory(category._id)"></a>
                       </td>
                     </tr>
                   </tbody>
                 </table>
 
-              
+
               </div>
             </div>
           </div>
@@ -90,56 +94,37 @@
 
       <!--  -->
 
-<div>
+      <div>
 
-  <table mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td  mat-cell *matCellDef="let subCategory">{{subCategory.name}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Category Name">
-      <th mat-header-cell *matHeaderCellDef>Category Name</th>
-      <td  mat-cell *matCellDef="let subCategory">{{subCategory.categoryId.name}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Edit">
-      <th mat-header-cell *matHeaderCellDef>Edit</th>
-      <td  mat-cell *matCellDef="let subCategory"><button (click)="editSubCategory(subCategory._id)">Edit</button></td>
-    </ng-container>
-    <ng-container matColumnDef="Delete">
-      <th mat-header-cell *matHeaderCellDef>Delete</th>
-      <td  mat-cell *matCellDef="let subCategory"><button (click)="deleteSubCategory(subCategory._id)">Delete</button></td>
-    </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row;columns:displayedColumns"> </tr>
-  </table>
+        <table matSort mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="Name">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let subCategory">{{subCategory.name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Category Name">
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Category Name</th>
+            <td mat-cell *matCellDef="let subCategory">{{subCategory.categoryId.name}}</td>
+          </ng-container>
+         
+          <ng-container matColumnDef="editAndDelete">
+            <th mat-header-cell *matHeaderCellDef></th>
 
-</div>
-      <!-- <div  id="accordion-collapse" data-accordion="collapse">
-        <h2 id="accordion-collapse-heading-1">
-          <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
-            <span>avcd</span>
-            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-            </svg>
-          </button>
-        </h2>
-        <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-          <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-            <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-            <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
-          </div>
-        </div>
-       
-        
-      </div> -->
-      
+            <td mat-cell *matCellDef="let subCategory"> <button type="button" (click)="editSubcategory(subCategory._id)"
+                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button>
+              <button type="button"  (click)="deleteSubcategory(subCategory._id)"
+                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row;columns:displayedColumns"> </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
 
-      <!--  -->
+      </div>
+
   
- 
-      <!--  -->
-   
-      <!--  -->
 
-    
+<!-- Main modal -->
+
+
     </div>
