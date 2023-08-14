@@ -6,6 +6,7 @@ import { languages } from 'src/app/helpers/interfaces/language.interface';
 import { occupation } from 'src/app/helpers/interfaces/occupation.interface';
 import { certifiction } from 'src/app/helpers/interfaces/certification.interface';
 import { FrontendService } from 'src/app/services/frontend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-freelancer-signup',
@@ -44,7 +45,7 @@ export class FreelancerSignupComponent {
   userId!:string|null
   freelancerApplyData!:object
 
-  constructor(private fb: FormBuilder, private service:FrontendService) { }
+  constructor(private fb: FormBuilder, private service:FrontendService,private router:Router) { }
 
   ngOnInit() { 
     this.userId=localStorage.getItem('userId') 
@@ -239,7 +240,9 @@ onSubmit(){
   this.freelancerApplyData={userId:this.userId,...this.freelancerForm.value}
   console.log(this.freelancerApplyData)
   this.service.freelancerApply(this.freelancerApplyData).subscribe((response)=>{
-    console.log(response)
+    if(response.freelancerApply===true){
+      console.log(response)
+    }
   })
 }
 

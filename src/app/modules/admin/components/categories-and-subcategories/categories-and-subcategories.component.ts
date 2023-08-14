@@ -58,12 +58,16 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
 
 editSubcategory(id:string){
   this.service.getSubCategoryUsingId(id).subscribe((response)=>{
-    console.log(response.subcategoryData)
-    this.subcategoryData=response.subcategoryData
+   
+    
+  this.dialog.open(SubcategoryEditModalComponent, {
+      data: response.subcategoryData // Pass the data to the modal
+    }).afterClosed().subscribe(()=>{
+      this.loadCategoriesAndSubcategories() 
+    })
   })
-  const dialogRef = this.dialog.open(SubcategoryEditModalComponent, {
-    data: this.subcategoryData // Pass the data to the modal
-  });
+  
+  
 }
 
 deleteSubcategory(id:any){
