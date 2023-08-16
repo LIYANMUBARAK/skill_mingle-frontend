@@ -15,7 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
-
+import { AngularFireStorageModule  } from '@angular/fire/compat/storage';
 // OTP module
 
 import { NgOtpInputModule } from  'ng-otp-input';
@@ -51,6 +51,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   }),
     AngularFireAuthModule,
     AngularFireModule,
+    AngularFireStorageModule,
     FormsModule,
     NgOtpInputModule,
     FontAwesomeModule

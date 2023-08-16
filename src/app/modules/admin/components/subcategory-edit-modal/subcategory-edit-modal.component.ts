@@ -44,4 +44,9 @@ ngOnInit(){}
   }
 
 
+  closeModal(){
+    this.dialogRef.close()
+  }
+
+
 }

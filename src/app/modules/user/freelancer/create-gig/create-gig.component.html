@@ -15,7 +15,7 @@
                             <ng-template matStepLabel>Title</ng-template>
                             <mat-form-field>
                                 <mat-label>Title</mat-label>
-                                <input matInput placeholder="Last name, First name" formControlName="firstCtrl"
+                                <input matInput placeholder="Last name, First name" formControlName="title"
                                     required>
 
 
@@ -25,20 +25,20 @@
                             <div>
                                 <mat-form-field>
                                     <mat-label>Select Category</mat-label>
-                                    <mat-select formControlName="selectCtrl" required>
-                                        <mat-option value="option1">Option 1</mat-option>
-                                        <mat-option value="option2">Option 2</mat-option>
-                                        <mat-option value="option3">Option 3</mat-option>
+                                    <mat-select formControlName="categorySelect" required>
+                                        <mat-option value="option1">Graphics</mat-option>
+                                        <mat-option value="option2">Video & Animation</mat-option>
+                                        <mat-option value="option3">Writing & Translation</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div>
                                 <mat-form-field>
                                     <mat-label>Select Sub-Category</mat-label>
-                                    <mat-select formControlName="selectCtrl" required>
-                                        <mat-option value="option1">Option 1</mat-option>
-                                        <mat-option value="option2">Option 2</mat-option>
-                                        <mat-option value="option3">Option 3</mat-option>
+                                    <mat-select formControlName="subCategorySelect" required>
+                                        <mat-option value="option1">Test</mat-option>
+                                        <mat-option value="option2">1</mat-option>
+                                        <mat-option value="option3">2</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -53,11 +53,7 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup" label="Pricing">
             <form [formGroup]="secondFormGroup">
-                <mat-form-field>
-                    <mat-label>Address</mat-label>
-                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-
-                </mat-form-field>
+               
                 <div>
                     <section class="bg-white">
                         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -76,24 +72,12 @@
                                     <div class="flex justify-center items-center my-8">
                                         <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
                                             class="w-24 "><input class="mb-2  " matInput placeholder="Price*"
-                                                formControlName="secondCtrl" required>
+                                                formControlName="basicPrice" required>
                                         </mat-form-field>
                                     </div>
                                     <!-- List -->
                                     <ul role="list" class="mb-8 space-y-4 text-left">
-                                        <li class="flex items-center space-x-3">
-                                            <!-- Icon -->
-                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path></path>
-                                            </svg>
-                                            <span> <mat-form-field>
-                                                    <mat-label>Name</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
-                                                        placeholder="Ex. 1 Main St, New York, NY" required>
-
-                                                </mat-form-field></span>
-                                        </li>
+                                      
                                         <li class="flex items-center space-x-3">
                                             <!-- Icon -->
                                             <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
@@ -102,7 +86,7 @@
                                             </svg>
                                             <span> <mat-form-field>
                                                     <mat-label>Delivery Time</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
+                                                    <input matInput formControlName="basicDeliveryTime"
                                                         placeholder="Ex. 1 Main St, New York, NY" required>
 
                                                 </mat-form-field></span>
@@ -115,7 +99,7 @@
                                             </svg>
                                             <span> <mat-form-field>
                                                     <mat-label>Revisions</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
+                                                    <input matInput formControlName="basicRevisions"
                                                         placeholder="Ex. 1 Main St, New York, NY" required>
 
                                                 </mat-form-field></span>
@@ -133,25 +117,13 @@
                                         multiple users, extended & premium support.</p>
                                     <div class="flex justify-center items-center my-8">
                                         <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
-                                            class="w-24"><input class="mb-2" matInput formControlName="secondCtrl"
+                                            class="w-24"><input class="mb-2" matInput formControlName="standardPrice"
                                                 required>
                                         </mat-form-field>
                                     </div>
                                     <!-- List -->
                                     <ul role="list" class="mb-8 space-y-4 text-left">
-                                        <li class="flex items-center space-x-3">
-                                            <!-- Icon -->
-                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path></path>
-                                            </svg>
-                                            <span> <mat-form-field>
-                                                    <mat-label>Name</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
-                                                        placeholder="Ex. 1 Main St, New York, NY" required>
-
-                                                </mat-form-field></span>
-                                        </li>
+                                       
                                         <li class="flex items-center space-x-3">
                                             <!-- Icon -->
                                             <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
@@ -160,7 +132,7 @@
                                             </svg>
                                             <span> <mat-form-field>
                                                     <mat-label>Delivery Time</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
+                                                    <input matInput formControlName="standardDeliveryTime"
                                                         placeholder="Ex. 1 Main St, New York, NY" required>
 
                                                 </mat-form-field></span>
@@ -173,7 +145,7 @@
                                             </svg>
                                             <span> <mat-form-field>
                                                     <mat-label>Revisions</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
+                                                    <input matInput formControlName="standardRevisions"
                                                         placeholder="Ex. 1 Main St, New York, NY" required>
 
                                                 </mat-form-field></span>
@@ -194,25 +166,13 @@
                                         scale uses and extended redistribution rights.</p>
                                     <div class="flex justify-center items-center my-8">
                                         <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
-                                            class="w-24"><input class="mb-2" matInput formControlName="secondCtrl"
+                                            class="w-24"><input class="mb-2" matInput formControlName="premiumPrice"
                                                 required>
                                         </mat-form-field>
                                     </div>
                                     <!-- List -->
                                     <ul role="list" class="mb-8 space-y-4 text-left">
-                                        <li class="flex items-center space-x-3">
-                                            <!-- Icon -->
-                                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path></path>
-                                            </svg>
-                                            <span> <mat-form-field>
-                                                    <mat-label>Name</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
-                                                        placeholder="Ex. 1 Main St, New York, NY" required>
-
-                                                </mat-form-field></span>
-                                        </li>
+                                      
                                         <li class="flex items-center space-x-3">
                                             <!-- Icon -->
                                             <svg class="flex-shrink-0 w-5 h-5 text-green-500 " fill="currentColor"
@@ -221,7 +181,7 @@
                                             </svg>
                                             <span> <mat-form-field>
                                                     <mat-label>Delivery Time</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
+                                                    <input matInput formControlName="premiumDeliveryTime"
                                                         placeholder="Ex. 1 Main St, New York, NY" required>
 
                                                 </mat-form-field></span>
@@ -234,7 +194,7 @@
                                             </svg>
                                             <span> <mat-form-field>
                                                     <mat-label>Revisions</mat-label>
-                                                    <input matInput formControlName="secondCtrl"
+                                                    <input matInput formControlName="premiumRevisions"
                                                         placeholder="Ex. 1 Main St, New York, NY" required>
 
                                                 </mat-form-field></span>
@@ -268,34 +228,38 @@
                         <div class="col-span-8">
                             <mat-form-field class="full-width w-full">
                                 <mat-label>Description</mat-label>
-                                <textarea matInput formControlName="textareaCtrl" rows="20"></textarea>
+                                <textarea matInput formControlName="description" rows="20"></textarea>
                             </mat-form-field>
                         </div>
                     </div>
 
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Upload File</mat-label>
-                            <!-- <input type="file" (change)="onFileSelected($event)" formControlName="fileControl"> -->
-                        </mat-form-field>
+                    <div class="ml-10 mt-2">
+                            <label>Upload Video</label>
+                            <input type="file"    (change)="onVideoSelected($event)" >
+
 
                     </div>
-                    <div>
+                    <div class="ml-10 mt-4">
+                        <label>Upload Images</label>
+                        <input type="file"    (change)="onImagesSelected($event)" multiple >
+
+
+                </div>
+                    <!-- <div>
+                        <label>Upload Photos</label>
+                        <input type="file"    (change)="onImagesSelected($event)" formControlName="images">
+                        
+
+                </div> -->
+                    <div class="flex justify-end">
                         <button mat-button matStepperPrevious>Back</button>
                         <button mat-button (click)="stepper.reset()">Reset</button>
-                        <button mat-button>Submit</button>
+                        <button (click)="gigUpload()" mat-button>Submit</button>
                     </div>
                 </div>
             </form>
         </mat-step>
-        <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-            <p>You are now done.</p>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-            </div>
-        </mat-step>
+       
     </mat-stepper>
 
 </div>

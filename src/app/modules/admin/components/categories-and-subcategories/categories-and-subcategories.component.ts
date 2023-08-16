@@ -49,7 +49,13 @@ export class CategoriesAndSubcategoriesComponent implements OnInit {
   subcategoryData:any
 
   dataSource:any
-  displayedColumns:string[]=["Name","Category Name","editAndDelete"]
+  displayedColumns:string[]=["Name","Category Name","Edit Subcategory","Delete Subcategory"]
+
+  categoryDataSource:any
+  categoryDisplayedColumns:string[]=["Category Name","Add Subcategory","Edit Category","Delete Category"]
+
+
+  
 
 @ViewChild(MatPaginator) paginator!:MatPaginator
 @ViewChild(MatSort) sort!:MatSort
@@ -93,6 +99,11 @@ deleteSubcategory(id:any){
         
         this.categories=response.categories
         this.subcategories = response.subcategories
+
+        this.categoryDataSource = new MatTableDataSource<any>(this.categories)
+        this.categoryDataSource.paginator=this.paginator
+        this.categoryDataSource.sort=this.sort
+
         this.dataSource = new MatTableDataSource<any>(this.subcategories)
         this.dataSource.paginator=this.paginator
         this.dataSource.sort=this.sort

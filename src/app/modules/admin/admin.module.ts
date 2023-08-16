@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { SubcategoryEditModalComponent } from './components/subcategory-edit-modal/subcategory-edit-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { GigsComponent } from './components/gigs/gigs.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     EditCategoryComponent,
     UsersComponent,
     FreelancersComponent,
-    SubcategoryEditModalComponent
+    SubcategoryEditModalComponent,
+    GigsComponent
   ],
   imports: [
     CommonModule,

@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
+import { API_URL } from '../helpers/apiUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FrontendService {
   
-  private apiUrl:string='http://localhost:3000';
+  
+
+  private apiUrl:string=API_URL
 
   constructor(private http:HttpClient) { }
 
@@ -109,7 +112,18 @@ export class FrontendService {
     console.log(id)
     return this.http.get(`${this.apiUrl}/admin/deleteSubcategory/${id}`)
   }
+
+  gigUpload(gigData:Object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/user/addGig`,gigData)
+  }
   
+  getAllGigs(freelancerId:any):Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/getAllGigs/${freelancerId}`)
+  }
+
+  getAllGigsInAdmin(){
+    return this.http.get(`${this.apiUrl}/admin/getAllGigs`)
+  }
 }
 
 
