@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+
+
+
+    <div class="container mx-auto">
+        <div class="flex flex-col space-y-6">
+            <form class="w-full">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <div class="text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                            class="rounded-full w-24 h-24 mx-auto" alt="User avatar">
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+                    <h4 class="text-xl font-semibold mb-4">User info</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <label class="w-2/12">Location</label>
+                            <select class="w-10/12 p-2 border rounded">
+                                <option selected>Select country</option>
+                                <option>Belgium</option>
+                                <option>Canada</option>
+                                <option>Denmark</option>
+                                <option>Estonia</option>
+                                <option>France</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center">
+                            <label class="w-2/12">Company name</label>
+                            <input type="text" class="w-10/12 p-2 border rounded" />
+                        </div>
+                        <div class="flex items-center">
+                            <label class="w-2/12">Position</label>
+                            <input type="text" class="w-10/12 p-2 border rounded" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+                    <h4 class="text-xl font-semibold mb-4">Contact info</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <label class="w-2/12">Work number</label>
+                            <input type="tel" class="w-10/12 p-2 border rounded" />
+                        </div>
+                        <div class="flex items-center">
+                            <label class="w-2/12">Mobile number</label>
+                            <input type="tel" class="w-10/12 p-2 border rounded" />
+                        </div>
+                        <div class="flex items-center">
+                            <label class="w-2/12">E-mail address</label>
+                            <input type="email" class="w-10/12 p-2 border rounded" />
+                        </div>
+                        <div class="flex items-center">
+                            <label class="w-2/12">Work address</label>
+                            <textarea rows="3" class="w-10/12 p-2 border rounded"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+                    <h4 class="text-xl font-semibold mb-4">Security</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <label class="w-2/12">Current password</label>
+                            <input type="password" class="w-10/12 p-2 border rounded" />
+                        </div>
+                        <div class="flex items-center">
+                            <label class="w-2/12">New password</label>
+                            <input type="password" class="w-10/12 p-2 border rounded" />
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="checkbox_1" class="mr-2">
+                            <label for="checkbox_1">Make this account public</label>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

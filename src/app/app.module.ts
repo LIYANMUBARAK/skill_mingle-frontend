@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,6 +24,15 @@ import { NgOtpInputModule } from  'ng-otp-input';
 import { AuthInterceptor } from './helpers/interceptors/auth.interceptor';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
+
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 
 @NgModule({
   declarations: [
@@ -54,7 +63,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AngularFireStorageModule,
     FormsModule,
     NgOtpInputModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 ],
   providers: [  {
     provide: HTTP_INTERCEPTORS,

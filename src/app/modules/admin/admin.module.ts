@@ -22,6 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { SubcategoryEditModalComponent } from './components/subcategory-edit-modal/subcategory-edit-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GigsComponent } from './components/gigs/gigs.component';
+import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { GigsComponent } from './components/gigs/gigs.component';
     UsersComponent,
     FreelancersComponent,
     SubcategoryEditModalComponent,
-    GigsComponent
+    GigsComponent,
+    ConfirmationPopupComponent
   ],
   imports: [
     CommonModule,

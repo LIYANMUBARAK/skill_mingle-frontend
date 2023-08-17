@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { FrontendService } from 'src/app/services/frontend.service';
+import { Store, select } from '@ngrx/store';
+
+import { fetchUserAPI } from '../user-store/user.action';
+import { userSelectorData } from '../user-store/user.selector';
+import { User } from '../user-store/user';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -7,42 +14,39 @@ import { FrontendService } from 'src/app/services/frontend.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  dropDown:Boolean=false
-  user:any
+  dropDown: Boolean = false
+  user$!: Observable<User|null>
+  
 
-  constructor(private service:FrontendService){}
+  constructor(private service: FrontendService,private store:Store) { }
 
-  ngOnInit(){
+  ngOnInit() {
+
     this.getUser()
   }
 
-  getUser(){
-    const userId=localStorage.getItem('userId')
-    const userToken = localStorage.getItem('userToken')
-    this.service.getUserUsingId(userId).subscribe((response)=>{
-        this.user=response.user
-        const dateStr = response.user.dateOfJoin;
-const date = new Date(dateStr);
+  getUser() {
+    //     const userId=localStorage.getItem('userId')
+    //     const userToken = localStorage.getItem('userToken')
+    //     this.service.getUserUsingId(userId).subscribe((response)=>{
+    //         this.user=response.user
 
-// Get the month name
-const monthNames = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-const monthName = monthNames[date.getMonth()];
 
-// Get the year
-const year = date.getFullYear();
+    this.store.dispatch(fetchUserAPI())
+    this.user$ = this.store.pipe(select(userSelectorData))
+    this.user$.subscribe((data: any) => {
+      console.log(data)
 
-// Form the desired format
-const formattedDate = `${monthName} ${year}`;
-this.user.dateOfJoin=formattedDate
+
     })
+
+
   }
 
-  toggleDropdown(){
+
+  toggleDropdown() {
     console.log(this.dropDown)
-    this.dropDown=!this.dropDown
+    this.dropDown = !this.dropDown
   }
-  
+
 }

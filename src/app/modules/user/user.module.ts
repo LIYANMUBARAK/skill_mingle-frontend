@@ -31,6 +31,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator'; 
 import { MatSortModule } from '@angular/material/sort';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { userEffects } from '../user/components/user-store/user.effects';
+import { userReducer } from '../user/components/user-store/user.reducer';
+
+
 
 @NgModule({
   declarations: [
@@ -49,6 +56,7 @@ import { MatSortModule } from '@angular/material/sort';
     FreelanceDashboardComponent,
     FreelancerGigsComponent,
     CreateGigComponent,
+    UserEditComponent,
 
   ],
   imports: [
@@ -68,7 +76,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    EffectsModule.forFeature([userEffects]),
+    StoreModule.forFeature( "user",userReducer ),
   ]
 })
 export class UserModule { }
