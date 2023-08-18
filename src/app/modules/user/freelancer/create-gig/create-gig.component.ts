@@ -18,8 +18,33 @@ export class CreateGigComponent {
   videoError: Boolean = false
   thumbnail:any
   selectedImages:any[]=[]
+  categories!:any[]
+  subcategories!:any[]
   
+  constructor(private _formBuilder: FormBuilder,
+    private storage: AngularFireStorage,
+    private service:FrontendService,
+    private router:Router
+  ) { }
 
+
+  ngOnInit(){
+    this.getAllCategories()
+  }
+
+  getAllCategories(){
+    this.service.getAllCategories().subscribe((response:any)=>{
+     this.categories=response.categoryData
+   
+    })
+  }
+
+  getSubcategoriesofCategory(event:any){
+    this.service.getSubcategoriesofCategory(event.value).subscribe((response)=>{
+     this.subcategories=response.subcategoryData
+      console.log(this.subcategories)
+    })
+  }
 
   firstFormGroup = this._formBuilder.group({
     
@@ -47,11 +72,7 @@ export class CreateGigComponent {
   });
   isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder,
-    private storage: AngularFireStorage,
-    private service:FrontendService,
-    private router:Router
-  ) { }
+
 
   async gigUpload(){
 let url:string=''

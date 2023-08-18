@@ -25,10 +25,12 @@
                             <div>
                                 <mat-form-field>
                                     <mat-label>Select Category</mat-label>
-                                    <mat-select formControlName="categorySelect" required>
-                                        <mat-option value="option1">Graphics</mat-option>
-                                        <mat-option value="option2">Video & Animation</mat-option>
-                                        <mat-option value="option3">Writing & Translation</mat-option>
+                                    <mat-select (selectionChange)="getSubcategoriesofCategory($event)" formControlName="categorySelect" required>
+                                        <ng-container *ngFor="let category of categories" >
+                                            <mat-option [value]="category._id" >{{category.name}}</mat-option>
+                                        </ng-container>
+                                        
+                                        
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -36,9 +38,10 @@
                                 <mat-form-field>
                                     <mat-label>Select Sub-Category</mat-label>
                                     <mat-select formControlName="subCategorySelect" required>
-                                        <mat-option value="option1">Test</mat-option>
-                                        <mat-option value="option2">1</mat-option>
-                                        <mat-option value="option3">2</mat-option>
+                                        <ng-container *ngFor="let subcategory of subcategories" >
+                                            <mat-option [value]="subcategory._id" >{{subcategory.name}}</mat-option>
+                                        </ng-container>
+                                        
                                     </mat-select>
                                 </mat-form-field>
                             </div>

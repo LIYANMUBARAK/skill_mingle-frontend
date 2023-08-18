@@ -36,6 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { userEffects } from '../user/components/user-store/user.effects';
 import { userReducer } from '../user/components/user-store/user.reducer';
+import { GigsListingComponent } from './components/gigs-listing/gigs-listing.component';
 
 
 
@@ -57,6 +58,7 @@ import { userReducer } from '../user/components/user-store/user.reducer';
     FreelancerGigsComponent,
     CreateGigComponent,
     UserEditComponent,
+    GigsListingComponent,
 
   ],
   imports: [

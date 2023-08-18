@@ -73,7 +73,6 @@ export class FrontendService {
   }
 
   blockUser(id:Object):Observable<any>{
-    console.log(id)
     return this.http.patch(`${this.apiUrl}/admin/blockUser`,id)
   }
   
@@ -98,18 +97,15 @@ export class FrontendService {
 
   freelancerReject(id:Object):Observable<any>{
     
-    console.log(id)
     return this.http.patch(`${this.apiUrl}/admin/freelancerReject`,id)
   }
 
   getSubCategoryUsingId(id:string):Observable<any>{
 
-    console.log(id)
     return this.http.get(`${this.apiUrl}/admin/getSubcategory/${id}`)
   }
  
   deleteSubCategoryUsingId(id:string):Observable<any>{
-    console.log(id)
     return this.http.get(`${this.apiUrl}/admin/deleteSubcategory/${id}`)
   }
 
@@ -121,8 +117,20 @@ export class FrontendService {
     return this.http.get(`${this.apiUrl}/user/getAllGigs/${freelancerId}`)
   }
 
-  getAllGigsInAdmin(){
+  getAllGigsInAdmin():Observable<any>{
     return this.http.get(`${this.apiUrl}/admin/getAllGigs`)
+  }
+
+    getAllCategories():Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/getAllCategories`)
+  }
+
+  getSubcategoriesofCategory(categoryId:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/getSubcategoriesofCategory/${categoryId}`)
+  }
+
+  getGigs(){
+    return this.http.get(`${this.apiUrl}/user/getGigs`)
   }
 }
 
