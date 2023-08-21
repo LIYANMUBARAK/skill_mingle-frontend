@@ -14,7 +14,7 @@ export class GigsComponent {
   gigs!:any
 
   dataSource:any
-  displayedColumns:string[]=["Title","Category","Subcategory","Description"]
+  displayedColumns:string[]=["Title","Category","Subcategory","Description","Delete"]
 
 @ViewChild(MatPaginator) paginator!:MatPaginator
 @ViewChild(MatSort) sort!:MatSort
@@ -33,6 +33,15 @@ getAllgigs(){
     this.dataSource = new MatTableDataSource<any>(response.gigs)
     this.dataSource.paginator=this.paginator
     this.dataSource.sort=this.sort
+  })
+}
+
+deleteGig(id:string){
+  this.service.deleteGig(id).subscribe((response)=>{
+    console.log(response)
+    if(response.deleteGig===true){
+      this.ngOnInit()
+    }
   })
 }
 

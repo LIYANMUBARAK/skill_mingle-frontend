@@ -129,8 +129,12 @@ export class FrontendService {
     return this.http.get(`${this.apiUrl}/user/getSubcategoriesofCategory/${categoryId}`)
   }
 
-  getGigs(){
+  getGigs():Observable<any>{
     return this.http.get(`${this.apiUrl}/user/getGigs`)
+  }
+
+  deleteGig(id:string):Observable<any>{
+    return this.http.delete(`${this.apiUrl}/user/deleteGig?id=${id}`)
   }
 }
 

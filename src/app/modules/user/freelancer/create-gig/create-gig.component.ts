@@ -123,7 +123,7 @@ const userId=localStorage.getItem('userId')
       const files=inputElement.files
       for(let i=0;i<files.length;i++){
         const imagePath=`gig/image/${files[i].name}`
-        const uploadImage=await this.storage.upload(imagePath,this.video)
+        const uploadImage=await this.storage.upload(imagePath,files[i])
         const imageUrl =<string>await uploadImage.ref.getDownloadURL()
         this.selectedImages.push(imageUrl)
         console.log(this.selectedImages)

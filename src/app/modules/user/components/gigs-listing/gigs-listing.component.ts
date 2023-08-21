@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router, NavigationExtras } from '@angular/router';
 import { FrontendService } from 'src/app/services/frontend.service';
 
 @Component({
@@ -13,13 +14,26 @@ export class GigsListingComponent {
     this.getAllGigs()
   }
 
-  constructor(private service:FrontendService){}
+  constructor(private service:FrontendService,private router:Router){}
 
 
   getAllGigs(){
     this.service.getGigs().subscribe((response:any)=>{
        this.gigs=response.gigsData
+       console.log(this.gigs)
     })
+  }
+
+
+  toGigPage(id:string){
+    
+    const data={id:id}
+    
+    const navigationExtras : NavigationExtras = {
+      state:data,
+    }
+    this.router.navigate(['/gigDetails'],navigationExtras)
+    
   }
 
 }

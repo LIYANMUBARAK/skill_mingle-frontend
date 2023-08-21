@@ -18,6 +18,7 @@ import { CreateGigComponent } from './freelancer/create-gig/create-gig.component
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { GigsComponent } from '../admin/components/gigs/gigs.component';
 import { GigsListingComponent } from './components/gigs-listing/gigs-listing.component';
+import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepage.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path:'gigs',canActivate:[UserAuthGuard],
     component:GigsListingComponent
+  },
+  {
+    path:'gigDetails',canActivate:[UserAuthGuard],
+    component:GigSinglepageComponent
   }
 ];
 

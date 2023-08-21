@@ -4,34 +4,31 @@
 
 <div class="w-full flex justify-center">
 
-<div class="grid grid-cols-6 gap-3 justify-center w-3/4">
-   
-    <div class="col-span-1 h-20 shadow rounded-sm ">
-        
-    </div>
-    <div class="col-span-5 ">
-        <div class="grid grid-cols-6 gap-2 ">
-            <div class="col-span-2 bg-black h-20">
+    <div class="grid grid-cols-6 gap-3 justify-center w-3/4">
 
-            </div>
-            <div class="col-span-2 bg-yellow-300 h-20">
-    
-            </div>
-            <div class="col-span-2 bg-red-600 h-20">
-    
-            </div>
-            <div class="col-span-2 bg-black h-20">
+        <div class="col-span-1 h-20 shadow rounded-sm ">
 
-            </div>
-            <div class="col-span-2 bg-yellow-300 h-20">
-    
-            </div>
-            
         </div>
-        
+        <div class="col-span-5 ">
+           
+            <div class="grid grid-cols-6 gap-2" >
+                <div class="col-span-2  shadow" *ngFor="let gig of gigs">
+                    <a class="cursor-pointer" (click)="toGigPage(gig._id)"><div>
+                        <img [src]="gig.images[0]">
+                    </div>
+                </a>
+                    <h3>Freelancer:<span>{{gig.freelancerId.userName}}</span></h3>
+                    <h3></h3>
+                    <h3>Rating<span></span></h3>
+                    <h3>From<span>{{gig.basicPrice}}</span></h3>
+                </div>
+
+
+            </div>
+   
+        </div>
+        <div class="col-span-1 h-20 shadow rounded-sm ">
+
+        </div>
     </div>
-    <div class="col-span-1 h-20 shadow rounded-sm ">
-        
-    </div>
-</div>
 </div>
