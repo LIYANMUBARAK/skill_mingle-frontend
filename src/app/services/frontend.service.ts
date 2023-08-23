@@ -136,6 +136,11 @@ export class FrontendService {
   deleteGig(id:string):Observable<any>{
     return this.http.delete(`${this.apiUrl}/user/deleteGig?id=${id}`)
   }
+
+  getGig(id:string):Observable<any>{
+
+    return this.http.get(`${this.apiUrl}/user/getGig/${id}`)
+  }
 }
 
 

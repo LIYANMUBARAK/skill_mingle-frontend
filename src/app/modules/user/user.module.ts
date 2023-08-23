@@ -38,6 +38,9 @@ import { userEffects } from '../user/components/user-store/user.effects';
 import { userReducer } from '../user/components/user-store/user.reducer';
 import { GigsListingComponent } from './components/gigs-listing/gigs-listing.component';
 import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepage.component';
+import { OrderComponent } from './components/order/order.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -61,6 +64,8 @@ import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepa
     UserEditComponent,
     GigsListingComponent,
     GigSinglepageComponent,
+    OrderComponent,
+    CheckoutComponent,
 
   ],
   imports: [
@@ -83,6 +88,7 @@ import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepa
     MatSortModule,
     EffectsModule.forFeature([userEffects]),
     StoreModule.forFeature( "user",userReducer ),
+    MatDialogModule
   ]
 })
 export class UserModule { }

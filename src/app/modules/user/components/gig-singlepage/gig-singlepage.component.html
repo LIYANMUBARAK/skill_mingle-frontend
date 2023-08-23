@@ -1,1 +1,82 @@
-<p>gig-singlepage works!</p>
+<app-navbar></app-navbar>
+
+<div class="ml-80 mr-80 mt-20 ">
+    <div class="grid grid-cols-2">
+        <div class="col-span-8 mr-96">
+            <div class=" cols-span-12 ">
+                <h1 class="title w-full">{{gigData.title}}</h1>
+            </div>
+            <div class="col-span-4">
+
+            </div>
+            <div class="col-span-4  h-90">
+                <img class="w-auto h-full" [src]="gigData.images">
+            </div>
+            <div class="col-span-2">
+
+            </div>
+            <div class=" cols-span-4 ">
+                <h1 class="name font-bold">{{gigData.freelancerId.name}}<span class="userName font-thin  text text-">
+                        @{{gigData.freelancerId.userName}}</span></h1>
+            </div>
+            <div class="col-span-2">
+
+            </div>
+            <div class="col-span-4">
+                <h3>{{gigData.description}}</h3>
+            </div>
+            <div class="col-span-2">
+
+            </div>
+        </div>
+        <div class="col-span-2 ml-60 mt-20 w-full  fixed">
+            <div
+                class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
+                <div class="grid grid-cols-3">
+                    <div>
+                        <h3 class="mb-4 text-2xl font-semibold  cursor-pointer"
+                            [ngClass]="{'text-black bg-white':selectedType == priceType.basic}"
+                            (click)="basicPricing()">Basic</h3>
+                    </div>
+                    <div>
+                        <h3 class="mb-4 text-2xl font-semibold  cursor-pointer"
+                            [ngClass]="{'text-black bg-white':selectedType == priceType.standard}"
+                            (click)="standardPricing()">Standard</h3>
+                    </div>
+                    <div>
+                        <h3 class="mb-4 text-2xl font-semibold  cursor-pointer"
+                            [ngClass]="{'text-black bg-white':selectedType == priceType.premium}"
+                            (click)="premiumPricing()">Premium</h3>
+                    </div>
+
+                </div>
+
+                <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400"></p>
+                <div class="flex justify-center items-baseline my-8">
+                    <span class="mr-2 text-5xl font-extrabold">₹{{this.pricing}}</span>
+
+                </div>
+                <!-- List -->
+                <ul role="list" class="mb-8 space-y-4 text-left">
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <img class="w-14" src="../../../../../assets/img/clock.png">
+                        <span>Delivery Time: <span class="font-semibold">{{this.deliveryTime}}</span></span>
+                    </li>
+
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <img class="w-12 ml-3 mt-3" src="../../../../../assets/img/revision.png">
+                        <span>Revisions: <span class="font-semibold">{{this.revisions}}</span></span>
+                    </li>
+
+                </ul>
+                <button (click)="toGigConfirm()"><a
+                        class="text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">Continue</a>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

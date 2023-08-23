@@ -12,12 +12,12 @@
         <div class="col-span-5 ">
            
             <div class="grid grid-cols-6 gap-2" >
-                <div class="col-span-2  shadow" *ngFor="let gig of gigs">
+                <div class="col-span-2 rounded-md  shadow" *ngFor="let gig of gigs">
                     <a class="cursor-pointer" (click)="toGigPage(gig._id)"><div>
                         <img [src]="gig.images[0]">
                     </div>
                 </a>
-                    <h3>Freelancer:<span>{{gig.freelancerId.userName}}</span></h3>
+                    <h3>{{gig.freelancerId.userName}}</h3>
                     <h3></h3>
                     <h3>Rating<span></span></h3>
                     <h3>From<span>{{gig.basicPrice}}</span></h3>

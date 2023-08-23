@@ -19,6 +19,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { GigsComponent } from '../admin/components/gigs/gigs.component';
 import { GigsListingComponent } from './components/gigs-listing/gigs-listing.component';
 import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepage.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,10 @@ const routes: Routes = [
   {
     path:'gigDetails',canActivate:[UserAuthGuard],
     component:GigSinglepageComponent
+  },
+  {
+    path:'checkout',canActivate:[UserAuthGuard],
+    component:CheckoutComponent
   }
 ];
 

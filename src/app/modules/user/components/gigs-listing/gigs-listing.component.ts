@@ -20,7 +20,7 @@ export class GigsListingComponent {
   getAllGigs(){
     this.service.getGigs().subscribe((response:any)=>{
        this.gigs=response.gigsData
-       console.log(this.gigs)
+      
     })
   }
 
