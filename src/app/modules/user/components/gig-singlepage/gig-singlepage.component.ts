@@ -19,16 +19,20 @@ export enum priceType {
 export class GigSinglepageComponent {
 
   gigData: any
+  plan!:string
   revisions!: string
   pricing!: string
   deliveryTime!: string
   priceType = priceType
   selectedType!: priceType
+  gigId!: string
 
-  constructor(private route: ActivatedRoute, private service: FrontendService,private dialog:MatDialog) { }
+
+  constructor(private route: ActivatedRoute, private service: FrontendService, private dialog: MatDialog) { }
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       const id = history.state.id
+      this.gigId = id
       this.getGig(id)
     })
 
@@ -45,6 +49,7 @@ export class GigSinglepageComponent {
   }
 
   basicPricing() {
+    this.plan="basic"
     this.selectedType = priceType.basic
     this.revisions = this.gigData.basicRevisions
     this.pricing = this.gigData.basicPrice
@@ -52,6 +57,7 @@ export class GigSinglepageComponent {
   }
 
   standardPricing() {
+    this.plan="standard"
     this.selectedType = priceType.standard
     this.revisions = this.gigData.standardRevisions
     this.pricing = this.gigData.standardPrice
@@ -59,20 +65,28 @@ export class GigSinglepageComponent {
   }
 
   premiumPricing() {
+    this.plan="premium"
     this.selectedType = priceType.premium
     this.revisions = this.gigData.premiumRevisions
     this.pricing = this.gigData.premiumPrice
     this.deliveryTime = this.gigData.premiumDeliveryTime
   }
 
-  toGigConfirm(){
-    this.dialog.open(OrderComponent,{
-      data:{price:this.pricing,
-            revision:this.revisions,
-            deliveryTime:this.deliveryTime},
-          
-    }).afterClosed().subscribe(()=>{
-      
+  toGigConfirm() {
+    console.log(this.gigData)
+
+    console.log(this.pricing)
+    this.dialog.open(OrderComponent, {
+      data: {
+        id:this.gigId,
+        plan:this.plan,
+        price: this.pricing,
+        revision: this.revisions,
+        deliveryTime: this.deliveryTime
+      },
+
+    }).afterClosed().subscribe(() => {
+
     })
   }
 }

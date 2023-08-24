@@ -7,25 +7,29 @@
     <div class="col-span-4">
       <div>
         <div class="flex photo">
-            
+            <img class="w-20 h-auto" [src]="gigData.images[0]">
+            <h2>{{gigData.title}}</h2>
         </div>
         <div class="flex plan">
-
+          <h2>{{orderData.plan}}</h2>
+          <h2>{{orderData.price}}</h2>
         </div>
         <div  class="planDetails" >
-
+          <h2>Delivery Time :<span>{{orderData.deliveryTime}}</span></h2>
+          <h2>Revision :<span>{{orderData.revision}}</span></h2>
+          
         </div>
         <div class="serviceFee">
-
+          <h2>Service Fee :<span>{{serviceFee}}</span></h2>
         </div>
         <div class="Total">
-
+          <h2>Total <span>₹{{total}}</span></h2>
         </div>
         <div class="totalDeliveryTime">
 
         </div>
         <div>
-            <button>Confirm</button>
+            <button (click)="pay(total)">Confirm</button>
         </div>
       </div>
     
