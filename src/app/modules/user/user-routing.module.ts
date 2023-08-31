@@ -20,6 +20,8 @@ import { GigsComponent } from '../admin/components/gigs/gigs.component';
 import { GigsListingComponent } from './components/gigs-listing/gigs-listing.component';
 import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepage.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -93,6 +95,14 @@ const routes: Routes = [
   {
     path:'checkout',canActivate:[UserAuthGuard],
     component:CheckoutComponent
+  },
+  {
+    path:'forgotPassword',
+    component:ForgotPasswordComponent
+  },
+  {
+    path:'resetPassword',
+    component:ResetPasswordComponent
   }
 ];
 

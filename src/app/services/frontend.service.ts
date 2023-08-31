@@ -141,6 +141,22 @@ export class FrontendService {
 
     return this.http.get(`${this.apiUrl}/user/getGig/${id}`)
   }
+
+  emailExist(email:string):Observable<any>{
+    console.log(email)
+    return this.http.get(`${this.apiUrl}/user/emailExist/${email}`)
+  }
+  
+  
+  editUser(formData:Object):Observable<any>{
+   
+    return this.http.patch(`${this.apiUrl}/user/editUser`,formData)
+  }
+
+  sendPasswordResetEmail(email:string|null|undefined):Observable<any>{
+
+    return this.http.get(`${this.apiUrl}/user/sendPasswordResetEmail/${email}`)
+  }
 }
 
 

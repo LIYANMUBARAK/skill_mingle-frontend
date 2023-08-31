@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { freelancer } from 'src/app/helpers/interfaces/freelancer.interface';
 import { FrontendService } from 'src/app/services/frontend.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-freelancers',
@@ -43,15 +44,42 @@ export class FreelancersComponent implements OnInit {
 
   freelancerApprove(id: string) {
     this.service.freelancerApprove({ userId: id }).subscribe((response) => {
-      console.log(response)
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Freelancer approved'
+      })
     })
   }
 
   freelancerReject(id: string) {
+    Swal.fire({
+      title: 'Do you want to reject the freelancer request??',
+      
+      showCancelButton: true,
+      confirmButtonText: 'Reject',
+      
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
 
-    this.service.freelancerReject({ userId: id }).subscribe((response) => {
-      console.log(response)
+        this.service.freelancerReject({ userId: id }).subscribe((response) => {
+          console.log(response)
+        })
+      }
     })
+    
 
   }
 

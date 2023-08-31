@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FrontendService } from 'src/app/services/frontend.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -50,7 +51,13 @@ this.total = this.serviceFee+Number(this.orderData.price)
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
         console.log(token)
-        alert('Token Created!!');
+        Swal.fire({
+          icon: 'success',
+          title: 'Order successful',
+          text: `Your Order Id is :${token.id}`,
+          confirmButtonText: 'Ok',
+          allowOutsideClick: false, 
+        })
       }
     });
  

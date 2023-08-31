@@ -15,6 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { SubcategoryEditModalComponent } from '../subcategory-edit-modal/subcategory-edit-modal.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-categories-and-subcategories',
@@ -77,11 +78,43 @@ editSubcategory(id:string){
 }
 
 deleteSubcategory(id:any){
-  this.service.deleteSubCategoryUsingId(id).subscribe((response)=>{
-    console.log(response)
-    this.loadCategoriesAndSubcategories() 
+
+  Swal.fire({
+    title: 'Do you want to delete the subcategory?',
+    
+    showCancelButton: true,
+    confirmButtonText: 'Delete',
+    
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+
+      this.service.deleteSubCategoryUsingId(id).subscribe((response)=>{
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Subcategory deleted'
+        })
+        console.log(response)
+        this.loadCategoriesAndSubcategories() 
+      })
+    
+    }
   })
 
+
+  
 }
 
   constructor(private service:FrontendService,private router:Router,private dialog:MatDialog){}
@@ -134,10 +167,41 @@ deleteSubcategory(id:any){
 
   deleteCategory(id:string){
     const categoryData=id
-    console.log(categoryData)
-    this.service.deleteCategory(categoryData).subscribe((response)=>{
-      this.loadCategoriesAndSubcategories() 
-    })
+   
+    Swal.fire({
+      title: 'Do you want to delete the category?',
+      
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+
+        this.service.deleteCategory(categoryData).subscribe((response)=>{
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Category deleted'
+          })
+          this.loadCategoriesAndSubcategories() 
+        })
+      }
+  })
+
+
+
     
   }
 

@@ -41,6 +41,8 @@ import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepa
 import { OrderComponent } from './components/order/order.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -66,6 +68,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     GigSinglepageComponent,
     OrderComponent,
     CheckoutComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
 
   ],
   imports: [
