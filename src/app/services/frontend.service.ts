@@ -56,6 +56,7 @@ export class FrontendService {
   }
 
   editCategory(categoryData:Object):Observable<any>{
+    console.log(categoryData)
     return this.http.patch(`${this.apiUrl}/admin/editCategory`,categoryData)
   }
 

@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FrontendService } from 'src/app/services/frontend.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-subcategory-edit-modal',
@@ -38,7 +39,22 @@ ngOnInit(){}
     this.service.editSubcategory(this.editSubcategoryData).subscribe((response:any)=>{
       if(response.editSubcategory===true){
         this.dialogRef.close()
-          
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Subcategory edited'
+        })
       }
     })
   }

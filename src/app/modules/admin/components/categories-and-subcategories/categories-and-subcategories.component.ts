@@ -16,6 +16,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { SubcategoryEditModalComponent } from '../subcategory-edit-modal/subcategory-edit-modal.component';
 import Swal from 'sweetalert2';
+import { EditCategoryComponent } from '../edit-category/edit-category.component';
+import { AddSubcategoryComponent } from '../add-subcategory/add-subcategory.component';
+import { AddCategoryComponent } from '../add-category/add-category.component';
 
 @Component({
   selector: 'app-categories-and-subcategories',
@@ -77,6 +80,49 @@ editSubcategory(id:string){
   
 }
 
+
+editCategory(id:string,categoryName:string){
+  const data={id:id,categoryName}
+  
+  this.dialog.open(EditCategoryComponent, {
+    data: data// Pass the data to the modal
+  }).afterClosed().subscribe(()=>{
+    this.loadCategoriesAndSubcategories() 
+  })
+
+
+
+}
+
+
+addCategory(){
+    
+ 
+  this.dialog.open(AddCategoryComponent, {
+ 
+  }).afterClosed().subscribe(()=>{
+    this.loadCategoriesAndSubcategories() 
+  })
+
+  
+
+}
+
+addSubcategory(id:string,categoryName:string){
+    
+  const data={id:id,categoryName:categoryName}
+
+  this.dialog.open(AddSubcategoryComponent, {
+    data: data// Pass the data to the modal
+  }).afterClosed().subscribe(()=>{
+    this.loadCategoriesAndSubcategories() 
+  })
+
+  
+
+}
+
+
 deleteSubcategory(id:any){
 
   Swal.fire({
@@ -133,6 +179,7 @@ deleteSubcategory(id:any){
         this.categories=response.categories
         this.subcategories = response.subcategories
 
+        console.log(this.subcategories)
         this.categoryDataSource = new MatTableDataSource<any>(this.categories)
         this.categoryDataSource.paginator=this.paginator
         this.categoryDataSource.sort=this.sort
@@ -144,26 +191,8 @@ deleteSubcategory(id:any){
     })
   }
 
-  addSubcategory(id:string,categoryName:string){
-    
-    const data={id:id}
-    
-    const navigationExtras : NavigationExtras = {
-      state:data,
-    }
-    this.router.navigate(['/admin/addSubcategory'],navigationExtras)
-    
-  }
 
-   editCategory(id:string,categoryName:string){
-    const data={id:id,categoryName}
-    
-    const navigationExtras : NavigationExtras = {
-      state:data,
-    }
-    this.router.navigate(['/admin/editCategory'],navigationExtras)
-    
-  }
+   
 
   deleteCategory(id:string){
     const categoryData=id

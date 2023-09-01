@@ -26,6 +26,7 @@ export class GigSinglepageComponent {
   priceType = priceType
   selectedType!: priceType
   gigId!: string
+  userIsFreelancer:boolean=false
 
 
   constructor(private route: ActivatedRoute, private service: FrontendService, private dialog: MatDialog) { }
@@ -36,12 +37,13 @@ export class GigSinglepageComponent {
       this.getGig(id)
     })
 
-
+    this.checkUserIsFreelancer()
   }
 
 
 
   getGig(id: string) {
+    
     this.service.getGig(id).subscribe((response) => {
       this.gigData = response.gigData
       this.basicPricing()
@@ -88,5 +90,14 @@ export class GigSinglepageComponent {
     }).afterClosed().subscribe(() => {
 
     })
+  }
+
+  checkUserIsFreelancer(){
+    const userId = localStorage.getItem('userId')
+    if(userId){
+      if(this.gigData.freelancerId==userId){
+        this.userIsFreelancer=true
+      }
+    }
   }
 }
