@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { API_URL } from '../helpers/apiUrl';
+import { freelancerAndUser } from '../helpers/interfaces/freelancerAndUser.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -157,6 +158,14 @@ export class FrontendService {
   sendPasswordResetEmail(email:string|null|undefined):Observable<any>{
 
     return this.http.get(`${this.apiUrl}/user/sendPasswordResetEmail/${email}`)
+  }
+
+  chat(id:object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/user/chatConnect`,id)
+  }
+
+  getChatforUser(freelancerAndUserId:freelancerAndUser):Observable<any>{
+    return this.http.post(`${this.apiUrl}/user/getChatforUser`,freelancerAndUserId)
   }
 }
 

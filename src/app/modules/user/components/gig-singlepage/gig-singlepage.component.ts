@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { FrontendService } from 'src/app/services/frontend.service';
 import { OrderComponent } from '../order/order.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 export enum priceType {
@@ -19,39 +20,48 @@ export enum priceType {
 export class GigSinglepageComponent {
 
   gigData: any
-  plan!:string
+  plan!: string
   revisions!: string
   pricing!: string
   deliveryTime!: string
   priceType = priceType
   selectedType!: priceType
   gigId!: string
-  userIsFreelancer:boolean=false
+  userIsFreelancer: boolean = false
+  freelancerId!: string
+  userId!: string | null
 
-
-  constructor(private route: ActivatedRoute, private service: FrontendService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute,
+    private service: FrontendService,
+    private dialog: MatDialog,
+    private router: Router) { }
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       const id = history.state.id
       this.gigId = id
-      this.getGig(id)
+
+      this.getGig(this.gigId)
+
     })
 
-    this.checkUserIsFreelancer()
+
   }
 
 
 
   getGig(id: string) {
-    
+
     this.service.getGig(id).subscribe((response) => {
       this.gigData = response.gigData
+      console.log(this.gigData)
+      this.freelancerId = this.gigData.freelancerId._id
       this.basicPricing()
+      this.checkUserIsFreelancer()
     })
   }
 
   basicPricing() {
-    this.plan="basic"
+    this.plan = "basic"
     this.selectedType = priceType.basic
     this.revisions = this.gigData.basicRevisions
     this.pricing = this.gigData.basicPrice
@@ -59,7 +69,7 @@ export class GigSinglepageComponent {
   }
 
   standardPricing() {
-    this.plan="standard"
+    this.plan = "standard"
     this.selectedType = priceType.standard
     this.revisions = this.gigData.standardRevisions
     this.pricing = this.gigData.standardPrice
@@ -67,7 +77,7 @@ export class GigSinglepageComponent {
   }
 
   premiumPricing() {
-    this.plan="premium"
+    this.plan = "premium"
     this.selectedType = priceType.premium
     this.revisions = this.gigData.premiumRevisions
     this.pricing = this.gigData.premiumPrice
@@ -75,13 +85,11 @@ export class GigSinglepageComponent {
   }
 
   toGigConfirm() {
-    console.log(this.gigData)
 
-    console.log(this.pricing)
     this.dialog.open(OrderComponent, {
       data: {
-        id:this.gigId,
-        plan:this.plan,
+        id: this.gigId,
+        plan: this.plan,
         price: this.pricing,
         revision: this.revisions,
         deliveryTime: this.deliveryTime
@@ -92,12 +100,27 @@ export class GigSinglepageComponent {
     })
   }
 
-  checkUserIsFreelancer(){
-    const userId = localStorage.getItem('userId')
-    if(userId){
-      if(this.gigData.freelancerId==userId){
-        this.userIsFreelancer=true
+  checkUserIsFreelancer() {
+    this.userId = localStorage.getItem('userId')
+
+    console.log(this.freelancerId)
+    if (this.userId) {
+      if (this.freelancerId == this.userId) {
+        this.userIsFreelancer = true
       }
     }
+  }
+
+  chat() {
+    this.service.chat({ freelancerId: this.freelancerId, userId: this.userId }).subscribe((response) => {
+      if (response.chatConnect) {
+        const freelancerAndUserid = { freelancerId: this.freelancerId, userId: this.userId }
+        const navigationExtras : NavigationExtras = {
+          state:freelancerAndUserid,
+        }
+        this.router.navigate(['/chat'],navigationExtras)
+       
+      }
+    })
   }
 }

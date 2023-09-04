@@ -22,6 +22,7 @@ import { GigSinglepageComponent } from './components/gig-singlepage/gig-singlepa
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -103,6 +104,11 @@ const routes: Routes = [
   {
     path:'resetPassword',
     component:ResetPasswordComponent
+  },
+  {
+    path:'chat',canActivate:[UserAuthGuard],
+    component:ChatComponent
+
   }
 ];
 

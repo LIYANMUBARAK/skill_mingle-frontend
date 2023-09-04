@@ -15,10 +15,10 @@
             <div class="col-span-2">
 
             </div>
-            <div class=" cols-span-4 ">
+           <a class="cursor-pointer" (click)="chat()"> <div class=" cols-span-4 ">
                 <h1 class="name font-bold">{{gigData.freelancerId.name}}<span class="userName font-thin  text text-">
                         @{{gigData.freelancerId.userName}}</span></h1>
-            </div>
+            </div></a>
             <div class="col-span-2">
 
             </div>
@@ -71,7 +71,7 @@
                     </li>
 
                 </ul>
-                <button *ngIf="userIsFreelancer===true" (click)="toGigConfirm()"><a
+                <button *ngIf="userIsFreelancer===false" (click)="toGigConfirm()"><a
                         class="text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">Continue</a>
                 </button>
             </div>

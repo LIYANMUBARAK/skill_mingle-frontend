@@ -43,6 +43,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -70,6 +71,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     CheckoutComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    ChatComponent,
 
   ],
   imports: [
