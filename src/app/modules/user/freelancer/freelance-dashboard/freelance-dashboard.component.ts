@@ -9,11 +9,15 @@ import { FrontendService } from 'src/app/services/frontend.service';
 export class FreelanceDashboardComponent {
   userId!:string|null
   userData!:any
+  allConnections:any
+ 
+
   constructor(private service:FrontendService){}
 
   ngOnInit(){
       this.userId=localStorage.getItem('userId')
       this.getUser(this.userId)
+      this.getConnectionsForFreelancer()
   }
 
   getUser(userId:any){
@@ -28,4 +32,12 @@ export class FreelanceDashboardComponent {
       
     })
   }
-}
+
+  getConnectionsForFreelancer(){
+   
+      this.service.getConnectionsForFreelancer(this.userId).subscribe((response)=>{
+     this.allConnections=response.connections
+      })
+    }
+  }
+

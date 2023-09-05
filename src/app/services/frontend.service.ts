@@ -167,6 +167,18 @@ export class FrontendService {
   getChatforUser(freelancerAndUserId:freelancerAndUser):Observable<any>{
     return this.http.post(`${this.apiUrl}/user/getChatforUser`,freelancerAndUserId)
   }
+
+  chatSend(chat:object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/user/chatSend`,chat)
+  }
+
+  getConnections(userId:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/getConnections/${userId}`)
+  }
+
+  getConnectionsForFreelancer(freelancerId:string|null):Observable<any>{
+        return this.http.get(`${this.apiUrl}/user/getConnectionsForFreelancer/${freelancerId}`)
+  }
 }
 
 

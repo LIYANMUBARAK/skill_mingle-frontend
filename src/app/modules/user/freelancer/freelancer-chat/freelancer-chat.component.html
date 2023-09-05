@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-freelancer-navbar></app-freelancer-navbar>
 <div class="flex h-screen antialiased text-gray-800">
   <div class="flex flex-row h-full w-full overflow-x-hidden">
     <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
@@ -19,11 +19,13 @@
           <span class="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">4</span>
         </div>
         <div class="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
-          <button [ngClass]="{'bg-gray-100':freelancerId==item.connections.freelancer._id}"  *ngFor="let item of allConnections" class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
+ 
+          
+          <button (click)="loadUserChat(item.connections.user._id)"   class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2 text-black"  *ngFor="let item of allConnections">
             <div class="flex items-center justify-center h-8 w-8 bg-indigo-200 rounded-full">
               H
             </div>
-            <div class="ml-2 text-sm font-semibold">{{item.connections.freelancer.name}}</div>
+            <div class="ml-2 text-sm font-semibold">{{item.connections.user.name}}</div>
           </button>
           
         </div>
@@ -44,7 +46,7 @@
               <div
                 class="col-start-1 col-end-8 p-3 rounded-lg"
                 *ngIf="
-                  item.reciever === userId
+                  item.reciever === freelancerId
                 "
               >
                 <div class="flex flex-row items-center">
@@ -66,7 +68,7 @@
                     <div
                       *ngIf="
                         item.sender ===
-                      freelancerId
+                      userId
 
                       "
                     >
@@ -84,8 +86,8 @@
               <div
                 class="col-start-6 col-end-13 p-3 rounded-lg"
                 *ngIf="
-                  item.sender === userId&&
-                  item.reciever === freelancerId
+                  item.sender === freelancerId&&
+                  item.reciever === userId
                 "
               >
                 <div class="flex items-center justify-start flex-row-reverse">
@@ -107,8 +109,8 @@
                     <div
                       *ngIf="
                         item.sender ===
-                        userId&&
-                        item.reciever === freelancerId
+                        freelancerId&&
+                        item.reciever === userId
                       "
                     >
                       {{ item.message }}

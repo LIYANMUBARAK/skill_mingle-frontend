@@ -44,6 +44,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { FreelancerChatComponent } from './freelancer/freelancer-chat/freelancer-chat.component';
 
 
 
@@ -72,6 +73,7 @@ import { ChatComponent } from './components/chat/chat.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ChatComponent,
+    FreelancerChatComponent,
 
   ],
   imports: [
