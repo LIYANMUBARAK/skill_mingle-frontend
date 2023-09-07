@@ -179,6 +179,14 @@ export class FrontendService {
   getConnectionsForFreelancer(freelancerId:string|null):Observable<any>{
         return this.http.get(`${this.apiUrl}/user/getConnectionsForFreelancer/${freelancerId}`)
   }
+
+  getGigOfCategory(categoryName:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/getGigOfCategory/${categoryName}`)
+  }
+
+  orderSave(orderData:object):Observable<object>{
+    return this.http.post(`${this.apiUrl}/user/orderSave`,orderData)
+  }
 }
 
 

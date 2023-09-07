@@ -7,6 +7,7 @@ import { occupation } from 'src/app/helpers/interfaces/occupation.interface';
 import { certifiction } from 'src/app/helpers/interfaces/certification.interface';
 import { FrontendService } from 'src/app/services/frontend.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-freelancer-signup',
@@ -30,43 +31,43 @@ export class FreelancerSignupComponent {
 
   selectOccupation!: string
   selectOccupationError: boolean = false
- 
+
   selectEducation!: string;
-  selectEducationError:boolean=false
-  
-  
+  selectEducationError: boolean = false
+
+
   certificationName!: string;
-  certifiedFrom!:string
-  certifiedYear!:string
-  certificationNameError:boolean=false
-  certifiedFromError:boolean=false
-  certifiedYearError:boolean=false
+  certifiedFrom!: string
+  certifiedYear!: string
+  certificationNameError: boolean = false
+  certifiedFromError: boolean = false
+  certifiedYearError: boolean = false
 
-  userId!:string|null
-  freelancerApplyData!:object
+  userId!: string | null
+  freelancerApplyData!: object
 
-  constructor(private fb: FormBuilder, private service:FrontendService,private router:Router) { }
+  constructor(private fb: FormBuilder, private service: FrontendService, private router: Router) { }
 
-  ngOnInit() { 
-    this.userId=localStorage.getItem('userId') 
+  ngOnInit() {
+    this.userId = localStorage.getItem('userId')
   }
 
   freelancerForm = this.fb.group({
     skills: this.fb.array([]),
     languages: this.fb.array([]),
-    occupation:[''],
-    education:this.fb.array([]),
-    certification:this.fb.array([]),
-    description:[''],
-    personalWebsite:[''],
-    instagram:[''],
-    facebook:[''],
-    twitter:['']
+    occupation: [''],
+    education: this.fb.array([]),
+    certification: this.fb.array([]),
+    description: [''],
+    personalWebsite: [''],
+    instagram: [''],
+    facebook: [''],
+    twitter: ['']
 
   })
 
   //skill
-  
+
   get skills() {
     return this.freelancerForm.get("skills") as FormArray
   }
@@ -146,106 +147,133 @@ export class FreelancerSignupComponent {
 
   }
 
-  
 
- 
 
-//  education
 
-onEducationSelect(e: any) {
-  this.selectEducation = e.value
-  
-}
 
-get education() {
-  return this.freelancerForm.get("education") as FormArray
-}
+  //  education
 
-educationAdd() {
-  if (this.selectEducation) {
-    this.education.push(new FormControl( this.selectEducation))
-    
+  onEducationSelect(e: any) {
+    this.selectEducation = e.value
+
   }
-  else if (!this.selectEducation) {
-    this.selectEducationError = true
+
+  get education() {
+    return this.freelancerForm.get("education") as FormArray
   }
- 
 
-}
+  educationAdd() {
+    if (this.selectEducation) {
+      this.education.push(new FormControl(this.selectEducation))
 
-
-getEducation(index: number) {
-  let education = this.freelancerForm.value.education?.[index]
-  return `${education} `
-}
-deleteEducation(index: number) {
-
-  this.education.removeAt(index)
-
-}
-    
-  
-// certification
-
-onTypeCertificationName(e: any) {
-  this.certificationName = e.value
-}
-
-onTypeCertifiedFrom(e: any) {
-  this.certifiedFrom = e.value
-}
-
-onCertifiedYearSelect(e: any){
-  this.certifiedYear = e.value
-}
-
-
-get certification() {
-  return this.freelancerForm.get("certification") as FormArray
-}
-
-
-certificationAdd(){
-      if(this.certificationName&&this.certifiedFrom&&this.certifiedYear){
-        this.certification.push(new FormControl({ certificationName: this.certificationName, certifiedFrom: this.certifiedFrom, certifiedYear:this.certifiedYear}))
-      }
-      else if(!this.certificationName)
-      {
-        this.certificationNameError=true
-      }
-      else if(!this.certifiedFrom)
-      {
-        this.certifiedFromError=true
-      }
-      else if(!this.certifiedYear)
-      {
-        this.certifiedYearError=true
-      }
-}
-
-getCertification(index: number) {
-  let certification : certifiction = this.freelancerForm.value.certification?.[index] as certifiction
-  return `${certification?.certificationName} - ${certification?.certifiedFrom }-${certification?.certifiedYear}`
-}
-
-deleteCertification(index: number) {
-
-  this.certification.removeAt(index)
-
-}
- 
-//
-
-onSubmit(){
-  this.freelancerApplyData={userId:this.userId,...this.freelancerForm.value}
-  console.log(this.freelancerApplyData)
-  this.service.freelancerApply(this.freelancerApplyData).subscribe((response)=>{
-    if(response.freelancerApply===true){
-      console.log(response)
     }
-  })
-}
+    else if (!this.selectEducation) {
+      this.selectEducationError = true
+    }
 
 
-}
+  }
 
+
+  getEducation(index: number) {
+    let education = this.freelancerForm.value.education?.[index]
+    return `${education} `
+  }
+  deleteEducation(index: number) {
+
+    this.education.removeAt(index)
+
+  }
+
+
+  // certification
+
+  onTypeCertificationName(e: any) {
+    this.certificationName = e.value
+  }
+
+  onTypeCertifiedFrom(e: any) {
+    this.certifiedFrom = e.value
+  }
+
+  onCertifiedYearSelect(e: any) {
+    this.certifiedYear = e.value
+  }
+
+
+  get certification() {
+    return this.freelancerForm.get("certification") as FormArray
+  }
+
+
+  certificationAdd() {
+    if (this.certificationName && this.certifiedFrom && this.certifiedYear) {
+      this.certification.push(new FormControl({ certificationName: this.certificationName, certifiedFrom: this.certifiedFrom, certifiedYear: this.certifiedYear }))
+    }
+    else if (!this.certificationName) {
+      this.certificationNameError = true
+    }
+    else if (!this.certifiedFrom) {
+      this.certifiedFromError = true
+    }
+    else if (!this.certifiedYear) {
+      this.certifiedYearError = true
+    }
+  }
+
+  getCertification(index: number) {
+    let certification: certifiction = this.freelancerForm.value.certification?.[index] as certifiction
+    return `${certification?.certificationName} - ${certification?.certifiedFrom}-${certification?.certifiedYear}`
+  }
+
+  deleteCertification(index: number) {
+
+    this.certification.removeAt(index)
+
+  }
+
+  //
+
+  onSubmit() {
+
+    Swal.fire({
+      title: 'Do you want to apply for being a freelancer?',
+
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+
+        this.freelancerApplyData = { userId: this.userId, ...this.freelancerForm.value }
+
+        this.service.freelancerApply(this.freelancerApplyData).subscribe((response) => {
+          if (response.freelancerApply === true) {
+            this.router.navigate(['/userProfile'])
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({
+              icon: 'success',
+              title: 'You will become freelancer once admin approves'
+            })
+          }
+        })
+
+      }
+
+
+    }
+
+    )}
+  }

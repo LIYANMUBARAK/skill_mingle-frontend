@@ -61,6 +61,7 @@ export class FreelancersComponent implements OnInit {
         title: 'Freelancer approved'
       })
     })
+    this.getAllFreelancers()  
   }
 
   freelancerReject(id: string) {
@@ -75,7 +76,7 @@ export class FreelancersComponent implements OnInit {
       if (result.isConfirmed) {
 
         this.service.freelancerReject({ userId: id }).subscribe((response) => {
-          console.log(response)
+          this.getAllFreelancers()
         })
       }
     })

@@ -11,7 +11,9 @@ export class GigsListingComponent {
    gigs:any
 
   ngOnInit(){
-    this.getAllGigs()
+    const categoryName = history.state.categoryName
+  
+    this.getGigOfCategory(categoryName)
   }
 
   constructor(private service:FrontendService,private router:Router){}
@@ -21,6 +23,12 @@ export class GigsListingComponent {
     this.service.getGigs().subscribe((response:any)=>{
        this.gigs=response.gigsData
       
+    })
+  }
+
+  getGigOfCategory(categoryName:string){
+    this.service.getGigOfCategory(categoryName).subscribe((response)=>{
+      this.gigs= response.gigsData
     })
   }
 

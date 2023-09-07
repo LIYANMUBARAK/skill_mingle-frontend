@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FrontendService } from 'src/app/services/frontend.service';
 import Swal from 'sweetalert2';
 
@@ -15,8 +15,11 @@ export class CheckoutComponent {
   serviceFee:any
   total!:number
   handler:any=null
+  userId:string = localStorage.getItem('userId') as string
 
-  constructor(private route: ActivatedRoute,private service:FrontendService) { }
+  constructor(private route: ActivatedRoute,
+    private service:FrontendService,
+    private router:Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
@@ -58,6 +61,7 @@ this.total = this.serviceFee+Number(this.orderData.price)
           confirmButtonText: 'Ok',
           allowOutsideClick: false, 
         })
+       
       }
     });
  
@@ -84,7 +88,10 @@ this.total = this.serviceFee+Number(this.orderData.price)
           token: function (token: any) {
             // You can access the token ID with `token.id`.
             // Get the token ID to your server-side code for use.
-            console.log(token)
+            this.service.orderSave({orderToken:token,gigId:this.gigData._id,freelancerId:this.gigData.freelancerId._id,userId:this.userId}).subscribe((response:object)=>{
+              console.log(response)
+             this.router.navigate(['/dashboard'])
+            })
             alert('Payment Success!!');
           }
         });
