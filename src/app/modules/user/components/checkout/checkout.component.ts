@@ -50,10 +50,12 @@ this.total = this.serviceFee+Number(this.orderData.price)
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51NiZHtSG7u0ZJ7CuQZRnfrUoUJTh28VtXqUFjogpgw5YgeLiKZjvnIesatObqe1NuvJ20BNEGlew6fL3Frf1yhnH00vU3jmRmL',
       locale: 'auto',
-      token: function (token: any) {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
+      token:  (token: any)=> {
         console.log(token)
+        this.service.orderSave({orderToken:token.id,gigId:this.gigData._id,freelancerId:this.gigData.freelancerId._id,userId:this.userId,plan:this.orderData.plan,deliveryTime:this.orderData.deliveryTime[0],price:this.orderData.price,revision:this.orderData.revision}).subscribe((response:object)=>{
+          console.log(response)
+         this.router.navigate(['/dashboard'])
+        })
         Swal.fire({
           icon: 'success',
           title: 'Order successful',
@@ -88,10 +90,7 @@ this.total = this.serviceFee+Number(this.orderData.price)
           token: function (token: any) {
             // You can access the token ID with `token.id`.
             // Get the token ID to your server-side code for use.
-            this.service.orderSave({orderToken:token,gigId:this.gigData._id,freelancerId:this.gigData.freelancerId._id,userId:this.userId}).subscribe((response:object)=>{
-              console.log(response)
-             this.router.navigate(['/dashboard'])
-            })
+           
             alert('Payment Success!!');
           }
         });

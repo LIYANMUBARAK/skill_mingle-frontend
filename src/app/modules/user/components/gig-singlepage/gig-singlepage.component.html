@@ -15,7 +15,7 @@
             <div class="col-span-2">
 
             </div>
-           <a class="cursor-pointer" (click)="chat()"> <div class=" cols-span-4 ">
+           <a *ngIf="userIsFreelancer===false" class="cursor-pointer" (click)="chat()"> <div class=" cols-span-4 ">
                 <h1 class="name font-bold">{{gigData.freelancerId.name}}<span class="userName font-thin  text text-">
                         @{{gigData.freelancerId.userName}}</span></h1>
             </div></a>
@@ -31,21 +31,21 @@
         </div>
         <div class="col-span-2 ml-60 mt-20 w-full  fixed">
             <div
-                class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow">
-                <div class="grid grid-cols-3">
-                    <div>
-                        <h3 class="mb-4 text-2xl font-semibold  cursor-pointer"
-                            [ngClass]="{'text-black bg-white':selectedType == priceType.basic}"
+                class="flex flex-col mx-auto max-w-lg text-center  bg-white -lg border border-gray-300 ">
+                <div class="grid grid-cols-3 text-gray-400 bg-gray-50">
+                    <div class="border border-gray-300" [ngClass]="{' border-b-4 border-b-black text-black bg-white ':selectedType == priceType.basic}">
+                        <h3 class="my-3 text-2xl font-semibold   cursor-pointer"
+                           
                             (click)="basicPricing()">Basic</h3>
                     </div>
-                    <div>
-                        <h3 class="mb-4 text-2xl font-semibold  cursor-pointer"
-                            [ngClass]="{'text-black bg-white':selectedType == priceType.standard}"
+                    <div class="border border-gray-300" [ngClass]="{' border-b-4 border-b-black text-black bg-white ':selectedType == priceType.standard}">
+                        <h3 class="my-3  text-2xl font-semibold  cursor-pointer"
+                            
                             (click)="standardPricing()">Standard</h3>
                     </div>
-                    <div>
-                        <h3 class="mb-4 text-2xl font-semibold  cursor-pointer"
-                            [ngClass]="{'text-black bg-white':selectedType == priceType.premium}"
+                    <div class="border border-gray-300" [ngClass]="{' border-b-4 border-b-black text-black bg-white ':selectedType == priceType.premium }">
+                        <h3 class="my-3  text-2xl font-semibold  cursor-pointer"
+                            
                             (click)="premiumPricing()">Premium</h3>
                     </div>
 
@@ -57,7 +57,7 @@
 
                 </div>
                 <!-- List -->
-                <ul role="list" class="mb-8 space-y-4 text-left">
+                <ul role="list" class="mb-8 space-y-4 text-left p-6">
                     <li class="flex items-center space-x-3">
                         <!-- Icon -->
                         <img class="w-14" src="../../../../../assets/img/clock.png">
@@ -71,10 +71,16 @@
                     </li>
 
                 </ul>
-                <button *ngIf="userIsFreelancer===false" (click)="toGigConfirm()"><a
-                        class="text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">Continue</a>
+                
+                <button *ngIf="userIsFreelancer===false" 
+                class="border border-black  mx-4 hover:bg-gray-500 hover:text-white hover:border-gray-500 text-black font-bold py-2 px-4 " (click)="chat()">Contact me
+            </button>
+
+                <button *ngIf="userIsFreelancer===false" (click)="toGigConfirm()"
+                    class=" m-4 bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 ">Continue
                 </button>
             </div>
+            
         </div>
 
 

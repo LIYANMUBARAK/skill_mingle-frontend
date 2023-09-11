@@ -13,6 +13,7 @@ import { FormBuilder } from '@angular/forms';
 import { FrontendService } from 'src/app/services/frontend.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Component({
@@ -26,13 +27,19 @@ export class UserEditComponent {
   userEdit!:FormGroup
   nameExistError:boolean=false
   userNameExistError:boolean=false
+previewUrl!:string|ArrayBuffer|null
+  imagePath!:string
+  profileImage!:File
 
   constructor(private store:Store,
               private fb:FormBuilder,
               private service:FrontendService,
-              private router:Router){
+              private router:Router,
+              private storage:AngularFireStorage)
+              {
                 this.userEdit = this.fb.group({
-                  name: [''], // Initialize with an empty string
+                  profilePic:[''],
+                  name: [''], 
                   userName: [''],
                   city: ['']
                 });
@@ -44,6 +51,7 @@ export class UserEditComponent {
     this.user$.subscribe((data:User|null) => {
       if(data){
         this.userEdit.patchValue({
+          imageUrl:data.profilePic,
           name: data.name,
           userName: data.userName,
           city: data.city
@@ -54,9 +62,27 @@ export class UserEditComponent {
     })
   }
 
-  patchForm() {
-    const formData = this.userEdit.value;
+  async onImageSelected(event:Event){
+    // this.thumbnail = <File>(event.target as HTMLInputElement)?.files?.[0]
     
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files) {
+      this.profileImage=inputElement.files[0]
+    
+         this.imagePath=`user/profilePic/${this.profileImage.name}`
+         const uploadImage=await this.storage.upload(this.imagePath,this.profileImage)
+         const imageUrl =<string>await uploadImage.ref.getDownloadURL()
+        this.userEdit.patchValue({
+          profilePic:imageUrl
+        })
+    }
+
+    this.previewImage() 
+  }
+
+  async patchForm() {
+    const formData = this.userEdit.value;
+   console.log(formData)
    this.service.editUser(formData).subscribe((response)=>{
     const Toast = Swal.mixin({
       toast: true,
@@ -77,6 +103,14 @@ export class UserEditComponent {
     this.router.navigate(['/userProfile'])
    })
     // Do something with formData
+  }
+
+  previewImage() {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewUrl = reader.result;
+    };
+    reader.readAsDataURL(this.profileImage!);
   }
 
     

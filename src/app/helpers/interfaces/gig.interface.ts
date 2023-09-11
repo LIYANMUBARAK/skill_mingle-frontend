@@ -1,0 +1,32 @@
+export interface gig {
+    basicDeliveryTime?: Array<string>,
+    basicPrice?: string,
+    standardDeliveryTime?: Array<string>,
+    standardRevisions?: string,
+    standardPrice?: string,
+    premiumDeliveryTime?: Array<string>,
+    premiumPrice?: string,
+    premiumRevisions?: string,
+    id: string,
+    category: string,
+    description: string,
+    freelancerId: {
+        _id?: string,
+        city?: string,
+        country?: string,
+        dateOfJoin?: Date,
+        email?: string,
+        freelancerId?: string,
+        gender?: string,
+        isBlocked?: boolean,
+        isFreelancer?: boolean,
+        mobileNumber?: number | string,
+        name?: string,
+        password?: string,
+        userName?: string,
+    },
+    images?: Array<string>,
+    subcategory: string,
+    title: string
+
+}

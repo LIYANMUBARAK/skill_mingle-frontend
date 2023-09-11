@@ -23,6 +23,7 @@ import { SubcategoryEditModalComponent } from './components/subcategory-edit-mod
 import { MatDialogModule } from '@angular/material/dialog';
 import { GigsComponent } from './components/gigs/gigs.component';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ConfirmationPopupComponent } from './components/confirmation-popup/conf
     FreelancersComponent,
     SubcategoryEditModalComponent,
     GigsComponent,
-    ConfirmationPopupComponent
+    ConfirmationPopupComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

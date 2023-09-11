@@ -35,7 +35,7 @@ export class UserProfileComponent {
     this.store.dispatch(fetchUserAPI())
     this.user$ = this.store.pipe(select(userSelectorData))
     this.user$.subscribe((data: any) => {
-      console.log(data)
+     
 
 
     })
@@ -45,7 +45,7 @@ export class UserProfileComponent {
 
 
   toggleDropdown() {
-    console.log(this.dropDown)
+   
     this.dropDown = !this.dropDown
   }
 

@@ -2,6 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NavigationExtras } from '@angular/router';
 import { Router } from '@angular/router';
+import { gig } from 'src/app/helpers/interfaces/gig.interface';
+import { gigOrder } from 'src/app/helpers/interfaces/gigOrder.interface';
+import { FrontendService } from 'src/app/services/frontend.service';
 
 @Component({
   selector: 'app-order',
@@ -9,13 +12,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: object,
+
+  gigData!:gig
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: gigOrder,
   private router:Router,
-  private dialogRef:MatDialogRef<OrderComponent>
+  private dialogRef:MatDialogRef<OrderComponent>,
+  private service:FrontendService
                ){}
 
   ngOnInit(){
     console.log(this.data)
+    
+    this.getGigData()
+    
+
+  }
+
+  getGigData(){
+    this.service.getGig(this.data.id).subscribe((response)=>{
+      this.gigData=response.gigData
+     
+    })
   }
 
   toCheckoutPage(){
@@ -29,5 +48,9 @@ export class OrderComponent {
       this.router.navigate(['/checkout'],navigationExtras)
       this.dialogRef.close()  
     
+  }
+
+  closeModal(){
+    this.dialogRef.close()
   }
 }

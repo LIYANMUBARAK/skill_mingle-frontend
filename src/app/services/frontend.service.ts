@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { API_URL } from '../helpers/apiUrl';
 import { freelancerAndUser } from '../helpers/interfaces/freelancerAndUser.interface';
+import { Order } from '../helpers/interfaces/orderData.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -151,7 +152,7 @@ export class FrontendService {
   
   
   editUser(formData:Object):Observable<any>{
-   
+    console.log(formData)
     return this.http.patch(`${this.apiUrl}/user/editUser`,formData)
   }
 
@@ -185,7 +186,20 @@ export class FrontendService {
   }
 
   orderSave(orderData:object):Observable<object>{
+    console.log(orderData)
     return this.http.post(`${this.apiUrl}/user/orderSave`,orderData)
+  }
+
+  getSubcategoriesOfCategory(categoryName:string):Observable<any>{
+    return this.http.get(`${this.apiUrl}/user/getSubcategories/${categoryName}`)
+  }
+
+  getAllOrdersForUser(userId:string):Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.apiUrl}/user/getAllOrdersForUser/${userId}`)
+  }
+
+  getAllOrders():Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.apiUrl}/admin/getAllOrders`)
   }
 }
 

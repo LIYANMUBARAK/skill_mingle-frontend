@@ -6,10 +6,15 @@
         <div class="flex flex-col space-y-6">
             <form  [formGroup]="userEdit" class="w-full">
                 <div class="bg-white shadow-md rounded-lg p-6">
-                    <div class="text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                            class="rounded-full w-24 h-24 mx-auto" alt="User avatar">
-                    </div>
+                    <label  for="forImage"  class="text-center cursor-pointer" >
+                        <input id="forImage" type="file" (change)="onImageSelected($event)" hidden>
+                        <img *ngIf="profileImage" src={{previewUrl}}
+                        class="rounded-full w-24 h-24 mx-auto" alt="User avatar"  >
+                        <img  *ngIf="(user$|async)?.profilePic && !previewUrl" src={{(user$|async)?.profilePic}}
+                        class="rounded-full w-24 h-24 mx-auto" alt="User avatar"  >
+                        <img *ngIf="!(user$|async)?.profilePic" src="../../../../assets/img/default-user-image.svg"
+                            class="rounded-full w-24 h-24 mx-auto" alt="User avatar"  >
+                    </label>
                 </div>
                 <div class="bg-white shadow-md rounded-lg p-6 mt-6">
                     <h4 class="text-xl font-semibold mb-4">User info</h4>
@@ -54,7 +59,7 @@
                         
                         <div class="flex justify-end space-x-4">
                             <button type="submit" class="btn btn-primary" (click)="patchForm()">Submit</button>
-                            <button type="reset" class="btn btn-default">Cancel</button>
+                            <button type="reset" class="btn btn-default" routerLink="/userProfile">Cancel</button>
                         </div>
                     </div>
                 </div>

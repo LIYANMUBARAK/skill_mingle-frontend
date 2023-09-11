@@ -24,6 +24,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { FreelancerChatComponent } from './freelancer/freelancer-chat/freelancer-chat.component';
+import { ManageOrderComponent } from './components/manage-order/manage-order.component';
 
 const routes: Routes = [
   {
@@ -115,6 +116,10 @@ const routes: Routes = [
     path:'freelancerChat',canActivate:[UserAuthGuard],
     component:FreelancerChatComponent
   },
+  {
+    path:'orders',canActivate:[UserAuthGuard],
+    component:ManageOrderComponent
+  }
 ];
 
 @NgModule({

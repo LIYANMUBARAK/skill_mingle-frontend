@@ -6,6 +6,7 @@ import { message } from 'src/app/helpers/interfaces/message.interface';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-freelancer-chat',
   templateUrl: './freelancer-chat.component.html',
@@ -23,7 +24,9 @@ export class FreelancerChatComponent {
 
   constructor(private service: FrontendService,
     private fb: FormBuilder,
-    private socket: Socket) { }
+    private socket: Socket,
+    
+    ) { }
 
   ngOnInit() {
     this.getUser(this.freelancerId)

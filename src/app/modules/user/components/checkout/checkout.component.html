@@ -1,38 +1,73 @@
 <app-navbar></app-navbar>
 
-<div class="grid grid-cols-12">
-    <div class="col-span-8">
 
-    </div>
-    <div class="col-span-4">
-      <div>
-        <div class="flex photo">
-            <img class="w-20 h-auto" [src]="gigData.images[0]">
-            <h2>{{gigData.title}}</h2>
-        </div>
-        <div class="flex plan">
-          <h2>{{orderData.plan}}</h2>
-          <h2>{{orderData.price}}</h2>
-        </div>
-        <div  class="planDetails" >
-          <h2>Delivery Time :<span>{{orderData.deliveryTime}}</span></h2>
-          <h2>Revision :<span>{{orderData.revision}}</span></h2>
+
+
+<div class="col-span-1 bg-white lg:block hidden ml-40 mr-40">
+  <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
+  <ul class="py-6 border-b space-y-6 px-8">
+      <li class="grid grid-cols-6 gap-2 border-b-1">
+          <div class="col-span-1 self-center">
+              <img [src]="gigData.images[0]" alt="Product" class="rounded w-full">
+          </div>
+          <div class="flex flex-col col-span-3 pt-2">
+              <span class="text-gray-600 text-md font-semi-bold">{{gigData.title}}</span>
+              
+          </div>
+          <div class="col-span-2 pt-3">
+              <div class="flex items-center space-x-2 justify-between">
+                  <span class="text-pink-400 text-sm font-semibold inline-block">{{orderData.plan|uppercase}}</span>
+                  <span class="text-black text-md font-semibold inline-block">₹{{orderData.price}}</span>
+              </div>
+          </div>
+      </li>
+      <li class="grid grid-cols-6 gap-2 border-b-1">
+          <div class="col-span-1 self-center">
+            
+          </div>
+          <div class="flex flex-col col-span-3 pt-2">
+              <span class="text-gray-600 text-md font-semi-bold">Delivery Time</span>
+         
+          </div>
+          <div class="col-span-2 pt-3">
+              <div class="flex items-center space-x-2 text-sm justify-between">
+                  <span class="text-gray-400">{{orderData.deliveryTime}} days</span>
+                  
+              </div>
+          </div>
+      </li>
+      <li class="grid grid-cols-6 gap-2 border-b-1">
+        <div class="col-span-1 self-center">
           
         </div>
-        <div class="serviceFee">
-          <h2>Service Fee :<span>{{serviceFee}}</span></h2>
+        <div class="flex flex-col col-span-3 pt-2">
+            <span class="text-gray-600 text-md font-semi-bold">Revision</span>
+       
         </div>
-        <div class="Total">
-          <h2>Total <span>₹{{total}}</span></h2>
+        <div class="col-span-2 pt-3">
+            <div class="flex items-center space-x-2 text-sm justify-between">
+                <span class="text-gray-400">{{orderData.revision}} Times</span>
+                
+            </div>
         </div>
-        <div class="totalDeliveryTime">
-
-        </div>
-        <div>
-            <button (click)="pay(total)">Confirm</button>
-        </div>
+    </li>
+  </ul>
+  <div class="px-8 border-b">
+      <div class="flex justify-between py-4 text-gray-600">
+          <span>Subtotal</span>
+          <span class="font-semibold text-black">{{orderData.price}}</span>
       </div>
-    
-
-    </div>
+      <div class="flex justify-between py-4 text-gray-600">
+          <span>Service Fee</span>
+          <span class="font-semibold text-black">{{serviceFee}}</span>
+      </div>
+  </div>
+  <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
+      <span>Total</span>
+      <span>{{total}}</span>
+  </div>
+<div class="flex justify-end"><button  
+  class="  border border-black  mx-4  hover:bg-black hover:text-white hover:border-gray-500 text-black font-bold py-2 px-10 " (click)="pay(total)" >Pay ₹{{total}}
+</button></div>
+  
 </div>
