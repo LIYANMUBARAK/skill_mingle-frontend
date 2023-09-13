@@ -51,6 +51,7 @@ import { FreelancerOrdersComponent } from './freelancer/freelancer-orders/freela
 import { SharedModule } from 'src/app/shared modules/shared.module';
 import { FreelancerOrderDetailsComponent } from './freelancer/freelancer-order-details/freelancer-order-details.component';
 import { DeliverWorkComponent } from './freelancer/deliver-work/deliver-work.component';
+import { ReviseWorkComponent } from './components/revise-work/revise-work.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { DeliverWorkComponent } from './freelancer/deliver-work/deliver-work.com
     FreelancerOrdersComponent,
     FreelancerOrderDetailsComponent,
     DeliverWorkComponent,
+    ReviseWorkComponent,
 
   ],
   imports: [

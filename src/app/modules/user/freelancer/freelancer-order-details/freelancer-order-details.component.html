@@ -14,17 +14,35 @@
             <time class="block mb-2 text-sm font-normal leading-none text-gray-400">{{orderData.date|date}}</time>
             
         </li>
-        <li class="mb-10 ml-6" *ngFor="let revision of orderData.revisionData">
+        <li class="mb-10 ml-6" *ngFor="let revision of orderData.revisionData;let i=index">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
                 <svg class="w-2.5 h-2.5 text-blue-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                 </svg>
             </span>
-            <h3 *ngIf="(orderData.revisionData[0])" class="mb-1 text-lg font-semibold text-gray-900">Order Placed</h3>
-            <h3 *ngIf="(!orderData.revisionData[0])" class="mb-1 text-lg font-semibold text-gray-900">Revision </h3>
-            <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on December 7th, 2021</time>
-            <p class="text-base font-normal text-gray-500">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
-         
+            <h3 *ngIf="i==0" class="mb-1 text-lg font-semibold text-gray-900">Order Placed</h3>
+            <h3 *ngIf="i!=0" class="mb-1 text-lg font-semibold text-gray-900">Revision {{i}}</h3>
+               <div> <time class="block mb-2 text-sm font-normal leading-none text-gray-400">{{revision.date|date}}</time></div> 
+            <ng-container *ngFor="let files of revision.revisionFiles;let j=index"><a href={{files}} target="_blank"><button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">File {{j+1}}</button></a></ng-container>
+             
+           
+
+             <div class="p-3 text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50 w-fit">{{revision.revisionDescription}}</div>
+            
+            
+            <div *ngIf="revision.userNote" class="p-4 my-3 bg-white border border-gray-200 rounded-lg shadow-sm w-fit">
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                    <img class="rounded-full shadow-lg" />
+                </span>
+                <div class="items-center justify-between  sm:flex">
+                   
+                    
+                    <div class="text-sm  font-normal text-gray-500 flex">User requested review  </div>
+                    
+                </div>
+                <div class="my-2"><time class="mb-1  text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{revision.date|date}}</time></div>
+                <div class="p-3  text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50">{{revision.userNote}}</div>
+            </div>
         </li>
         <li class="ml-6" *ngIf="(orderData.revisionCount == 0 || orderData.revisionData[orderData.revisionData.length-1].userNote) && orderData.completed==false">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
@@ -32,9 +50,7 @@
                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                 </svg>
             </span>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900">Order Created</h3>
-            <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on December 2nd, 2021</time>
-            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+
               <a (click)="openModal()"  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-3.5 h-3.5 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
                 <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>

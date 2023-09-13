@@ -14,8 +14,9 @@ export interface Order{
     plan:string,
     price:string,
     deliveryTime:string,
-    revision:string
+    revision:number
     revisionData:{
+        _id:string
         revisionFiles:string[],
         revisionDescription:string,
         userNote?:string

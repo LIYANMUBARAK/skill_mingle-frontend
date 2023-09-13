@@ -3,128 +3,197 @@
 
 <div class="grid grid-cols-6 p-6 space-y-6">
     <div class="col-span-4 ">
- 
-     <ol class="relative border-l border-gray-200">                  
-         <li class="mb-10 ml-6">            
-             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
-                 <svg class="w-2.5 h-2.5 text-blue-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                 </svg>
-             </span>
-             <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Order created </h3>
-             <time class="block mb-2 text-sm font-normal leading-none text-gray-400">{{orderData.date|date}}</time>
-             
-         </li>
-         <li class="mb-10 ml-6" *ngFor="let revision of orderData.revisionData;let i=index">
-             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
-                 <svg class="w-2.5 h-2.5 text-blue-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                 </svg>
-             </span>
-             <h3 *ngIf="i==0" class="mb-1 text-lg font-semibold text-gray-900">Order Delivered</h3>
-             <h3 *ngIf="i!=0" class="mb-1 text-lg font-semibold text-gray-900">Revision {{i}}</h3>
-            <img src={{revision.revisionFiles[0]}}>
-            <p>
-                <img src={{revision.revisionDescription}}>
-            </p>
-             <p class="text-base font-normal text-gray-500">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
-          <time>{{revision.date|date}}</time>
-         </li>
-         <li class="ml-6" *ngIf="(orderData.revisionCount == 0 || orderData.revisionData[orderData.revisionData.length-1].userNote) && orderData.completed==false">
-             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
-                 <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                 </svg>
-             </span>
-             <h3 class="mb-1 text-lg font-semibold text-gray-900">Order Created</h3>
-             <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on December 2nd, 2021</time>
-             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-               <a (click)="openModal()"  class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-3.5 h-3.5 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                 <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
-                 <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
-               </svg>  Deliver Your Work</a>
-         </li>
-     </ol>
-     
+
+        <ol class="relative border-l border-gray-200">
+            <li class="mb-10 ml-6">
+                <span
+                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                    <svg class="w-2.5 h-2.5 text-blue-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                    </svg>
+                </span>
+                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Order created </h3>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-400">{{orderData.date|date}}</time>
+
+            </li>
+            <li class="mb-10 ml-6" *ngFor="let revision of orderData.revisionData;let i=index">
+                <span
+                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                    <svg class="w-2.5 h-2.5 text-blue-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                    </svg>
+                </span>
+                <h3 *ngIf="i==0" class="mb-1 text-lg font-semibold text-gray-900">Order Delivered</h3>
+                <h3 *ngIf="i!=0" class="mb-1 text-lg font-semibold text-gray-900">Revision {{i}}</h3>
+                <div> <time
+                        class="block mb-2 text-sm font-normal leading-none text-gray-400">{{revision.date|date}}</time>
+                </div>
+                <ng-container *ngFor="let files of revision.revisionFiles;let j=index"><a href={{files}}
+                        target="_blank"><button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">File
+                            {{j+1}}</button></a></ng-container>
+
+
+
+                <div
+                    class="p-3 text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50 w-fit">
+                    {{revision.revisionDescription}}</div>
+                <div *ngIf="revision.userNote"
+                    class="p-4 my-3 bg-white border border-gray-200 rounded-lg shadow-sm w-fit">
+                    <span
+                        class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                        <img class="rounded-full shadow-lg" />
+                    </span>
+                    <div class="items-center justify-between  sm:flex">
+
+
+                        <div class="text-sm  font-normal text-gray-500 flex">You requested review. </div>
+
+                    </div>
+                    <div class="my-2"><time
+                            class="mb-1  text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{revision.date|date}}</time>
+                    </div>
+                    <div
+                        class="p-3  text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50">
+                        {{revision.userNote}}</div>
+                </div>
+
+
+                <div class="my-2" *ngIf="!revision.userNote && this.orderData.completed===false">
+                    <button (click)="completeOrder()" type="button"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Complete
+                        Order</button>
+
+                    <button *ngIf="orderData.revisionCount!=orderData.revision+1" (click)="openReviseModal()"
+                        type="button"
+                        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Revise</button>
+                </div>
+
+            </li>
+
+
+        </ol>
+
+
+        <div class="flex-auto p-5 lg:p-10" *ngIf="orderData.completed">
+            <h4 class="text-2xl mb-4 text-black font-semibold">Give a rating</h4>
+            <div class="flex my-2">
+                <span *ngFor="let star of stars; let i = index" (click)="rate(i + 1)">
+                    <ng-container *ngIf="star; else noStar"> <svg class="w-6 h-6 text-yellow-300" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg></ng-container>
+                    <ng-template #noStar><svg class="w-6 h-6 text-gray-300" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                            <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg></ng-template>
+                </span>
+            </div>
+
+            <form id="feedbackForm" action="" method="">
+
+                <div class="relative w-full mb-3">
+                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                        for="message">Message</label><textarea [(ngModel)]="reviewMesssage" maxlength="300" name="feedback" id="feedback" rows="4"
+                        cols="80"
+                        class="border-0 px-3 py-3 bg-gray-300 placeholder-black text-gray-800 rounded text-sm shadow focus:outline-none w-full"
+                        placeholder="" required></textarea>
+                </div>
+                <div class="text-center mt-6">
+                    <button id="feedbackBtn" (click)="reviewSubmit()"
+                        class="bg-yellow-300 text-black text-center mx-auto active:bg-yellow-400 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                        type="submit" style="transition: all 0.15s ease 0s;">Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
     </div>
-     <div class="col-span-2">
-         <div class="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 ">
-             <div
-                 class="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
-                 <img *ngIf="orderData.gigId.images" src={{orderData.gigId.images[0]}} alt="image"
-                     class=" w-full object-cover rounded-lg" />
-             </div>
-             <div class="p-6">
- 
-                 <h4
-                     class="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                     {{orderData.gigId.title}}
-                 </h4>
-                 <div *ngIf="orderData.completed===false">
-                     <button 
-                         class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-700 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
-                         {{orderData.completed|orderStatus}}
- 
-                     </button>
-                 </div>
-                 <div *ngIf="orderData.completed===true">
-                     <button
-                         class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 ">
-                         {{orderData.completed|orderStatus}}
- 
-                     </button>
-                 </div>
-                
-             </div>
- 
-         </div>
- 
- 
-         <div class="relative overflow-x-auto">
-             <table class="w-full text-sm text-left text-gray-500">
-                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                     <tr>
-                         <th scope="col" class="px-6 py-3">
-                             Plan
-                         </th>
- 
-                         <th scope="col" class="px-6 py-3">
-                             {{orderData.plan}}
-                         </th>
- 
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <tr class="bg-white border-b">
-                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                             Delivery Time
-                         </th>
- 
-                         <td class="px-6 py-4">
-                             {{orderData.deliveryTime}}
-                         </td>
- 
-                     </tr>
-                     <tr class="bg-white border-b">
-                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                             Revisions
-                         </th>
-                         <td class="px-6 py-4">
-                             {{orderData.revision}}
-                         </td>
- 
- 
-                     </tr>
-                     <tr class="bg-white border-b">
-                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                             Price
-                         </th>
-                         <td class="px-6 py-4">
-                             {{orderData.price}}
-                         </td>
- 
- 
-                     </tr>
-                 </tbody>
-             </table>
-         </div>
+    <div class="col-span-2">
+        <div class="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 ">
+            <div
+                class="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
+                <img *ngIf="orderData.gigId.images" src={{orderData.gigId.images[0]}} alt="image"
+                    class=" w-full object-cover rounded-lg" />
+            </div>
+            <div class="p-6">
+
+                <h4
+                    class="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                    {{orderData.gigId.title}}
+                </h4>
+                <div *ngIf="orderData.completed===false">
+                    <button
+                        class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-700 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
+                        {{orderData.completed|orderStatus}}
+
+                    </button>
+                </div>
+                <div *ngIf="orderData.completed===true">
+                    <button
+                        class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                        {{orderData.completed|orderStatus}}
+
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Plan
+                        </th>
+
+                        <th scope="col" class="px-6 py-3">
+                            {{orderData.plan}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Delivery Time
+                        </th>
+
+                        <td class="px-6 py-4">
+                            {{orderData.deliveryTime}}
+                        </td>
+
+                    </tr>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Revisions
+                        </th>
+                        <td class="px-6 py-4">
+                            {{orderData.revision}}
+                        </td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Price
+                        </th>
+                        <td class="px-6 py-4">
+                            {{orderData.price}}
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>

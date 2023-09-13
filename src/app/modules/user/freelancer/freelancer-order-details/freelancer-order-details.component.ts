@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/helpers/interfaces/orderData.interface';
 import { FrontendService } from 'src/app/services/frontend.service';
 import { DeliverWorkComponent } from '../deliver-work/deliver-work.component';
+import { user } from 'src/app/helpers/interfaces/user.interface';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { DeliverWorkComponent } from '../deliver-work/deliver-work.component';
 })
 export class FreelancerOrderDetailsComponent {
   
+  userId!:string
+  userData!:user
   selectedFiles!:string[]
   orderId!:string
   orderData!:Order
@@ -23,10 +26,15 @@ export class FreelancerOrderDetailsComponent {
     private storage: AngularFireStorage,
     private dialog:MatDialog){}
  ngOnInit(){
+  this.userId= localStorage.getItem('userId') as string
   this.route.paramMap.subscribe(()=>{
     this.orderId = history.state.orderId
     
 })
+// this.service.getUserUsingId(this.userId).subscribe((response)=>{
+//   this.userData=response.userData
+//   console.log(this.userData)
+// })
   this.getOrder(this.orderId)
 
  }

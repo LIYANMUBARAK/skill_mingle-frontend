@@ -214,6 +214,18 @@ export class FrontendService {
     console.log(workDetails);
     return this.http.post(`${this.apiUrl}/user/sendWork`,workDetails)
   }
+
+  reviseWork(reviseDetails:object){
+    return this.http.post(`${this.apiUrl}/user/sendRevision`,reviseDetails)
+  }
+
+  completeOrder(orderId:object){
+    return this.http.post(`${this.apiUrl}/user/completeOrder`,orderId)
+  }
+
+  addReview(reviewDetails:object){
+    return this.http.post(`${this.apiUrl}/user/addReview`,reviewDetails)
+  }
 }
 
 

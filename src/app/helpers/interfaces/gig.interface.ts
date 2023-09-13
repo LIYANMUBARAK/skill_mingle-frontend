@@ -28,5 +28,5 @@ export interface gig {
     images?: Array<string>,
     subcategory: string,
     title: string
-
+    
 }

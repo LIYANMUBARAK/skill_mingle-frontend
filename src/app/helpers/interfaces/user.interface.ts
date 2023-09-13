@@ -13,7 +13,7 @@ export interface user{
     freelancerId?:string,
     isBlocked:boolean,
     isFreelancer?:boolean,
-    
+    profilePic?:string
 
     // ...
   }
