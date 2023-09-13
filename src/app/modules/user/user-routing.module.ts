@@ -25,6 +25,9 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ChatComponent } from './components/chat/chat.component';
 import { FreelancerChatComponent } from './freelancer/freelancer-chat/freelancer-chat.component';
 import { ManageOrderComponent } from './components/manage-order/manage-order.component';
+import { FreelancerOrdersComponent } from './freelancer/freelancer-orders/freelancer-orders.component';
+import { FreelancerOrderDetailsComponent } from './freelancer/freelancer-order-details/freelancer-order-details.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -119,6 +122,18 @@ const routes: Routes = [
   {
     path:'orders',canActivate:[UserAuthGuard],
     component:ManageOrderComponent
+  },
+  {
+    path:'freelancerOrders',canActivate:[UserAuthGuard],
+    component:FreelancerOrdersComponent
+  },
+  {
+    path:'freelancerOrderDetails',canActivate:[UserAuthGuard],
+    component:FreelancerOrderDetailsComponent
+  },
+  {
+    path:'orderDetails',canActivate:[UserAuthGuard],
+    component:OrderDetailsComponent
   }
 ];
 

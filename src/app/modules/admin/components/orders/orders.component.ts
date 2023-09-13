@@ -13,7 +13,7 @@ import { FrontendService } from 'src/app/services/frontend.service';
 })
 export class OrdersComponent {
   dataSource!:any
-  displayedColumns:string[]=["Image","Gig","User","Freelancer","DueOn","ReviewCountRemaining","Status"]
+  displayedColumns:string[]=["Image","Gig","User","Freelancer","DueOn","ReviewCountRemaining","Price","Status"]
 
 
 @ViewChild(MatPaginator) paginator!:MatPaginator

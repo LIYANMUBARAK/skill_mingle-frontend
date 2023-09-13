@@ -24,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { GigsComponent } from './components/gigs/gigs.component';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { SharedModule } from 'src/app/shared modules/shared.module';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     SubcategoryEditModalComponent,
     GigsComponent,
     ConfirmationPopupComponent,
-    OrdersComponent
+    OrdersComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -52,8 +54,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
-
+    MatDialogModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

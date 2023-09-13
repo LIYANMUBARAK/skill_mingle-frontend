@@ -5,13 +5,13 @@ import { Pipe,PipeTransform } from "@angular/core";
 })
 
 export class OrderStatus implements PipeTransform{
-    transform(value: boolean) {
-       if(value){
-       const status = "completed"
+    transform(value: Boolean|boolean) {
+       if(value===true){
+       const status = "Completed"
        return status
        }
         else{
-             const status= "pending"
+             const status= "Pending"
              return status
         }
       

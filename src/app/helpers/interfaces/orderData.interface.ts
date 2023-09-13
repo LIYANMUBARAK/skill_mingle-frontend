@@ -15,5 +15,11 @@ export interface Order{
     price:string,
     deliveryTime:string,
     revision:string
+    revisionData:{
+        revisionFiles:string[],
+        revisionDescription:string,
+        userNote?:string
+        date?:Date
+    }[]
 
 }

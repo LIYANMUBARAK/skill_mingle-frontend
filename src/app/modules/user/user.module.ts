@@ -46,8 +46,11 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ChatComponent } from './components/chat/chat.component';
 import { FreelancerChatComponent } from './freelancer/freelancer-chat/freelancer-chat.component';
 import { ManageOrderComponent } from './components/manage-order/manage-order.component';
-import { DueDate } from 'src/app/helpers/pipes/dueDate.pipe';
-import { OrderStatus } from 'src/app/helpers/pipes/orderStatus.pipe';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { FreelancerOrdersComponent } from './freelancer/freelancer-orders/freelancer-orders.component';
+import { SharedModule } from 'src/app/shared modules/shared.module';
+import { FreelancerOrderDetailsComponent } from './freelancer/freelancer-order-details/freelancer-order-details.component';
+import { DeliverWorkComponent } from './freelancer/deliver-work/deliver-work.component';
 
 
 @NgModule({
@@ -76,9 +79,12 @@ import { OrderStatus } from 'src/app/helpers/pipes/orderStatus.pipe';
     ResetPasswordComponent,
     ChatComponent,
     FreelancerChatComponent,
- DueDate,
- OrderStatus,
+
     ManageOrderComponent,
+    OrderDetailsComponent,
+    FreelancerOrdersComponent,
+    FreelancerOrderDetailsComponent,
+    DeliverWorkComponent,
 
   ],
   imports: [
@@ -101,7 +107,8 @@ import { OrderStatus } from 'src/app/helpers/pipes/orderStatus.pipe';
     MatSortModule,
     EffectsModule.forFeature([userEffects]),
     StoreModule.forFeature( "user",userReducer ),
-    MatDialogModule
+    MatDialogModule,
+    SharedModule
   ]
 })
 export class UserModule { }

@@ -11,6 +11,7 @@ import { AdminLoginAuthGuard } from './guards/admin-login-auth.guard';
 import { UsersComponent } from './components/users/users.component';
 import { FreelancersComponent } from './components/freelancers/freelancers.component';
 import { GigsComponent } from './components/gigs/gigs.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
 {
@@ -52,6 +53,10 @@ const routes: Routes = [
 {
   path:'gigs',canActivate:[AdminAuthGuard],
   component:GigsComponent
+},
+{
+  path:'orders',canActivate:[AdminAuthGuard],
+  component:OrdersComponent
 }
 ];
 

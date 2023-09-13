@@ -33,12 +33,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
+
 const socketConfig:SocketIoConfig = { url:'http://localhost:3000',options:{} }
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+  
   ],
   imports: [
     BrowserModule,

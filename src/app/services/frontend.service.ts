@@ -201,6 +201,19 @@ export class FrontendService {
   getAllOrders():Observable<Order[]>{
     return this.http.get<Order[]>(`${this.apiUrl}/admin/getAllOrders`)
   }
+
+  getAllOrdersForFreelancer(freelancerId:string):Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.apiUrl}/user/getAllOrdersForFreelancer/${freelancerId}`)
+  }
+
+  getOrderById(orderId:string):Observable<Order>{
+    return this.http.get<Order>(`${this.apiUrl}/user/getOrderById/${orderId}`)
+  }
+
+  sendRevision(workDetails:object){
+    console.log(workDetails);
+    return this.http.post(`${this.apiUrl}/user/sendWork`,workDetails)
+  }
 }
 
 

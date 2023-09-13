@@ -18,12 +18,12 @@
           <div>
   
   
-            <div class="mat-elevation-z8">
+            <div class="mat-elevation-z8 ">
               <table matSort mat-table [dataSource]="dataSource">
   
              
                 <ng-container matColumnDef="Image">
-                  <th mat-sort-header mat-header-cell *matHeaderCellDef> Title </th>
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef>  </th>
                   <td mat-cell *matCellDef="let order"> <img src={{order.gigId.images[0]}} ></td>
                 </ng-container>
   
@@ -46,11 +46,15 @@
                   </ng-container>
                   <ng-container matColumnDef="ReviewCountRemaining">
                     <th mat-sort-header mat-header-cell *matHeaderCellDef> Remaining Reviews </th>
-                    <td mat-cell *matCellDef="let order"> {{order.revision-order.revisionCount}} </td>
+                    <td class="text-center "  *matCellDef="let order"> {{order.revision-order.revisionCount}} </td>
                   </ng-container>
                   <ng-container matColumnDef="Status">
                     <th mat-sort-header mat-header-cell *matHeaderCellDef> Status </th>
                     <td mat-cell *matCellDef="let order" > {{order.completed|orderStatus}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Details">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>  </th>
+                    <td mat-cell *matCellDef="let order" > <button (click)="openDetailsPage(order._id)">Details</button>   </td>
                   </ng-container>
   
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
