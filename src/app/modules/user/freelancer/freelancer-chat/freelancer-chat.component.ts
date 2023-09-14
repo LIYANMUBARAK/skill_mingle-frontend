@@ -16,7 +16,7 @@ export class FreelancerChatComponent {
 
   userData!: any
   allConnections: any
-  allChat!: any[]
+  allChat: any[] = []
   freelancerAndUserId!: freelancerAndUser
   userId!: string
    readonly freelancerId = localStorage.getItem('userId') as string

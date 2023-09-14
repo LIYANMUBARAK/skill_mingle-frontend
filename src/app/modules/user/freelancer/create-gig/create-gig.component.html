@@ -3,17 +3,22 @@
 <!-- navbar starting -->
 
 
-<div class="px-60">
+<div class="px-60 ">
 
     <mat-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup">
 
             <form [formGroup]="firstFormGroup">
-                <div class="flex justify-center">
-                    <div>
-                        <div>
+                <div class="grid grid-cols-2 mt-20">
+                    <div class=" ">
+                        <img src="../../../../../assets/img/createGig.jpeg">
+                    </div>
+                    <div class="ml-40 ">
+                        <div class="flex mt-12">
                             <ng-template matStepLabel>Title</ng-template>
-                            <mat-form-field>
+                            <h3 class="m-5 mt-8">Title</h3>
+                            <mat-form-field class="ml-16">
+                               
                                 <mat-label>Title</mat-label>
                                 <input matInput placeholder="Last name, First name" formControlName="title"
                                     required>
@@ -21,20 +26,22 @@
 
                             </mat-form-field>
                         </div>
-                        <div class="flex">
-                            <div>
-                                <mat-form-field>
-                                    <mat-label>Select Category</mat-label>
+                        <div >
+                            <div class="flex">
+                                <h3 class="m-5 mt-8">Category</h3>
+                                <mat-form-field class="ml-7">
+                                    <mat-label >Select Category</mat-label>
                                     <mat-select (selectionChange)="getSubcategoriesofCategory($event)" formControlName="categorySelect" required>
                                         <ng-container *ngFor="let category of categories" >
-                                            <mat-option [value]="category._id" >{{category.name}}</mat-option>
+                                            <mat-option  [value]="category._id" >{{category.name}}</mat-option>
                                         </ng-container>
                                         
                                         
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            <div>
+                            <div class="flex">
+                                <h3 class="m-5 mt-8">Subcategory</h3>
                                 <mat-form-field>
                                     <mat-label>Select Sub-Category</mat-label>
                                     <mat-select formControlName="subCategorySelect" required>
@@ -46,8 +53,8 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div>
-                            <button mat-button matStepperNext>Next</button>
+                        <div class="flex justify-end">
+                            <button class="focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-5"  matStepperNext>Next</button>
                         </div>
                     </div>
                 </div>
@@ -120,7 +127,7 @@
                                         multiple users, extended & premium support.</p>
                                     <div class="flex justify-center items-center my-8">
                                         <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
-                                            class="w-24"><input class="mb-2" matInput formControlName="standardPrice"
+                                            class="w-24"><input class="mb-2" matInput placeholder="Price*" formControlName="standardPrice"
                                                 required>
                                         </mat-form-field>
                                     </div>
@@ -169,7 +176,7 @@
                                         scale uses and extended redistribution rights.</p>
                                     <div class="flex justify-center items-center my-8">
                                         <span class="mr-2 mt-2 text-5xl font-extrabold">₹ </span><mat-form-field
-                                            class="w-24"><input class="mb-2" matInput formControlName="premiumPrice"
+                                            class="w-24"><input class="mb-2" matInput placeholder="Price*" formControlName="premiumPrice"
                                                 required>
                                         </mat-form-field>
                                     </div>
@@ -217,7 +224,7 @@
                 </div>
                 <div class="flex justify-end ">
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                    <button class="focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "  matStepperNext>Next</button>
                 </div>
             </form>
         </mat-step>
@@ -257,7 +264,7 @@
                     <div class="flex justify-end">
                         <button mat-button matStepperPrevious>Back</button>
                         <button mat-button (click)="stepper.reset()">Reset</button>
-                        <button (click)="gigUpload()" mat-button>Submit</button>
+                        <button class="focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 " (click)="gigUpload()" >Submit</button>
                     </div>
                 </div>
             </form>

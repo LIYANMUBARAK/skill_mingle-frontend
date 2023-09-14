@@ -6,7 +6,10 @@
       </a>
   
       <div id="mega-menu-full" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-        <ul class="flex mt-3">
+        <ul class="flex mt-3 gap-10">
+          <li>        <button  routerLink="/dashboard" class=" bg-white hover:bg-gray-100 text-black  py-2 px-4 ">Switch To User</button> 
+          </li>
+          <li></li>
           <li *ngIf="user">
             <div class="relative">
               <button id="profile-dropdown-button" (click)="dropDown()"

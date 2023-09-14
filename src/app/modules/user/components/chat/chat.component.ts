@@ -17,8 +17,8 @@ export class ChatComponent {
   freelancerAndUserId!: freelancerAndUser
   userId!: string
   freelancerId!: string
-  allChat!: any[]
-  allConnections:any
+  allChat: any[]=[]
+  allConnections:any[] = []
 
   constructor(private route: ActivatedRoute,
     private service: FrontendService,
@@ -35,10 +35,14 @@ export class ChatComponent {
 
     this.route.paramMap.subscribe(() => {
       this.freelancerAndUserId = history.state
-      console.log(this.freelancerAndUserId)
       this.freelancerId = this.freelancerAndUserId.freelancerId
-      this.userId = this.freelancerAndUserId.userId
-      this.getChat()
+      // this.userId = this.freelancerAndUserId.userId
+      this.userId = localStorage.getItem('userId') as string
+      if(this.freelancerId)
+      {
+        this.getChat()
+      }
+ 
       this.getConnections()
       
     })
