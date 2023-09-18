@@ -25,6 +25,7 @@ import { GigsComponent } from './components/gigs/gigs.component';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { SharedModule } from 'src/app/shared modules/shared.module';
+import { FreelancerMoreInfoComponent } from './components/freelancer-more-info/freelancer-more-info.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { SharedModule } from 'src/app/shared modules/shared.module';
     GigsComponent,
     ConfirmationPopupComponent,
     OrdersComponent,
+    FreelancerMoreInfoComponent,
     
   ],
   imports: [

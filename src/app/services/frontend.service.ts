@@ -226,6 +226,10 @@ export class FrontendService {
   addReview(reviewDetails:object){
     return this.http.post(`${this.apiUrl}/user/addReview`,reviewDetails)
   }
+
+  changePassword(passwords:object){
+    return this.http.post(`${this.apiUrl}/user/changePassword`,passwords)
+  }
 }
 
 

@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { freelancer } from 'src/app/helpers/interfaces/freelancer.interface';
 import { FrontendService } from 'src/app/services/frontend.service';
 import Swal from 'sweetalert2';
+import { FreelancerMoreInfoComponent } from '../freelancer-more-info/freelancer-more-info.component';
 
 @Component({
   selector: 'app-freelancers',
@@ -24,7 +26,8 @@ export class FreelancersComponent implements OnInit {
 
 
 
-  constructor(private service: FrontendService) { }
+  constructor(private service: FrontendService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllFreelancers()
@@ -82,6 +85,16 @@ export class FreelancersComponent implements OnInit {
     })
     
 
+  }
+
+  openMoreInfoModal(freelancerId:string){
+    this.dialog.open(FreelancerMoreInfoComponent,{
+      data:{
+        freelancerId:freelancerId
+    }
+  }).afterClosed().subscribe(()=>{
+
+    })
   }
 
   

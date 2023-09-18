@@ -28,6 +28,7 @@ import { ManageOrderComponent } from './components/manage-order/manage-order.com
 import { FreelancerOrdersComponent } from './freelancer/freelancer-orders/freelancer-orders.component';
 import { FreelancerOrderDetailsComponent } from './freelancer/freelancer-order-details/freelancer-order-details.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -134,6 +135,10 @@ const routes: Routes = [
   {
     path:'orderDetails',canActivate:[UserAuthGuard],
     component:OrderDetailsComponent
+  },
+  {
+    path:'changePassword',canActivate:[UserAuthGuard],
+    component:ChangePasswordComponent
   }
 ];
 

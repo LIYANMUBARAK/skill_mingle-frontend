@@ -52,6 +52,7 @@ import { SharedModule } from 'src/app/shared modules/shared.module';
 import { FreelancerOrderDetailsComponent } from './freelancer/freelancer-order-details/freelancer-order-details.component';
 import { DeliverWorkComponent } from './freelancer/deliver-work/deliver-work.component';
 import { ReviseWorkComponent } from './components/revise-work/revise-work.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { ReviseWorkComponent } from './components/revise-work/revise-work.compon
     FreelancerOrderDetailsComponent,
     DeliverWorkComponent,
     ReviseWorkComponent,
+    ChangePasswordComponent,
 
   ],
   imports: [
