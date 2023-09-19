@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 
 import Swal from 'sweetalert2';
+import { FreelancerMoreInfoComponent } from '../freelancer-more-info/freelancer-more-info.component';
 
 @Component({
   selector: 'app-users',
@@ -17,12 +18,13 @@ export class UsersComponent {
   users!:any
 
   dataSource:any
-  displayedColumns:string[]=["Name","User Name","Email","blockAndUnblock"]
+  displayedColumns:string[]=["Name","User Name","Email","More Details","blockAndUnblock"]
 
 @ViewChild(MatPaginator) paginator!:MatPaginator
 @ViewChild(MatSort) sort!:MatSort
 
-  constructor(private service:FrontendService){}
+  constructor(private service:FrontendService,
+    private dialog: MatDialog){}
 
   ngOnInit(){
     this.getAllUsers()
@@ -107,5 +109,15 @@ export class UsersComponent {
       }
     })
   
+  }
+
+  openMoreInfoModal(userId:string){
+    this.dialog.open(FreelancerMoreInfoComponent,{
+      data:{
+        userId:userId
+    }
+  }).afterClosed().subscribe(()=>{
+
+    })
   }
 }

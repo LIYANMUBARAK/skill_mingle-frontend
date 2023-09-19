@@ -58,6 +58,20 @@ console.log(this.subcategories)
     this.getGigOfCategory(this.categoryName)
   }
 
+  resetPrice(){
+  
+      this.gigs= this.gigs.filter((gig:any) => gig.basicPrice >0);
+      console.log(this.gigs)
+
+  
+    
+  }
+
+  filterByPrice(from:String,to:string){
+    this.gigs= this.gigs.filter((gig:any) => gig.basicPrice >from && gig.basicPrice<to);
+    console.log(this.gigs)
+  }
+
   subcategorySelected(subcategoryName:string){
     
     this.service.getGigOfCategory(this.categoryName).subscribe((response)=>{

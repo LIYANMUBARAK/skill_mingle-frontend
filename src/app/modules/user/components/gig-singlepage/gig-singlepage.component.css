@@ -8,9 +8,16 @@
     Font-family: Calisto MT, Bookman Old Style, Bookman, Goudy Old Style, Garamond, Hoefler Text, Bitstream Charter, Georgia, serif;   
 }
 
+.description{
+    font-size:16px;
+    Font-family: 'Merriweather', serif;
+    color:#62646a
+}
+
 .name{
     font-size:20px;
-    Font-family:  Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Merriweather', serif;
+    color:#404145
 }
 
 .userName{

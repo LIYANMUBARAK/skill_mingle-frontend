@@ -17,7 +17,7 @@ export class FreelancerMoreInfoComponent {
   freelancerId!:string
   freelancerData!:user
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {freelancerId:string},
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {userId:string},
     private router: Router,
     private dialogRef: MatDialogRef<FreelancerMoreInfoComponent>,
     private service: FrontendService
@@ -26,7 +26,7 @@ export class FreelancerMoreInfoComponent {
 
   ngOnInit() {
     console.log(this.data)
-    this.freelancerId=this.data.freelancerId as string
+    this.freelancerId=this.data.userId as string
     this.getFreelancerData()
   }
 

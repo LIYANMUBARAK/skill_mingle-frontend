@@ -4,6 +4,7 @@ import { FrontendService } from 'src/app/services/frontend.service';
 import { OrderComponent } from '../order/order.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { freelancer } from 'src/app/helpers/interfaces/freelancer.interface';
 
 
 export enum priceType {
@@ -30,6 +31,7 @@ export class GigSinglepageComponent {
   userIsFreelancer: boolean = false
   freelancerId!: string
   userId!: string | null
+  freelancerData!:freelancer
 
   constructor(private route: ActivatedRoute,
     private service: FrontendService,
@@ -41,7 +43,7 @@ export class GigSinglepageComponent {
       this.gigId = id
 
       this.getGig(this.gigId)
-
+      
     })
 
 
@@ -57,6 +59,16 @@ export class GigSinglepageComponent {
       this.freelancerId = this.gigData.freelancerId._id
       this.basicPricing()
       this.checkUserIsFreelancer()
+      this.getFreelancerData()
+    })
+  }
+
+  getFreelancerData(){
+    const freelancerId = this.gigData.freelancerId.freelancerId
+   console.log(freelancerId)
+    this.service.getFreelancerById(this.gigData.freelancerId.freelancerId).subscribe((response:freelancer)=>{
+      console.log(response)
+      this.freelancerData=response
     })
   }
 

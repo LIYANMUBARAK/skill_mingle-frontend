@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http'
 import { API_URL } from '../helpers/apiUrl';
 import { freelancerAndUser } from '../helpers/interfaces/freelancerAndUser.interface';
 import { Order } from '../helpers/interfaces/orderData.interface';
+import { freelancer } from '../helpers/interfaces/freelancer.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -229,6 +230,10 @@ export class FrontendService {
 
   changePassword(passwords:object){
     return this.http.post(`${this.apiUrl}/user/changePassword`,passwords)
+  }
+
+  getFreelancerById(freelancerId:string):Observable<freelancer>{
+    return this.http.get<freelancer>(`${this.apiUrl}/user/getFreelancerById/${freelancerId}`)
   }
 }
 

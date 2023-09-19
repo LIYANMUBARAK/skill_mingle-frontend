@@ -90,7 +90,7 @@ export class FreelancersComponent implements OnInit {
   openMoreInfoModal(freelancerId:string){
     this.dialog.open(FreelancerMoreInfoComponent,{
       data:{
-        freelancerId:freelancerId
+        userId:freelancerId
     }
   }).afterClosed().subscribe(()=>{
 
