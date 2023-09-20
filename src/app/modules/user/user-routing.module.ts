@@ -29,6 +29,7 @@ import { FreelancerOrdersComponent } from './freelancer/freelancer-orders/freela
 import { FreelancerOrderDetailsComponent } from './freelancer/freelancer-order-details/freelancer-order-details.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { EarningsComponent } from './freelancer/earnings/earnings.component';
 
 const routes: Routes = [
   {
@@ -92,7 +93,7 @@ const routes: Routes = [
     component:UserEditComponent
   },
   {
-    path:'gigs',canActivate:[UserAuthGuard],
+    path:'gigs',
     component:GigsListingComponent
   },
   {
@@ -139,6 +140,10 @@ const routes: Routes = [
   {
     path:'changePassword',canActivate:[UserAuthGuard],
     component:ChangePasswordComponent
+  },
+  {
+    path:'freelancerEarnings',canActivate:[UserAuthGuard],
+    component:EarningsComponent
   }
 ];
 

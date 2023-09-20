@@ -12,5 +12,26 @@ export interface freelancer{
      dateOfJoin:Date
      freelancerId:string
      isFreelancer:boolean
-     languages:[]
+     languages:language[]
+     skills:skill[]
+     description:string
+     certification:certifiaction[]
+     education:[]
+
+}
+
+interface language{
+     language:string,
+     level:string
+}
+
+interface skill{
+     skill:string,
+     level:string
+}
+
+interface certifiaction{
+     certificationName:string,
+     certifiedFrom:string
+     certifiedYear:string
 }

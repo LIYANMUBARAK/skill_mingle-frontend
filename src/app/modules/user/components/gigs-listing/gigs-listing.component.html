@@ -4,54 +4,58 @@
 
 <div class="w-full flex justify-center">
 
-  <div class="grid grid-cols-6 gap-3 justify-center w-3/4">
+  <div class="grid grid-cols-9  justify-center mx-24">
 
-    <div class="col-span-1 h-20 shadow rounded-sm ">
-      Sub Categories
+    <div class="col-span-2 shadow  rounded-sm mr-10 mt-20 px-4 py-4 h-fit ">
+      <div class="flex justify-between mb-2">
+        <p class="text-[20px] font-medium">Sub Categories</p>
       <a class="text-red-600 cursor-pointer" (click)="clearFilter()">clear</a>
-      <div *ngFor="let item of subcategories">
+      </div>
+      <div *ngFor="let item of subcategories" >
 
-        <input type="radio" value={{item.name}} [name]="'subcategoryRadioGroup'"
+        <input [id]="item._id" class="mr-3 my-2" type="radio" value={{item.name}} [name]="'subcategoryRadioGroup'"
           (click)="subcategorySelected(item.name)">
-        <label>{{item.name}}</label>
+        <label [for]="item._id">{{item.name}}</label>
       </div>
       <div>
-<div class="col-span-1  shadow rounded-sm mt-5">
-  Price
-  <a class="text-red-600 cursor-pointer" (click)="resetPrice()">Reset</a>
+        <div class="col-span-1   rounded-sm mt-12">
+          <div class="flex justify-between mb-2">
+          <p class="text-[20px] font-medium">Price</p>
+          <a class="text-red-600 cursor-pointer" (click)="resetPrice()">Reset</a>
+        </div>
+          <div class=" p-4">
 
-        <div class="border-t border-gray-200 p-4">
-          
-          <div class="grid grid-cols-2 justify-between gap-4">
-            <label for="FilterPriceFrom" class="flex items-center gap-2">
-              <span class="text-sm text-gray-600">$</span>
+            <div class="grid grid-cols-2 justify-between gap-4">
+              <label for="FilterPriceFrom" class="flex items-center gap-2">
+                <span class="text-sm text-gray-600">$</span>
 
-              <input #fromInput type="number" id="FilterPriceFrom" placeholder="From"
-                class="w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
-            </label>
+                <input #fromInput type="number" id="FilterPriceFrom" placeholder="From"
+                  class="w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
+              </label>
 
-            <label for="FilterPriceTo" class="flex items-center gap-2">
-              <span class="text-sm text-gray-600">$</span>
+              <label for="FilterPriceTo" class="flex items-center gap-2">
+                <span class="text-sm text-gray-600">$</span>
 
-              <input #toInput type="number" id="FilterPriceTo" placeholder="To"
-                class="w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
-            </label>
-            <button (click)="filterByPrice(fromInput.value,toInput.value)" type="button" class="col-span-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Filter</button>
+                <input #toInput type="number" id="FilterPriceTo" placeholder="To"
+                  class="w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
+              </label>
+              <button (click)="filterByPrice(fromInput.value,toInput.value)" type="button"
+                class="col-span-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Filter</button>
+            </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
 
-    <div class="col-span-5 ">
+    <div class="col-span-7 mt-14">
       <!--  -->
-      <div class="grid grid-cols-1 md:grid-cols-6    gap-2">
+      <div class="grid grid-cols-1 md:grid-cols-6    ">
         <div *ngFor="let gig of gigs"
-          class="col-span-2 md:grid-cols-6 sm:grid-cols-6  relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+          class="col-span-2 md:grid-cols-6 sm:grid-cols-6  relative  flex mx-2  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
           <a (click)="toGigPage(gig._id)"
             class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl cursor-pointer">
             <img class="object-cover" [src]="gig.images[0]" alt="gig image" />
-          
+
           </a>
           <div class="ml-5 mt-3 flex">
             <img *ngIf="gig.freelancerId.profilePic" (click)="toGigPage(gig._id)" class="mr-2 w-6 h-6 rounded-full"

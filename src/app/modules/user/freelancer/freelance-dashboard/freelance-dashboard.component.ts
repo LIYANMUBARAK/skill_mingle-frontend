@@ -33,6 +33,10 @@ export class FreelanceDashboardComponent {
     })
   }
 
+  getThisMonthEarning(){
+   
+  }
+
   getConnectionsForFreelancer(){
    
       this.service.getConnectionsForFreelancer(this.userId).subscribe((response)=>{

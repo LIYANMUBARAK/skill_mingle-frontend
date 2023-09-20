@@ -32,6 +32,7 @@ export class GigSinglepageComponent {
   freelancerId!: string
   userId!: string | null
   freelancerData!:freelancer
+  starCount:number[] = [1,2,3,4,5]
 
   constructor(private route: ActivatedRoute,
     private service: FrontendService,

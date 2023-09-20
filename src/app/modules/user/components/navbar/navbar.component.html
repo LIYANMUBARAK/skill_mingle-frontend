@@ -1,8 +1,8 @@
-<nav class="navbar border-gray-200 border-gray-600 h-24">
+<nav class="navbar border border-b-gray-300 h-24 px-28">
     <div class="flex  items-center justify-between px-10 md:px-20 ">
         <a routerLink="/dashboard" class="flex items-center mt-5">
             <img src="../../../../assets/img/skill-mingle-logo-black.svg" class="image h-16 mr-3" alt="Flowbite Logo" />
-            <span class="hidden sm:inline heading font-mono self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Skill Mingle</span>
+            <span class="hidden sm:inline heading font-mono self-center text-2xl font-semibold whitespace-nowrap text-black">Skill Mingle</span>
           </a>
           
           <!-- <button *ngIf="user.isFreelancer" routerLink="/freelancerDashboard" class=" bg-white hover:bg-gray-100 text-black  py-2 px-4 ">Switch To Freelancer</button>  -->
@@ -14,7 +14,7 @@
           <li *ngIf="user">
             <div class="relative">
               <button id="profile-dropdown-button" (click)="dropDown()"
-                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-900  md:w-auto  md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 ">
+                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-900  md:w-auto  md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 ">
                 Hey, {{user.userName}}
                 <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />

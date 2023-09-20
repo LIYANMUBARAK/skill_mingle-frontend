@@ -1,32 +1,123 @@
-
 <app-navbar></app-navbar>
 <section class="carousel-section py-8">
-    <div class="container mx-auto">
-      <!-- Add your carousel content here -->
-      <h2 class="text-2xl font-bold mb-4">Carousel Section</h2>
-      <div class="carousel-container">
-        <!-- Add your carousel items here -->
-        <div class="carousel-item bg-gray-300 h-40 rounded-lg"></div>
-        <div class="carousel-item bg-gray-300 h-40 rounded-lg"></div>
-        <div class="carousel-item bg-gray-300 h-40 rounded-lg"></div>
-        <!-- Add more carousel items as needed -->
-      </div>
-    </div>
-  </section>
+  <div class="container mx-auto">
+    <!-- Add your carousel content here -->
 
-  <!-- Categories Section -->
-  <section class="categories-section py-8">
-    <div class="container mx-auto">
-      <!-- Add your categories content here -->
-      <h2 class="text-2xl font-bold mb-4">Categories Section</h2>
-      <div class="grid grid-cols-2 gap-4">
-        <!-- Add your category cards here -->
-        <div *ngFor="let category of categories" class="category-card bg-white p-4 rounded-lg shadow-md">
-        <a (click)="loadCategoryPage(category.name)" routerLink="/gigs"><h3 class="text-lg font-semibold mb-2 text-center">{{category.name}}</h3></a>
-          
-        </div>
-        
-        <!-- Add more category cards as needed -->
+    <div class="carousel-container">
+      <!-- Add your carousel items here -->
+      <div class="carousel-item  md:px-24 px-6 mt-10 grid grid-cols-2">
+            <div class="mt-36 ">
+              <h1 class="topHeading font-bold text-3xl">Revolutionizing 
+              </h1>
+              <h1 class="topHeading font-bold mt-3"> Work.
+              </h1>
+              <h6 class="text-[18px] mt-5 ">
+                Break free from old norms and instantly access top talent <br> using modern technology, bringing your professional <br> aspirations closer than ever.
+              </h6>
+              <div class="mt-10">
+                <button type="button" class="  text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2">Join now.</button>
+
+              </div>
+            </div>
+            <div class="flex items-center justify-center">
+              <img  src="../../../../../assets/img/dashboard.svg" alt="">
+            </div>
+
       </div>
+      <!--  -->
+      
+<!-- Categories Section -->
+<section class="categories-section py-8 px-28">
+  <div class="container mx-auto text-center py-12">
+    <!-- Add your categories content here -->
+    <h2 class="text-3xl font-semibold mb-6">Explore Talent By Category</h2>
+    <div class="grid grid-cols-4 gap-4">
+      <!-- Add your category cards here -->
+      <div *ngFor="let category of categories" class="category-card bg-gray-50 p-4 py-14 ">
+        <a (click)="loadCategoryPage(category.name)" routerLink="/gigs">
+          <h3 class="text-lg font-semibold mb-2 text-center">{{category.name}}</h3>
+        </a>
+
+      </div>
+
+      <!-- Add more category cards as needed -->
     </div>
-  </section>
+  </div>
+</section>
+      <!--  -->
+      <div class="carousel-item bg-blue-50 grid grid-cols-2">
+        <div>
+          <div class="flex justify-center items-center mt-5">
+            <h1 class="heading text-4xl font-bold items-center">What's truly exceptional? Every aspect.</h1>
+
+          </div>
+          <div class="m-10">
+            <div>
+              <div class="flex">
+                <img class="tick h-5 mt-1 mr-2" src="../../../../../assets/img/tick.svg" alt="">
+                <h2 class="listHeading text-2xl font-semibold ">Stay within your budget</h2>
+
+              </div>
+
+              <p class="paragraph ml-7">Discover the perfect service for any budget, with project-based pricing instead
+                of hourly rates.</p>
+
+            </div>
+
+
+
+            <div>
+              <div class="flex">
+                <img class="tick h-5 mt-1 mr-2" src="../../../../../assets/img/tick.svg" alt="">
+                <h2 class="listHeading text-2xl font-semibold ">Achieve top-quality results rapidly</h2>
+
+              </div>
+
+              <p class="paragraph  ml-7">Entrust your project to a skilled freelancer within minutes and enjoy results
+                that stand the test of
+                time.</p>
+
+            </div>
+
+
+            <div>
+              <div class="flex">
+                <img class="tick h-5 mt-1 mr-2" src="../../../../../assets/img/tick.svg" alt="">
+                <h2 class=" listHeading text-2xl font-semibold ">Make payments when you're satisfied</h2>
+
+              </div>
+
+              <p class="paragraph  ml-7">Transparent upfront quotes eliminate surprises. Payments are only made after
+                your approval.</p>
+
+            </div>
+
+
+            <div>
+              <div class="flex">
+                <img class="tick h-5 mt-1 mr-2" src="../../../../../assets/img/tick.svg" alt="">
+                <h2 class=" listHeading text-2xl font-semibold ">Rely on round-the-clock support</h2>
+
+              </div>
+
+              <p class="paragraph  ml-7">Our support team is available 24/7, ready to assist you no matter when or where
+                you need help.</p>
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+        <div class="flex justify-center items-center">
+          <img class="h-4/5" src="../../../../../assets/img/freelanceDashboard.jpg" alt="">
+        </div>
+      </div>
+     
+      <!-- Add more carousel items as needed -->
+    </div>
+  </div>
+</section>
