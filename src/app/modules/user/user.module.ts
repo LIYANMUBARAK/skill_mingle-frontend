@@ -54,6 +54,7 @@ import { DeliverWorkComponent } from './freelancer/deliver-work/deliver-work.com
 import { ReviseWorkComponent } from './components/revise-work/revise-work.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { EarningsComponent } from './freelancer/earnings/earnings.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { EarningsComponent } from './freelancer/earnings/earnings.component';
     ReviseWorkComponent,
     ChangePasswordComponent,
     EarningsComponent,
+    FooterComponent,
 
   ],
   imports: [

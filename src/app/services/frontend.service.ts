@@ -235,6 +235,12 @@ export class FrontendService {
   getFreelancerById(freelancerId:string):Observable<freelancer>{
     return this.http.get<freelancer>(`${this.apiUrl}/user/getFreelancerById/${freelancerId}`)
   }
+
+
+  getPendingOrdersForFreelancer(userId:string|null):Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.apiUrl}/user/getPendingOrdersForFreelancer/${userId}`)
+  } 
+
 }
 
 

@@ -2,10 +2,16 @@
 
 <div class="container flex ml-44">
 
+  <ng-template #noData>
+    <div class="flex text-center justify-center items-center w-full h-screen">
+      <h1 class="text-4xl ">No Orders</h1>
+    </div>
+    
+  </ng-template>
 
-    <div class="flex-none w-full max-w-full px-3">
+    <div *ngIf="dataSource.filteredData.length>0;else noData" class="flex-none w-full max-w-full px-3">
      
-        <div
+        <div 
           class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent flex justify-between items-center">
           <div class="flex-grow text-center">
             <h3 class="text-black">Orders</h3>

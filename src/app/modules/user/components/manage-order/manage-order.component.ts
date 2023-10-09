@@ -34,7 +34,7 @@ ngOnInit(){
 getAllOrdersForUser(){
     this.service.getAllOrdersForUser(this.userId).subscribe((orderData:Order[])=>{
       this.dataSource=new MatTableDataSource<Order>(orderData)
-      console.log(orderData)
+      console.log(this.dataSource)
     })
 }
 
